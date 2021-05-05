@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE clasificacion SYSTEM "DTDClasificacion.dtd">-->
+<clasificacion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDClasificacion.xsd">
+  <equipo id="e01" puntos="23"/>
+  <equipo id="e02" puntos="15"/>
+  <equipo id="e03" puntos="0"/>
+  <equipo id="e04" puntos="93"/>
+</clasificacion>

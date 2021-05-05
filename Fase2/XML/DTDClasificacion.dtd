@@ -1,0 +1,4 @@
+<!ELEMENT clasificacion (equipo+)>
+<!ELEMENT equipo EMPTY>
+<!ATTLIST equipo id ID #REQUIRED>
+<!ATTLIST equipo puntos CDATA #REQUIRED>

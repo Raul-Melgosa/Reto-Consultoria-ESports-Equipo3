@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="clasificacion" type="tipoClasificacion"/>
+  
+  <xs:complexType name="tipoClasificacion">
+    <xs:sequence>
+      <xs:element name="equipo" maxOccurs="unbounded" type="tipoEquipo"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="tipoEquipo">
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+    <xs:attribute name="puntos" type="xs:int" use="required"/>
+  </xs:complexType>
+</xs:schema>
