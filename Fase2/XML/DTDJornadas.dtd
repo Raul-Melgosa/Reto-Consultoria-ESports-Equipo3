@@ -1,17 +1,13 @@
 <!ELEMENT jornada (partido+,fechaExpira?)>
-<!ATTLIST jornada id ID #REQUIRED>
-<!ATTLIST jornada fecha CDATA #REQUIRED>
 
-<!ELEMENT partido (equipoLocal,equipoVisitante)>
-<!ATTLIST partido id ID #REQUIRED>
-<!ATTLIST partido hora CDATA #REQUIRED>
-<!ATTLIST partido partidasGanadasLocal CDATA #REQUIRED>
-<!ATTLIST partido partidasGanadasVisitante CDATA #REQUIRED>
-
-<!ELEMENT equipoLocal (#PCDATA)>
-<!ATTLIST equipoLocal resultado (ganador|perdedor) #REQUIRED>
-
-<!ELEMENT equipoVisitante (#PCDATA)>
-<!ATTLIST equipoVisitante resultado (ganador|perdedor) #REQUIRED>
+<!ELEMENT partido (ID_PARTIDO,HORA,PARTIDAS_GANADAS_LOCAL,PARTIDAS_GANADAS_VISITANTE,ID_LOCAL,ID_VISITANTE,ID_JORNADA,ID_EQUIPO_GANADOR)>
+<!ELEMENT ID_PARTIDO (#PCDATA)>
+<!ELEMENT HORA (#PCDATA)>
+<!ELEMENT PARTIDAS_GANADAS_LOCAL (#PCDATA)>
+<!ELEMENT PARTIDAS_GANADAS_VISITANTE (#PCDATA)>
+<!ELEMENT ID_LOCAL (#PCDATA)>
+<!ELEMENT ID_VISITANTE (#PCDATA)>
+<!ELEMENT ID_JORNADA (#PCDATA)>
+<!ELEMENT ID_EQUIPO_GANADOR (#PCDATA)>
 
 <!ELEMENT fechaExpira (#PCDATA)>
