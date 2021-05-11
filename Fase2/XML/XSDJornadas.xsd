@@ -1,39 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="jornada" type="tipoJornada"/>
-  
+<xs:element name="jornada" type="tipoJornada"/>
   <xs:complexType name="tipoJornada">
     <xs:sequence>
       <xs:element name="partido" maxOccurs="unbounded" type="tipoPartido"/>
       <xs:element name="fechaExpira" maxOccurs="1" minOccurs="0" type="xs:date"/>
     </xs:sequence>
-    <xs:attribute name="id" type="xs:ID" use="required"/>
-    <xs:attribute name="fecha" type="xs:date" use="required"/>
   </xs:complexType>
   
   <xs:complexType name="tipoPartido">
     <xs:sequence>
-      <xs:element name="equipoLocal" minOccurs="1" maxOccurs="unbounded" type="tipoEquipo"/>
-      <xs:element name="equipoVisitante" minOccurs="1" maxOccurs="unbounded" type="tipoEquipo"/>
+      <xs:element name="ID_PARTIDO" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="HORA" minOccurs="1" maxOccurs="unbounded" type="xs:string"/>
+      <xs:element name="PARTIDAS_GANADAS_LOCAL" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="PARTIDAS_GANADAS_VISITANTE" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="ID_LOCAL" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="ID_VISITANTE" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="ID_JORNADA" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="ID_EQUIPO_GANADOR" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
     </xs:sequence>
-    <xs:attribute name="id" type="xs:ID" use="required"/>
-    <xs:attribute name="hora" type="xs:time" use="required"/>
-    <xs:attribute name="partidasGanadasLocal" type="xs:integer" use="required"/>
-    <xs:attribute name="partidasGanadasVisitante" type="xs:integer" use="required"/>
   </xs:complexType>
-  
-  <xs:complexType name="tipoEquipo">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="resultado" type="tipoResultado"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  
-  <xs:simpleType name="tipoResultado">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="ganador"/>
-      <xs:enumeration value="perdedor"/>
-    </xs:restriction>
-  </xs:simpleType>
 </xs:schema>
