@@ -2,14 +2,16 @@
 <!ATTLIST jornada id ID #REQUIRED>
 <!ATTLIST jornada fecha CDATA #REQUIRED>
 
-<!ELEMENT partido (equipo1,equipo2)>
+<!ELEMENT partido (equipoLocal,equipoVisitante)>
 <!ATTLIST partido id ID #REQUIRED>
 <!ATTLIST partido hora CDATA #REQUIRED>
+<!ATTLIST partido partidasGanadasLocal CDATA #REQUIRED>
+<!ATTLIST partido partidasGanadasVisitante CDATA #REQUIRED>
 
-<!ELEMENT equipo1 (#PCDATA)>
-<!ATTLIST equipo1 resultado (ganador|perdedor) #REQUIRED>
+<!ELEMENT equipoLocal (#PCDATA)>
+<!ATTLIST equipoLocal resultado (ganador|perdedor) #REQUIRED>
 
-<!ELEMENT equipo2 (#PCDATA)>
-<!ATTLIST equipo2 resultado (ganador|perdedor) #REQUIRED>
+<!ELEMENT equipoVisitante (#PCDATA)>
+<!ATTLIST equipoVisitante resultado (ganador|perdedor) #REQUIRED>
 
 <!ELEMENT fechaExpira (#PCDATA)>
