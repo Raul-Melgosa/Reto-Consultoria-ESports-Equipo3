@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="jornada" type="tipoJornada"/>
   
@@ -13,11 +13,13 @@
   
   <xs:complexType name="tipoPartido">
     <xs:sequence>
-      <xs:element name="equipo1" minOccurs="1" maxOccurs="unbounded" type="tipoEquipo"/>
-      <xs:element name="equipo2" minOccurs="1" maxOccurs="unbounded" type="tipoEquipo"/>
+      <xs:element name="equipoLocal" minOccurs="1" maxOccurs="unbounded" type="tipoEquipo"/>
+      <xs:element name="equipoVisitante" minOccurs="1" maxOccurs="unbounded" type="tipoEquipo"/>
     </xs:sequence>
     <xs:attribute name="id" type="xs:ID" use="required"/>
     <xs:attribute name="hora" type="xs:time" use="required"/>
+    <xs:attribute name="partidasGanadasLocal" type="xs:integer" use="required"/>
+    <xs:attribute name="partidasGanadasVisitante" type="xs:integer" use="required"/>
   </xs:complexType>
   
   <xs:complexType name="tipoEquipo">
