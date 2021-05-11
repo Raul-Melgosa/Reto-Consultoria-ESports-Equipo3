@@ -1,29 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0'  encoding='Cp1252' ?>
 <!--<!DOCTYPE jornada SYSTEM "DTDJornadas.dtd">-->
-<jornada id="j01" fecha="2021-05-05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDJornadas.xsd">
-  <partido id="p01" hora="17:00:00.0" partidasGanadasLocal="3" partidasGanadasVisitante="2">
-    <equipoLocal resultado="ganador">Vel'kcoc</equipoLocal>
-    <equipoVisitante resultado="perdedor">Ibaisitos</equipoVisitante>
+<jornada xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDJornadas.xsd">
+  <partido>
+    <ID_PARTIDO>1</ID_PARTIDO>
+    <HORA>15/05/21 09:26:50,120000</HORA>
+    <PARTIDAS_GANADAS_LOCAL>3</PARTIDAS_GANADAS_LOCAL>
+    <PARTIDAS_GANADAS_VISITANTE>1</PARTIDAS_GANADAS_VISITANTE>
+    <ID_LOCAL>1</ID_LOCAL>
+    <ID_VISITANTE>2</ID_VISITANTE>
+    <ID_JORNADA>1</ID_JORNADA>
+    <ID_EQUIPO_GANADOR>1</ID_EQUIPO_GANADOR>
   </partido>
-  
-  <partido id="p02" hora="19:00:00.0" partidasGanadasLocal="3" partidasGanadasVisitante="2">
-    <equipoLocal  resultado="ganador">Espanna</equipoLocal>
-    <equipoVisitante resultado="perdedor">Francia</equipoVisitante>
+  <partido>
+    <ID_PARTIDO>2</ID_PARTIDO>
+    <HORA>15/05/21 14:00:00,000000</HORA>
+    <PARTIDAS_GANADAS_LOCAL>1</PARTIDAS_GANADAS_LOCAL>
+    <PARTIDAS_GANADAS_VISITANTE>3</PARTIDAS_GANADAS_VISITANTE>
+    <ID_LOCAL>3</ID_LOCAL>
+    <ID_VISITANTE>4</ID_VISITANTE>
+    <ID_JORNADA>1</ID_JORNADA>
+    <ID_EQUIPO_GANADOR>4</ID_EQUIPO_GANADOR>
   </partido>
-  
-  <partido id="p03" hora="21:00:00.0" partidasGanadasLocal="3" partidasGanadasVisitante="2">
-    <equipoLocal  resultado="ganador">G2</equipoLocal>
-    <equipoVisitante resultado="perdedor">Astralis</equipoVisitante>
-  </partido>
-  
-  <partido id="p04" hora="18:15:00.0" partidasGanadasLocal="3" partidasGanadasVisitante="2">
-    <equipoLocal  resultado="ganador">Fnatic</equipoLocal>
-    <equipoVisitante resultado="perdedor">Mad Lions</equipoVisitante>
-  </partido>
-  
-  <partido id="p05" hora="16:30:00.0" partidasGanadasLocal="3" partidasGanadasVisitante="2">
-    <equipoLocal  resultado="ganador">SKT</equipoLocal>
-    <equipoVisitante resultado="perdedor">Damwon</equipoVisitante>
-  </partido>
-
 </jornada>
