@@ -9,6 +9,8 @@ import java.awt.Color;
 import Controlador.Controlador;
 import AppPackage.AnimationClass;
 import java.awt.Toolkit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -202,6 +204,11 @@ public class VLogin extends javax.swing.JFrame {
                 tfUsernameFocusLost(evt);
             }
         });
+        tfUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfUsernameKeyTyped(evt);
+            }
+        });
         panelDerecha.add(tfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 690, 50));
 
         tfPass.setBackground(new java.awt.Color(45, 45, 45));
@@ -221,7 +228,7 @@ public class VLogin extends javax.swing.JFrame {
         panelDerecha.add(tfPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 650, 50));
 
         barraUser.setForeground(new java.awt.Color(255, 255, 255));
-        panelDerecha.add(barraUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 690, 10));
+        panelDerecha.add(barraUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 690, 1));
 
         barraPass.setForeground(new java.awt.Color(255, 255, 255));
         panelDerecha.add(barraPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 690, 40));
@@ -273,6 +280,8 @@ public class VLogin extends javax.swing.JFrame {
         if(tfUsername.getText().equals(""))
         {
             tfUsername.setText("Nombre de usuario");
+            tfUsername.setForeground(new Color(255,255,255));
+            barraUser.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_tfUsernameFocusLost
 
@@ -405,6 +414,26 @@ public class VLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bModosMouseClicked
 
+    private void tfUsernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfUsernameKeyTyped
+        if(validarUsuario(tfUsername.getText()))
+        {
+            tfUsername.setForeground(new Color(0,204,0));
+            barraUser.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfUsername.setForeground(new Color(204,0,0));
+            barraUser.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfUsernameKeyTyped
+
+    private boolean validarUsuario(String texto)
+    {
+        Pattern patron = Pattern.compile("^([A-Z]||[a-z]||[0-9])+");
+        Matcher m = patron.matcher(texto);
+        return m.matches();
+    }
+    
     /**
      * @param args the command line arguments
      */
