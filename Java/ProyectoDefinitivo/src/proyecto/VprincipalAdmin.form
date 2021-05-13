@@ -40,7 +40,7 @@
     <Component class="javax.swing.JLabel" name="cerrar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagenes/cerrar-white.png"/>
+          <Image iconType="3" name="/img/cerrar-white.png"/>
         </Property>
       </Properties>
       <Events>
@@ -55,7 +55,7 @@
     <Component class="javax.swing.JLabel" name="minimizar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagenes/minimizar-white.png"/>
+          <Image iconType="3" name="/img/minimizar-white.png"/>
         </Property>
       </Properties>
       <Events>
@@ -92,7 +92,7 @@
         <Component class="javax.swing.JLabel" name="bMenu">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/menu.png"/>
+              <Image iconType="3" name="/img/menu.png"/>
             </Property>
           </Properties>
           <Events>
@@ -107,7 +107,7 @@
         <Component class="javax.swing.JLabel" name="bModo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/luna.png"/>
+              <Image iconType="3" name="/img/luna.png"/>
             </Property>
           </Properties>
           <Events>
@@ -448,7 +448,7 @@
         <Component class="javax.swing.JLabel" name="logo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/LOGO.png"/>
+              <Image iconType="3" name="/img/LOGO.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -460,7 +460,7 @@
         <Component class="javax.swing.JLabel" name="gifAbajo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/GIF3Parte2.gif"/>
+              <Image iconType="3" name="/img/GIF3Parte2.gif"/>
             </Property>
           </Properties>
           <Constraints>
@@ -472,7 +472,7 @@
         <Component class="javax.swing.JLabel" name="GIFarriba">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/GIF3Parte1.gif"/>
+              <Image iconType="3" name="/img/GIF3Parte1.gif"/>
             </Property>
           </Properties>
           <Constraints>

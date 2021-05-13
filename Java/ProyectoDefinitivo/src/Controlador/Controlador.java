@@ -9,6 +9,7 @@ import ModeloBD.*;
 import ModeloUML.*;
 import Views.*;
 
+
 /**
  *
  * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
@@ -25,7 +26,7 @@ public class Controlador {
             bd=new BaseDeDatos();
             tj=new TablaJugadores();
             tp=new TablaPerfiles();
-            VLogin login = new VLogin();
+            VprincipalAdmin login = new VprincipalAdmin();
             login.setLocationRelativeTo(null);
             login.setVisible(true);
         }

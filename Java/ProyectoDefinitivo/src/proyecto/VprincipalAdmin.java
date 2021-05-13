@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views;
+package proyecto;
 
 import AppPackage.AnimationClass;
 import java.awt.Color;
@@ -78,7 +78,7 @@ private char modo='o';
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
+        cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-white.png"))); // NOI18N
         cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cerrarMouseClicked(evt);
@@ -86,7 +86,7 @@ private char modo='o';
         });
         getContentPane().add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, -1, -1));
 
-        minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
+        minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/minimizar-white.png"))); // NOI18N
         minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 minimizarMouseClicked(evt);
@@ -108,7 +108,7 @@ private char modo='o';
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
+        bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu.png"))); // NOI18N
         bMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bMenuMouseClicked(evt);
@@ -116,7 +116,7 @@ private char modo='o';
         });
         jPanel1.add(bMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 50));
 
-        bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/luna.png"))); // NOI18N
+        bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/luna.png"))); // NOI18N
         bModo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bModoMouseClicked(evt);
@@ -238,13 +238,13 @@ private char modo='o';
         menu.setOpaque(true);
         jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 50, 300, 700));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LOGO.png"))); // NOI18N
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        gifAbajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte2.gif"))); // NOI18N
+        gifAbajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GIF3Parte2.gif"))); // NOI18N
         jPanel1.add(gifAbajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 500, 500));
 
-        GIFarriba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte1.gif"))); // NOI18N
+        GIFarriba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GIF3Parte1.gif"))); // NOI18N
         jPanel1.add(GIFarriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -120, 500, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 750));
@@ -404,10 +404,10 @@ private char modo='o';
          
         if(modo==('o')){
            modo='c';
-           bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sol.png")));
-           //cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png")));
-           minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar.png")));
-           bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu-negro.png")));
+           bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sol.png")));
+           cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png")));
+           minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/minimizar.png")));
+           bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu-negro.png")));
            jPanel2.setBackground(new Color(255,255,255));
            Lbienvenido.setForeground(new Color(0,0,0));
            menu.setBackground(new Color (255,255,255,200));
@@ -444,10 +444,10 @@ private char modo='o';
        }
        else{
            modo='o';
-           bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/luna.png")));
-           cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png")));
-           minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png")));
-           bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png")));
+           bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/luna.png")));
+           cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-white.png")));
+           minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/minimizar-white.png")));
+           bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu.png")));
            jPanel2.setBackground(new Color(45,45,45));
            Lbienvenido.setForeground(new Color(255,255,255));
            menu.setBackground(new Color (45,45,45,200));
