@@ -9,7 +9,6 @@ import ModeloBD.*;
 import ModeloUML.*;
 import Views.*;
 
-
 /**
  *
  * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
@@ -18,7 +17,7 @@ public class Controlador {
     private static TablaJugadores tj;
     private static TablaPerfiles tp;
     private static BaseDeDatos bd;
-    private Perfil usuario;
+    private static Perfil usuario;
     
     public static void main(String[] args) {
         try
@@ -26,7 +25,7 @@ public class Controlador {
             bd=new BaseDeDatos();
             tj=new TablaJugadores();
             tp=new TablaPerfiles();
-            VprincipalAdmin login = new VprincipalAdmin();
+            VLogin login = new VLogin();
             login.setLocationRelativeTo(null);
             login.setVisible(true);
         }
@@ -39,9 +38,27 @@ public class Controlador {
         
     }
     
-    public static void comprobarUsuario(String username,String password) throws Exception
+    public static boolean comprobarUsuario(String username,String password) throws Exception
     {
-        tp.buscarUsuario(bd.conectar(),username,password);
+        usuario=tp.buscarUsuario(bd.conectar(),username,password);
+        if(usuario==null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    
+    public static void irVPrincipal(javax.swing.JFrame anterior) throws Exception
+    {
+        anterior.dispose();
+        if(usuario.getTipo().equals(TipoPerfil.ADMIN))
+        {
+            VprincipalAdmin nuevo = new VprincipalAdmin();
+            nuevo.setVisible(true);
+        }
     }
     
     public static void salir()

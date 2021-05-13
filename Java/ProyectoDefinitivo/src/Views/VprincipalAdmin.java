@@ -6,6 +6,7 @@
 package Views;
 
 import AppPackage.AnimationClass;
+import Controlador.Controlador;
 import java.awt.Color;
 
 /**
@@ -22,6 +23,7 @@ private char modo='o';
      */
     public VprincipalAdmin() {
         initComponents();
+        bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png")));
         setLocationRelativeTo(null);
         menu.setBackground(new Color(45,45,45,200));
         this.menuAbierto=false;
@@ -37,8 +39,8 @@ private char modo='o';
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cerrar = new javax.swing.JLabel();
-        minimizar = new javax.swing.JLabel();
+        bCerrar = new javax.swing.JLabel();
+        bMinimizar = new javax.swing.JLabel();
         barraDrag = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         bMenu = new javax.swing.JLabel();
@@ -71,28 +73,45 @@ private char modo='o';
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setBackground(new java.awt.Color(60, 63, 65));
         setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
-        cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        bCerrar.setBackground(new java.awt.Color(45, 45, 45));
+        bCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
+        bCerrar.setOpaque(true);
+        bCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cerrarMouseClicked(evt);
+                bCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                bCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bCerrarMouseExited(evt);
             }
         });
-        getContentPane().add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, -1, -1));
+        getContentPane().add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, -1));
 
-        minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
-        minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+        bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
+        bMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
+        bMinimizar.setOpaque(true);
+        bMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                minimizarMouseClicked(evt);
+                bMinimizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                bMinimizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bMinimizarMouseExited(evt);
             }
         });
-        getContentPane().add(minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1420, 0, -1, -1));
+        getContentPane().add(bMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1420, 0, 40, -1));
 
         barraDrag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -104,7 +123,7 @@ private char modo='o';
                 barraDragMousePressed(evt);
             }
         });
-        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 50));
+        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -251,52 +270,17 @@ private char modo='o';
 
         jPanel2.setBackground(new java.awt.Color(45, 45, 45));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbienvenido.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         Lbienvenido.setForeground(new java.awt.Color(255, 255, 255));
         Lbienvenido.setText("Bienvenido!");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(387, 387, 387)
-                .addComponent(Lbienvenido)
-                .addContainerGap(412, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(Lbienvenido)
-                .addContainerGap(465, Short.MAX_VALUE))
-        );
+        jPanel2.add(Lbienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 1000, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
-       xMouse=evt.getX();
-       yMouse=evt.getY();
-    }//GEN-LAST:event_barraDragMousePressed
-
-    private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
-       int x = evt.getXOnScreen();
-       int y = evt.getYOnScreen();
-       this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_barraDragMouseDragged
-
-    private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
-        //Controlador.salir();
-        System.exit(0);
-    }//GEN-LAST:event_cerrarMouseClicked
-
-    private void minimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizarMouseClicked
-        this.setState(ICONIFIED);
-    }//GEN-LAST:event_minimizarMouseClicked
 
     private void bMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMenuMouseClicked
         AnimationClass animacion=new AnimationClass();
@@ -406,7 +390,7 @@ private char modo='o';
            modo='c';
            bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sol.png")));
            //cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png")));
-           minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar.png")));
+           bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar.png")));
            bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu-negro.png")));
            jPanel2.setBackground(new Color(255,255,255));
            Lbienvenido.setForeground(new Color(0,0,0));
@@ -445,8 +429,8 @@ private char modo='o';
        else{
            modo='o';
            bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/luna.png")));
-           cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png")));
-           minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png")));
+           bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png")));
+           bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png")));
            bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png")));
            jPanel2.setBackground(new Color(45,45,45));
            Lbienvenido.setForeground(new Color(255,255,255));
@@ -480,6 +464,63 @@ private char modo='o';
            LmodificarUsuarios.setForeground(new Color(255,255,255));
        }
     }//GEN-LAST:event_bModoMouseClicked
+
+    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
+        xMouse=evt.getX();
+        yMouse=evt.getY();
+    }//GEN-LAST:event_barraDragMousePressed
+
+    private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_barraDragMouseDragged
+
+    private void bCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseClicked
+        Controlador.salir();
+    }//GEN-LAST:event_bCerrarMouseClicked
+
+    private void bCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseEntered
+        bCerrar.setBackground(new java.awt.Color(255,0,0));
+    }//GEN-LAST:event_bCerrarMouseEntered
+
+    private void bCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseExited
+        if(modo=='o')
+        {
+            bCerrar.setBackground(new java.awt.Color(45, 45, 45));
+        }
+        else
+        {
+            bCerrar.setBackground(new java.awt.Color(255,255,255));
+        }
+    }//GEN-LAST:event_bCerrarMouseExited
+
+    private void bMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseClicked
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_bMinimizarMouseClicked
+
+    private void bMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseEntered
+
+        if(modo=='o')
+        {
+            bMinimizar.setBackground(new Color(255,255,255,50));
+        }
+        else
+        {
+            bMinimizar.setBackground(new Color(0,0,0,50));
+        }
+    }//GEN-LAST:event_bMinimizarMouseEntered
+
+    private void bMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseExited
+        if(modo=='o')
+        {
+            bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
+        }
+        else
+        {
+            bMinimizar.setBackground(new java.awt.Color(255,255,255));
+        }
+    }//GEN-LAST:event_bMinimizarMouseExited
   
     /**
      * @param args the command line arguments
@@ -538,15 +579,15 @@ private char modo='o';
     private javax.swing.JLabel LmodificarUsuarios;
     private javax.swing.JLabel LrealizarEmparejamientos;
     private javax.swing.JLabel LresultadosJornada;
+    private javax.swing.JLabel bCerrar;
     private javax.swing.JLabel bMenu;
+    private javax.swing.JLabel bMinimizar;
     private javax.swing.JLabel bModo;
     private javax.swing.JLabel barraDrag;
-    private javax.swing.JLabel cerrar;
     private javax.swing.JLabel gifAbajo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel menu;
-    private javax.swing.JLabel minimizar;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,7 @@ import AppPackage.AnimationClass;
 import java.awt.Toolkit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -122,7 +123,7 @@ public class VLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(242, 242, 242));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -341,7 +342,14 @@ public class VLogin extends javax.swing.JFrame {
     private void bIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bIniciarSesionMouseClicked
         try
         {
-            Controlador.comprobarUsuario(tfUsername.getText(),tfPass.getText());
+            if(Controlador.comprobarUsuario(tfUsername.getText(),tfPass.getText()))
+            {
+                Controlador.irVPrincipal(this);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña inválidos");
+            }
         }
         catch(Exception e)
         {
