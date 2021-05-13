@@ -14,10 +14,16 @@ import Views.*;
  * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class Controlador {
+//tablas
     private static TablaJugadores tj;
     private static TablaPerfiles tp;
+//Base de datos
     private static BaseDeDatos bd;
+//ModeloUML
     private static Perfil usuario;
+//Vistas
+    private static VprincipalAdmin admin;
+    private static VprincipalUsu usu;
     
     public static void main(String[] args) {
         try
@@ -56,9 +62,13 @@ public class Controlador {
         anterior.dispose();
         if(usuario.getTipo().equals(TipoPerfil.ADMIN))
         {
-            VprincipalAdmin nuevo = new VprincipalAdmin();
-            nuevo.setVisible(true);
+            admin = new VprincipalAdmin();
+            admin.setVisible(true);
         }
+        else
+            usu= new VprincipalUsu();
+            usu.setVisible(true);
+        
     }
     
     public static void salir()

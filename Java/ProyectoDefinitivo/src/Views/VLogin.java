@@ -51,6 +51,7 @@ public class VLogin extends javax.swing.JFrame {
 
         bMinimizar = new javax.swing.JLabel();
         bCerrar = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         barraDrag = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -107,6 +108,9 @@ public class VLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, -1));
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO.png"))); // NOI18N
+        getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         barraDrag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -493,6 +497,7 @@ public class VLogin extends javax.swing.JFrame {
     private javax.swing.JLabel imgUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel logo;
     private javax.swing.JLabel menu;
     private javax.swing.JPanel panelDerecha;
     private javax.swing.JPasswordField tfPass;
