@@ -37,9 +37,6 @@ public class Tecnico {
         this.tipo = tipo;
     }
 
-    public Tecnico() {
-    }
-    
     public int getId() {
         return id;
     }

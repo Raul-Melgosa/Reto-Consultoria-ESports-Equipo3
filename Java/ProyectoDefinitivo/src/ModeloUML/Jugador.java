@@ -30,9 +30,6 @@ public class Jugador {
         this.dorsal = dorsal;
     }
 
-    public Jugador() {
-    }
-    
     public int getId() {
         return id;
     }

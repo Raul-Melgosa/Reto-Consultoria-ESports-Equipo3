@@ -8,6 +8,7 @@ package Controlador;
 import ModeloBD.*;
 import ModeloUML.*;
 import Views.*;
+import Views.Jugadores.AltaJugador;
 
 /**
  *
@@ -17,8 +18,6 @@ public class Controlador {
 //tablas
     private static TablaJugadores tj;
     private static TablaPerfiles tp;
-    private static TablaJefes tJefe;
-    private static TablaEquipos tEquipo;
 //Base de datos
     private static BaseDeDatos bd;
 //Perfil
@@ -30,8 +29,6 @@ public class Controlador {
             bd=new BaseDeDatos();
             tj=new TablaJugadores();
             tp=new TablaPerfiles();
-            tJefe=new TablaJefes();
-            tEquipo=new TablaEquipos();
             VLogin login = new VLogin();
             login.setLocationRelativeTo(null);
             login.setVisible(true);
@@ -70,41 +67,6 @@ public class Controlador {
             VprincipalUsu usu= new VprincipalUsu();
             usu.setVisible(true);
         }
-    }
-     public static void VentanaAltaEquipo(){
-        Views.Equipos.AltaEquipo altaE=new Views.Equipos.AltaEquipo();
-        altaE.setVisible(true);
-    }
-    public static boolean AltaEquipo(String nombreEquipo,String nombreJefe,String apellidoJefe){
-        int idJefe;
-        idJefe=ComprobarJefe(nombreJefe,apellidoJefe);
-        Jefe jefe=new Jefe();
-        jefe.setId(idJefe);
-        Equipo equipo=new Equipo();
-        equipo.setNombre(nombreJefe);
-        equipo.setJefe(jefe);
-        
-        boolean insertadoCorrectamente=false;
-        try{
-            insertadoCorrectamente=tEquipo.Insert(equipo);
-        }
-        catch(Exception e){
-            System.out.println(e.getClass()+e.getMessage());
-        }
-        return insertadoCorrectamente;
-    }
-    public static int ComprobarJefe(String nombreJ,String apellidoJ){
-        int id_Jefe=0;
-        Jefe jefe=new Jefe();
-        jefe.setNombre(nombreJ);
-        jefe.setApellido(apellidoJ);
-        try{
-            id_Jefe=tJefe.Select(bd.conectar(),jefe);
-        }
-        catch(Exception e){
-            System.out.println(e.getClass()+e.getMessage());
-        }
-        return id_Jefe;
     }
     
     public static void salir()
