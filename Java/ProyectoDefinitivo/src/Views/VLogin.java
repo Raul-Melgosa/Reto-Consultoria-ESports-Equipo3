@@ -51,9 +51,9 @@ public class VLogin extends javax.swing.JFrame {
 
         bMinimizar = new javax.swing.JLabel();
         bCerrar = new javax.swing.JLabel();
-        logo = new javax.swing.JLabel();
         barraDrag = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         bModos = new javax.swing.JLabel();
         menu = new javax.swing.JLabel();
@@ -109,9 +109,6 @@ public class VLogin extends javax.swing.JFrame {
         });
         getContentPane().add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, -1));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO.png"))); // NOI18N
-        getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         barraDrag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 barraDragMouseDragged(evt);
@@ -126,6 +123,10 @@ public class VLogin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(242, 242, 242));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO-small.png"))); // NOI18N
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {

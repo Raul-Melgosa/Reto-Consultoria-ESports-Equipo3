@@ -19,11 +19,8 @@ public class Controlador {
     private static TablaPerfiles tp;
 //Base de datos
     private static BaseDeDatos bd;
-//ModeloUML
+//Perfil
     private static Perfil usuario;
-//Vistas
-    private static VprincipalAdmin admin;
-    private static VprincipalUsu usu;
     
     public static void main(String[] args) {
         try
@@ -38,8 +35,7 @@ public class Controlador {
         catch(Exception e)
         {
             System.out.println("EXCEPCION GENERICA");
-            System.out.println(e.getClass());
-            System.out.println(e.getCause());
+            System.out.println(e.getClass()+"\n"+e.getCause());
         }
         
     }
@@ -62,13 +58,14 @@ public class Controlador {
         anterior.dispose();
         if(usuario.getTipo().equals(TipoPerfil.ADMIN))
         {
-            admin = new VprincipalAdmin();
+            VprincipalAdmin admin = new VprincipalAdmin();
             admin.setVisible(true);
         }
         else
-            usu= new VprincipalUsu();
+        {
+            VprincipalUsu usu= new VprincipalUsu();
             usu.setVisible(true);
-        
+        }
     }
     
     public static void salir()

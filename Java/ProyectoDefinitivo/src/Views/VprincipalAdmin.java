@@ -70,6 +70,7 @@ private char modo='o';
         GIFarriba = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Lbienvenido = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -94,7 +95,7 @@ private char modo='o';
                 bCerrarMouseExited(evt);
             }
         });
-        getContentPane().add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, -1));
+        getContentPane().add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, 30));
 
         bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
         bMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -123,7 +124,7 @@ private char modo='o';
                 barraDragMousePressed(evt);
             }
         });
-        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 50));
+        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -141,124 +142,144 @@ private char modo='o';
                 bModoMouseClicked(evt);
             }
         });
-        jPanel1.add(bModo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 60, -1, -1));
+        jPanel1.add(bModo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 60, 40, 40));
 
-        Lalta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Lalta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Lalta.setForeground(new java.awt.Color(255, 255, 255));
-        Lalta.setText("Alta");
+        Lalta.setText("     Alta");
+        Lalta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Lalta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LaltaMouseClicked(evt);
             }
         });
-        jPanel1.add(Lalta, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 140, 50, 30));
+        jPanel1.add(Lalta, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 110, 300, 30));
 
         LaltaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LaltaEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        LaltaEquipos.setText("Equipos");
-        jPanel1.add(LaltaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 180, -1, -1));
+        LaltaEquipos.setText("           Equipos");
+        LaltaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LaltaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 140, 300, 30));
 
         LaltaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LaltaJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        LaltaJugadores.setText("Jugadores");
-        jPanel1.add(LaltaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 210, -1, -1));
+        LaltaJugadores.setText("           Jugadores");
+        LaltaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LaltaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 170, 300, 30));
 
         LaltaJefe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LaltaJefe.setForeground(new java.awt.Color(255, 255, 255));
-        LaltaJefe.setText("Jefes");
-        jPanel1.add(LaltaJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 240, -1, -1));
+        LaltaJefe.setText("           Jefes");
+        LaltaJefe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LaltaJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 200, 300, 30));
 
         LaltaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LaltaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        LaltaUsuarios.setText("Usuarios");
-        jPanel1.add(LaltaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 270, -1, -1));
+        LaltaUsuarios.setText("           Usuarios");
+        LaltaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LaltaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
 
-        Lbaja.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Lbaja.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Lbaja.setForeground(new java.awt.Color(255, 255, 255));
-        Lbaja.setText("Baja");
+        Lbaja.setText("     Baja");
+        Lbaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Lbaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LbajaMouseClicked(evt);
             }
         });
-        jPanel1.add(Lbaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 310, -1, -1));
+        jPanel1.add(Lbaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 260, 300, 30));
 
         LbajaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LbajaEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        LbajaEquipos.setText("Equipos");
-        jPanel1.add(LbajaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 340, -1, -1));
+        LbajaEquipos.setText("           Equipos");
+        LbajaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LbajaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 290, 300, 30));
 
         LbajaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LbajaJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        LbajaJugadores.setText("Jugadores");
-        jPanel1.add(LbajaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 370, -1, -1));
+        LbajaJugadores.setText("           Jugadores");
+        LbajaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LbajaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 320, 300, 30));
 
         LbajaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LbajaJefes.setForeground(new java.awt.Color(255, 255, 255));
-        LbajaJefes.setText("Jefes");
-        jPanel1.add(LbajaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 400, -1, -1));
+        LbajaJefes.setText("           Jefes");
+        LbajaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LbajaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
 
         LbajaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LbajaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        LbajaUsuarios.setText("Usuarios");
-        jPanel1.add(LbajaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 430, -1, -1));
+        LbajaUsuarios.setText("           Usuarios");
+        LbajaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LbajaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 380, 300, 30));
 
-        Lmodificacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Lmodificacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Lmodificacion.setForeground(new java.awt.Color(255, 255, 255));
-        Lmodificacion.setText("Modificación");
+        Lmodificacion.setText("     Modificación");
+        Lmodificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Lmodificacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LmodificacionMouseClicked(evt);
             }
         });
-        jPanel1.add(Lmodificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 460, -1, -1));
+        jPanel1.add(Lmodificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 410, 300, 30));
 
         LmodificacionEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LmodificacionEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        LmodificacionEquipos.setText("Equipos");
-        jPanel1.add(LmodificacionEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 490, -1, -1));
+        LmodificacionEquipos.setText("           Equipos");
+        LmodificacionEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LmodificacionEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 440, 300, 30));
 
         LmodificarJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LmodificarJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        LmodificarJugadores.setText("Jugadores");
-        jPanel1.add(LmodificarJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 510, -1, -1));
+        LmodificarJugadores.setText("           Jugadores");
+        LmodificarJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LmodificarJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 470, 300, 30));
 
         LmodificacionJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LmodificacionJefes.setForeground(new java.awt.Color(255, 255, 255));
-        LmodificacionJefes.setText("Jefes");
-        jPanel1.add(LmodificacionJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 530, -1, -1));
+        LmodificacionJefes.setText("           Jefes");
+        LmodificacionJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LmodificacionJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 500, 300, 30));
 
         LmodificarUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LmodificarUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        LmodificarUsuarios.setText("Usuarios");
-        jPanel1.add(LmodificarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 550, -1, -1));
+        LmodificarUsuarios.setText("           Usuarios");
+        LmodificarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LmodificarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 530, 300, 30));
 
-        Lcalendario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Lcalendario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Lcalendario.setForeground(new java.awt.Color(255, 255, 255));
-        Lcalendario.setText("Calendario");
-        jPanel1.add(Lcalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 570, -1, 40));
+        Lcalendario.setText("     Calendario");
+        Lcalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(Lcalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 560, 300, 30));
 
-        LrealizarEmparejamientos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LrealizarEmparejamientos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LrealizarEmparejamientos.setForeground(new java.awt.Color(255, 255, 255));
-        LrealizarEmparejamientos.setText("Realizar Emparejamientos");
-        jPanel1.add(LrealizarEmparejamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-250, 610, -1, -1));
+        LrealizarEmparejamientos.setText("     Realizar Emparejamientos");
+        LrealizarEmparejamientos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LrealizarEmparejamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 600, 300, 30));
 
-        LresultadosJornada.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LresultadosJornada.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LresultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
-        LresultadosJornada.setText("Resultados Jornada");
-        jPanel1.add(LresultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-250, 650, -1, -1));
+        LresultadosJornada.setText("     Resultados Jornada");
+        LresultadosJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LresultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 640, 300, 30));
 
-        LclasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LclasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LclasificacionGeneral.setForeground(new java.awt.Color(255, 255, 255));
-        LclasificacionGeneral.setText("Clasificación general");
-        jPanel1.add(LclasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-250, 690, -1, -1));
+        LclasificacionGeneral.setText("     Clasificación general");
+        LclasificacionGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(LclasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 680, 300, 30));
 
         menu.setBackground(new java.awt.Color(120, 120, 120));
         menu.setOpaque(true);
         jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 50, 300, 700));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO.png"))); // NOI18N
-        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO-small.png"))); // NOI18N
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
         gifAbajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte2.gif"))); // NOI18N
         jPanel1.add(gifAbajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 500, 500));
@@ -277,6 +298,10 @@ private char modo='o';
         Lbienvenido.setText("Bienvenido!");
         jPanel2.add(Lbienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("ADMINISTRADOR");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 720, 120, 30));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 1000, 750));
 
         pack();
@@ -286,28 +311,28 @@ private char modo='o';
         AnimationClass animacion=new AnimationClass();
         if(menuAbierto){
             menuAbierto=false;
-            animacion.jLabelXLeft(0, -300, 3, 5, menu);
-             animacion.jLabelXLeft(80,-100, 3, 5, Lalta);
-            animacion.jLabelXLeft(80,-100, 3, 5, Lbaja);
-            animacion.jLabelXLeft(80,-100, 3, 5, Lmodificacion);
-            animacion.jLabelXLeft(80,-100, 3, 5, Lcalendario);
-            animacion.jLabelXLeft(80,-250, 3, 5, LrealizarEmparejamientos);
-            animacion.jLabelXLeft(80,-250, 3, 5, LresultadosJornada);
-            animacion.jLabelXLeft(80,-250, 3, 5, LclasificacionGeneral);
-              animacion.jLabelXLeft(70, -70, 3, 5, bModo);
+            animacion.jLabelXLeft(menu.getX(), menu.getX()-300, 3, 5, menu);
+            animacion.jLabelXLeft(Lalta.getX(),Lalta.getX()-300, 3, 5, Lalta);
+            animacion.jLabelXLeft(Lbaja.getX(),Lbaja.getX()-300, 3, 5, Lbaja);
+            animacion.jLabelXLeft(Lmodificacion.getX(),Lmodificacion.getX()-300, 3, 5, Lmodificacion);
+            animacion.jLabelXLeft(Lcalendario.getX(),Lcalendario.getX()-300, 3, 5, Lcalendario);
+            animacion.jLabelXLeft(LrealizarEmparejamientos.getX(),LrealizarEmparejamientos.getX()-300, 3, 5, LrealizarEmparejamientos);
+            animacion.jLabelXLeft(LresultadosJornada.getX(),LresultadosJornada.getX()-300, 3, 5, LresultadosJornada);
+            animacion.jLabelXLeft(LclasificacionGeneral.getX(),LclasificacionGeneral.getX()-300, 3, 5, LclasificacionGeneral);
+            animacion.jLabelXLeft(bModo.getX(), bModo.getX()-300, 3, 5, bModo);
             
         }
         else{
             menuAbierto=true;
-            animacion.jLabelXRight(-300,0, 3, 5, menu);
-            animacion.jLabelXRight(-100,80, 3, 5, Lalta);
-            animacion.jLabelXRight(-100,80, 3, 5, Lbaja);
-            animacion.jLabelXRight(-100,80, 3, 5, Lmodificacion);
-            animacion.jLabelXRight(-100,80, 3, 5, Lcalendario);
-            animacion.jLabelXRight(-250,80, 3, 5, LrealizarEmparejamientos);
-            animacion.jLabelXRight(-250,80, 3, 5, LresultadosJornada);
-            animacion.jLabelXRight(-250,80, 3, 5, LclasificacionGeneral);
-            animacion.jLabelXLeft(-70, 70, 3, 5, bModo);
+            animacion.jLabelXLeft(menu.getX(), menu.getX()+300, 3, 5, menu);
+            animacion.jLabelXLeft(Lalta.getX(),Lalta.getX()+300, 3, 5, Lalta);
+            animacion.jLabelXLeft(Lbaja.getX(),Lbaja.getX()+300, 3, 5, Lbaja);
+            animacion.jLabelXLeft(Lmodificacion.getX(),Lmodificacion.getX()+300, 3, 5, Lmodificacion);
+            animacion.jLabelXLeft(Lcalendario.getX(),Lcalendario.getX()+300, 3, 5, Lcalendario);
+            animacion.jLabelXLeft(LrealizarEmparejamientos.getX(),LrealizarEmparejamientos.getX()+300, 3, 5, LrealizarEmparejamientos);
+            animacion.jLabelXLeft(LresultadosJornada.getX(),LresultadosJornada.getX()+300, 3, 5, LresultadosJornada);
+            animacion.jLabelXLeft(LclasificacionGeneral.getX(),LclasificacionGeneral.getX()+300, 3, 5, LclasificacionGeneral);
+            animacion.jLabelXLeft(bModo.getX(), bModo.getX()+300, 3, 5, bModo);
             
       
         }
@@ -585,6 +610,7 @@ private char modo='o';
     private javax.swing.JLabel bModo;
     private javax.swing.JLabel barraDrag;
     private javax.swing.JLabel gifAbajo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel logo;
