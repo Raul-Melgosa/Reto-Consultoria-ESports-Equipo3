@@ -16,7 +16,7 @@ public class Jefe {
     private String apellido;
     private String email;
     private String nickname;
-    private Equipo equipo;
+   
 
     public Jefe(int id, String dni, String nombre, String apellido, String email) {
         this.id = id;
@@ -35,13 +35,9 @@ public class Jefe {
         this.nickname = nickname;
     }
 
-    public Equipo getEquipo() {
-        return equipo;
+    public Jefe() {
     }
 
-    public void setEquipo(Equipo equipo) {
-        this.equipo = equipo;
-    }
 
     public int getId() {
         return id;

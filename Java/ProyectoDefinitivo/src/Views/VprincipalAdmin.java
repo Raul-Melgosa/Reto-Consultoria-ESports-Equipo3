@@ -75,7 +75,6 @@ private char modo='o';
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
         setUndecorated(true);
         setResizable(false);
@@ -160,6 +159,11 @@ private char modo='o';
         bAltaEquipos.setForeground(new java.awt.Color(255, 255, 255));
         bAltaEquipos.setText("           Equipos");
         bAltaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAltaEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaEquiposMouseClicked(evt);
+            }
+        });
         jPanel1.add(bAltaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 140, 300, 30));
 
         bAltaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -567,6 +571,10 @@ private char modo='o';
     private void LbienvenidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LbienvenidoMouseClicked
         Lbienvenido.requestFocus();
     }//GEN-LAST:event_LbienvenidoMouseClicked
+
+    private void bAltaEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaEquiposMouseClicked
+       Controlador.VentanaAltaEquipo();
+    }//GEN-LAST:event_bAltaEquiposMouseClicked
   
     /**
      * @param args the command line arguments

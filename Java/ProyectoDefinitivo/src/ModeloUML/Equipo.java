@@ -17,27 +17,41 @@ public class Equipo {
     private ArrayList<Jugador> jugadoresEquipo;
     private Tecnico principal;
     private Tecnico asistente;
+    private Jefe jefe;
 
     public Equipo(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
-    public Equipo(int id, String nombre, ArrayList<Jugador> jugadoresEquipo, Tecnico principal) {
+    public Equipo(int id, String nombre, ArrayList<Jugador> jugadoresEquipo, Tecnico principal,Jefe jefe) {
         this.id = id;
         this.nombre = nombre;
         this.jugadoresEquipo = jugadoresEquipo;
         this.principal = principal;
+        this.jefe = jefe;
     }
 
-    public Equipo(int id, String nombre, ArrayList<Jugador> jugadoresEquipo, Tecnico principal, Tecnico asistente) {
+    public Equipo(int id, String nombre, ArrayList<Jugador> jugadoresEquipo, Tecnico principal, Tecnico asistente,Jefe jefe) {
         this.id = id;
         this.nombre = nombre;
         this.jugadoresEquipo = jugadoresEquipo;
         this.principal = principal;
         this.asistente = asistente;
+        this.jefe = jefe;
     }
 
+    public Equipo() {
+    }
+
+    public Jefe getJefe() {
+        return jefe;
+    }
+
+    public void setJefe(Jefe jefe) {
+        this.jefe = jefe;
+    }
+    
     public int getId() {
         return id;
     }

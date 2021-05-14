@@ -37,6 +37,9 @@ public class Partido {
         this.idGanador = idGanador;
     }
 
+    public Partido() {
+    }
+    
     public int getId() {
         return id;
     }
