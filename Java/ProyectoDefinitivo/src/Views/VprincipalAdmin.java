@@ -25,6 +25,7 @@ private char modo='o';
         initComponents();
         bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png")));
         setLocationRelativeTo(null);
+        barraDrag.setBackground(new java.awt.Color(0,0,0,0));
         menu.setBackground(new Color(45,45,45,200));
         this.menuAbierto=false;
         this.listaDesplegable=false;
@@ -45,25 +46,25 @@ private char modo='o';
         jPanel1 = new javax.swing.JPanel();
         bMenu = new javax.swing.JLabel();
         bModo = new javax.swing.JLabel();
-        Lalta = new javax.swing.JLabel();
-        LaltaEquipos = new javax.swing.JLabel();
-        LaltaJugadores = new javax.swing.JLabel();
-        LaltaJefe = new javax.swing.JLabel();
-        LaltaUsuarios = new javax.swing.JLabel();
-        Lbaja = new javax.swing.JLabel();
-        LbajaEquipos = new javax.swing.JLabel();
-        LbajaJugadores = new javax.swing.JLabel();
-        LbajaJefes = new javax.swing.JLabel();
-        LbajaUsuarios = new javax.swing.JLabel();
-        Lmodificacion = new javax.swing.JLabel();
-        LmodificacionEquipos = new javax.swing.JLabel();
-        LmodificarJugadores = new javax.swing.JLabel();
-        LmodificacionJefes = new javax.swing.JLabel();
-        LmodificarUsuarios = new javax.swing.JLabel();
-        Lcalendario = new javax.swing.JLabel();
-        LrealizarEmparejamientos = new javax.swing.JLabel();
-        LresultadosJornada = new javax.swing.JLabel();
-        LclasificacionGeneral = new javax.swing.JLabel();
+        bAlta = new javax.swing.JLabel();
+        bAltaEquipos = new javax.swing.JLabel();
+        bAltaJugadores = new javax.swing.JLabel();
+        bAltaJefe = new javax.swing.JLabel();
+        bAltaUsuarios = new javax.swing.JLabel();
+        bBaja = new javax.swing.JLabel();
+        bBajaEquipos = new javax.swing.JLabel();
+        bBajaJugadores = new javax.swing.JLabel();
+        bBajaJefes = new javax.swing.JLabel();
+        bBajaUsuarios = new javax.swing.JLabel();
+        bModificacion = new javax.swing.JLabel();
+        bModificacionEquipos = new javax.swing.JLabel();
+        bModificarJugadores = new javax.swing.JLabel();
+        bModificacionJefes = new javax.swing.JLabel();
+        bModificarUsuarios = new javax.swing.JLabel();
+        bCalendario = new javax.swing.JLabel();
+        bRealizarEmparejamientos = new javax.swing.JLabel();
+        bResultadosJornada = new javax.swing.JLabel();
+        bClasificacionGeneral = new javax.swing.JLabel();
         menu = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         gifAbajo = new javax.swing.JLabel();
@@ -144,134 +145,134 @@ private char modo='o';
         });
         jPanel1.add(bModo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 60, 40, 40));
 
-        Lalta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Lalta.setForeground(new java.awt.Color(255, 255, 255));
-        Lalta.setText("     Alta");
-        Lalta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Lalta.addMouseListener(new java.awt.event.MouseAdapter() {
+        bAlta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bAlta.setForeground(new java.awt.Color(255, 255, 255));
+        bAlta.setText("     Alta");
+        bAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAlta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LaltaMouseClicked(evt);
+                bAltaMouseClicked(evt);
             }
         });
-        jPanel1.add(Lalta, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 110, 300, 30));
+        jPanel1.add(bAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 110, 300, 30));
 
-        LaltaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LaltaEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        LaltaEquipos.setText("           Equipos");
-        LaltaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LaltaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 140, 300, 30));
+        bAltaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bAltaEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        bAltaEquipos.setText("           Equipos");
+        bAltaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bAltaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 140, 300, 30));
 
-        LaltaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LaltaJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        LaltaJugadores.setText("           Jugadores");
-        LaltaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LaltaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 170, 300, 30));
+        bAltaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bAltaJugadores.setForeground(new java.awt.Color(255, 255, 255));
+        bAltaJugadores.setText("           Jugadores");
+        bAltaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bAltaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 170, 300, 30));
 
-        LaltaJefe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LaltaJefe.setForeground(new java.awt.Color(255, 255, 255));
-        LaltaJefe.setText("           Jefes");
-        LaltaJefe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LaltaJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 200, 300, 30));
+        bAltaJefe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bAltaJefe.setForeground(new java.awt.Color(255, 255, 255));
+        bAltaJefe.setText("           Jefes");
+        bAltaJefe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bAltaJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 200, 300, 30));
 
-        LaltaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LaltaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        LaltaUsuarios.setText("           Usuarios");
-        LaltaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LaltaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
+        bAltaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bAltaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        bAltaUsuarios.setText("           Usuarios");
+        bAltaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bAltaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
 
-        Lbaja.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Lbaja.setForeground(new java.awt.Color(255, 255, 255));
-        Lbaja.setText("     Baja");
-        Lbaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Lbaja.addMouseListener(new java.awt.event.MouseAdapter() {
+        bBaja.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bBaja.setForeground(new java.awt.Color(255, 255, 255));
+        bBaja.setText("     Baja");
+        bBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bBaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LbajaMouseClicked(evt);
+                bBajaMouseClicked(evt);
             }
         });
-        jPanel1.add(Lbaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 260, 300, 30));
+        jPanel1.add(bBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 260, 300, 30));
 
-        LbajaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LbajaEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        LbajaEquipos.setText("           Equipos");
-        LbajaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LbajaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 290, 300, 30));
+        bBajaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bBajaEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        bBajaEquipos.setText("           Equipos");
+        bBajaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bBajaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 290, 300, 30));
 
-        LbajaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LbajaJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        LbajaJugadores.setText("           Jugadores");
-        LbajaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LbajaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 320, 300, 30));
+        bBajaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bBajaJugadores.setForeground(new java.awt.Color(255, 255, 255));
+        bBajaJugadores.setText("           Jugadores");
+        bBajaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bBajaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 320, 300, 30));
 
-        LbajaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LbajaJefes.setForeground(new java.awt.Color(255, 255, 255));
-        LbajaJefes.setText("           Jefes");
-        LbajaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LbajaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
+        bBajaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bBajaJefes.setForeground(new java.awt.Color(255, 255, 255));
+        bBajaJefes.setText("           Jefes");
+        bBajaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bBajaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
 
-        LbajaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LbajaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        LbajaUsuarios.setText("           Usuarios");
-        LbajaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LbajaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 380, 300, 30));
+        bBajaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bBajaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        bBajaUsuarios.setText("           Usuarios");
+        bBajaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bBajaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 380, 300, 30));
 
-        Lmodificacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Lmodificacion.setForeground(new java.awt.Color(255, 255, 255));
-        Lmodificacion.setText("     Modificación");
-        Lmodificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Lmodificacion.addMouseListener(new java.awt.event.MouseAdapter() {
+        bModificacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bModificacion.setForeground(new java.awt.Color(255, 255, 255));
+        bModificacion.setText("     Modificación");
+        bModificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LmodificacionMouseClicked(evt);
+                bModificacionMouseClicked(evt);
             }
         });
-        jPanel1.add(Lmodificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 410, 300, 30));
+        jPanel1.add(bModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 410, 300, 30));
 
-        LmodificacionEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LmodificacionEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        LmodificacionEquipos.setText("           Equipos");
-        LmodificacionEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LmodificacionEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 440, 300, 30));
+        bModificacionEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bModificacionEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        bModificacionEquipos.setText("           Equipos");
+        bModificacionEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bModificacionEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 440, 300, 30));
 
-        LmodificarJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LmodificarJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        LmodificarJugadores.setText("           Jugadores");
-        LmodificarJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LmodificarJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 470, 300, 30));
+        bModificarJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bModificarJugadores.setForeground(new java.awt.Color(255, 255, 255));
+        bModificarJugadores.setText("           Jugadores");
+        bModificarJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bModificarJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 470, 300, 30));
 
-        LmodificacionJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LmodificacionJefes.setForeground(new java.awt.Color(255, 255, 255));
-        LmodificacionJefes.setText("           Jefes");
-        LmodificacionJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LmodificacionJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 500, 300, 30));
+        bModificacionJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bModificacionJefes.setForeground(new java.awt.Color(255, 255, 255));
+        bModificacionJefes.setText("           Jefes");
+        bModificacionJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bModificacionJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 500, 300, 30));
 
-        LmodificarUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        LmodificarUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        LmodificarUsuarios.setText("           Usuarios");
-        LmodificarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LmodificarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 530, 300, 30));
+        bModificarUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bModificarUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        bModificarUsuarios.setText("           Usuarios");
+        bModificarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bModificarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 530, 300, 30));
 
-        Lcalendario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Lcalendario.setForeground(new java.awt.Color(255, 255, 255));
-        Lcalendario.setText("     Calendario");
-        Lcalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(Lcalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 560, 300, 30));
+        bCalendario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bCalendario.setForeground(new java.awt.Color(255, 255, 255));
+        bCalendario.setText("     Calendario");
+        bCalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 560, 300, 30));
 
-        LrealizarEmparejamientos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LrealizarEmparejamientos.setForeground(new java.awt.Color(255, 255, 255));
-        LrealizarEmparejamientos.setText("     Realizar Emparejamientos");
-        LrealizarEmparejamientos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LrealizarEmparejamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 600, 300, 30));
+        bRealizarEmparejamientos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bRealizarEmparejamientos.setForeground(new java.awt.Color(255, 255, 255));
+        bRealizarEmparejamientos.setText("     Realizar Emparejamientos");
+        bRealizarEmparejamientos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bRealizarEmparejamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 600, 300, 30));
 
-        LresultadosJornada.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LresultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
-        LresultadosJornada.setText("     Resultados Jornada");
-        LresultadosJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LresultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 640, 300, 30));
+        bResultadosJornada.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bResultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
+        bResultadosJornada.setText("     Resultados Jornada");
+        bResultadosJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bResultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 640, 300, 30));
 
-        LclasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LclasificacionGeneral.setForeground(new java.awt.Color(255, 255, 255));
-        LclasificacionGeneral.setText("     Clasificación general");
-        LclasificacionGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(LclasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 680, 300, 30));
+        bClasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bClasificacionGeneral.setForeground(new java.awt.Color(255, 255, 255));
+        bClasificacionGeneral.setText("     Clasificación general");
+        bClasificacionGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bClasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 680, 300, 30));
 
         menu.setBackground(new java.awt.Color(120, 120, 120));
         menu.setOpaque(true);
@@ -291,14 +292,25 @@ private char modo='o';
 
         jPanel2.setBackground(new java.awt.Color(45, 45, 45));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbienvenido.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         Lbienvenido.setForeground(new java.awt.Color(255, 255, 255));
         Lbienvenido.setText("Bienvenido!");
+        Lbienvenido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LbienvenidoMouseClicked(evt);
+            }
+        });
         jPanel2.add(Lbienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(200, 200, 200));
         jLabel1.setText("ADMINISTRADOR");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 720, 120, 30));
 
@@ -312,87 +324,84 @@ private char modo='o';
         if(menuAbierto){
             menuAbierto=false;
             animacion.jLabelXLeft(menu.getX(), menu.getX()-300, 3, 5, menu);
-            animacion.jLabelXLeft(Lalta.getX(),Lalta.getX()-300, 3, 5, Lalta);
-            animacion.jLabelXLeft(Lbaja.getX(),Lbaja.getX()-300, 3, 5, Lbaja);
-            animacion.jLabelXLeft(Lmodificacion.getX(),Lmodificacion.getX()-300, 3, 5, Lmodificacion);
-            animacion.jLabelXLeft(Lcalendario.getX(),Lcalendario.getX()-300, 3, 5, Lcalendario);
-            animacion.jLabelXLeft(LrealizarEmparejamientos.getX(),LrealizarEmparejamientos.getX()-300, 3, 5, LrealizarEmparejamientos);
-            animacion.jLabelXLeft(LresultadosJornada.getX(),LresultadosJornada.getX()-300, 3, 5, LresultadosJornada);
-            animacion.jLabelXLeft(LclasificacionGeneral.getX(),LclasificacionGeneral.getX()-300, 3, 5, LclasificacionGeneral);
+            animacion.jLabelXLeft(bAlta.getX(),bAlta.getX()-300, 3, 5, bAlta);
+            animacion.jLabelXLeft(bBaja.getX(),bBaja.getX()-300, 3, 5, bBaja);
+            animacion.jLabelXLeft(bModificacion.getX(),bModificacion.getX()-300, 3, 5, bModificacion);
+            animacion.jLabelXLeft(bCalendario.getX(),bCalendario.getX()-300, 3, 5, bCalendario);
+            animacion.jLabelXLeft(bRealizarEmparejamientos.getX(),bRealizarEmparejamientos.getX()-300, 3, 5, bRealizarEmparejamientos);
+            animacion.jLabelXLeft(bResultadosJornada.getX(),bResultadosJornada.getX()-300, 3, 5, bResultadosJornada);
+            animacion.jLabelXLeft(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()-300, 3, 5, bClasificacionGeneral);
             animacion.jLabelXLeft(bModo.getX(), bModo.getX()-300, 3, 5, bModo);
             
         }
         else{
             menuAbierto=true;
-            animacion.jLabelXLeft(menu.getX(), menu.getX()+300, 3, 5, menu);
-            animacion.jLabelXLeft(Lalta.getX(),Lalta.getX()+300, 3, 5, Lalta);
-            animacion.jLabelXLeft(Lbaja.getX(),Lbaja.getX()+300, 3, 5, Lbaja);
-            animacion.jLabelXLeft(Lmodificacion.getX(),Lmodificacion.getX()+300, 3, 5, Lmodificacion);
-            animacion.jLabelXLeft(Lcalendario.getX(),Lcalendario.getX()+300, 3, 5, Lcalendario);
-            animacion.jLabelXLeft(LrealizarEmparejamientos.getX(),LrealizarEmparejamientos.getX()+300, 3, 5, LrealizarEmparejamientos);
-            animacion.jLabelXLeft(LresultadosJornada.getX(),LresultadosJornada.getX()+300, 3, 5, LresultadosJornada);
-            animacion.jLabelXLeft(LclasificacionGeneral.getX(),LclasificacionGeneral.getX()+300, 3, 5, LclasificacionGeneral);
-            animacion.jLabelXLeft(bModo.getX(), bModo.getX()+300, 3, 5, bModo);
+            animacion.jLabelXRight(menu.getX(), menu.getX()+300, 3, 5, menu);
+            animacion.jLabelXRight(bAlta.getX(),bAlta.getX()+300, 3, 5, bAlta);
+            animacion.jLabelXRight(bBaja.getX(),bBaja.getX()+300, 3, 5, bBaja);
+            animacion.jLabelXRight(bModificacion.getX(),bModificacion.getX()+300, 3, 5, bModificacion);
+            animacion.jLabelXRight(bCalendario.getX(),bCalendario.getX()+300, 3, 5, bCalendario);
+            animacion.jLabelXRight(bRealizarEmparejamientos.getX(),bRealizarEmparejamientos.getX()+300, 3, 5, bRealizarEmparejamientos);
+            animacion.jLabelXRight(bResultadosJornada.getX(),bResultadosJornada.getX()+300, 3, 5, bResultadosJornada);
+            animacion.jLabelXRight(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()+300, 3, 5, bClasificacionGeneral);
+            animacion.jLabelXRight(bModo.getX(), bModo.getX()+300, 3, 5, bModo);
             
       
         }
         
     }//GEN-LAST:event_bMenuMouseClicked
 
-    private void LaltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LaltaMouseClicked
+    private void bAltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaMouseClicked
        AnimationClass animacion = new AnimationClass();
        
        if(listaDesplegable){
            listaDesplegable=false;
-           animacion.jLabelXLeft(180, -100, 3, 5, LaltaEquipos);
-           animacion.jLabelXLeft(180, -100, 3, 5, LaltaJugadores);
-           animacion.jLabelXLeft(180, -100, 3, 5, LaltaJefe);
-           animacion.jLabelXLeft(180, -100, 3, 5, LaltaUsuarios);
-           
-           
-           
+           animacion.jLabelXLeft(bAltaEquipos.getX(), bAltaEquipos.getX()-300, 3, 5, bAltaEquipos);
+           animacion.jLabelXLeft(bAltaJugadores.getX(), bAltaJugadores.getX()-300, 3, 5, bAltaJugadores);
+           animacion.jLabelXLeft(bAltaJefe.getX(), bAltaJefe.getX()-300, 3, 5, bAltaJefe);
+           animacion.jLabelXLeft(bAltaUsuarios.getX(), bAltaUsuarios.getX()-300, 3, 5, bAltaUsuarios);
        }
        else{
            listaDesplegable=true;
-           animacion.jLabelXRight(-100, 180, 3, 5, LaltaEquipos);
-           animacion.jLabelXRight(-100, 180, 3, 5, LaltaJugadores);
-           animacion.jLabelXRight(-100, 180, 3, 5, LaltaJefe);
-           animacion.jLabelXRight(-100, 180, 3, 5, LaltaUsuarios);
+           animacion.jLabelXRight(bAltaEquipos.getX(), bAltaEquipos.getX()+300, 3, 5, bAltaEquipos);
+           animacion.jLabelXRight(bAltaJugadores.getX(), bAltaJugadores.getX()+300, 3, 5, bAltaJugadores);
+           animacion.jLabelXRight(bAltaJefe.getX(), bAltaJefe.getX()+300, 3, 5, bAltaJefe);
+           animacion.jLabelXRight(bAltaUsuarios.getX(), bAltaUsuarios.getX()+300, 3, 5, bAltaUsuarios);
            
        }
        
-    }//GEN-LAST:event_LaltaMouseClicked
+    }//GEN-LAST:event_bAltaMouseClicked
 
-    private void LbajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LbajaMouseClicked
+    private void bBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaMouseClicked
        AnimationClass animacion = new AnimationClass();
         if(listaDesplegable){
            listaDesplegable=false;
-           animacion.jLabelXLeft(180, -100, 3, 5, LbajaEquipos);
-           animacion.jLabelXLeft(180, -100, 3, 5, LbajaJugadores);
-           animacion.jLabelXLeft(180, -100, 3, 5, LbajaJefes);
-           animacion.jLabelXLeft(180, -100, 3, 5, LbajaUsuarios);
+           animacion.jLabelXLeft(180, -100, 3, 5, bBajaEquipos);
+           animacion.jLabelXLeft(180, -100, 3, 5, bBajaJugadores);
+           animacion.jLabelXLeft(180, -100, 3, 5, bBajaJefes);
+           animacion.jLabelXLeft(180, -100, 3, 5, bBajaUsuarios);
            
            
            
        }
        else{
            listaDesplegable=true;
-           animacion.jLabelXRight(-100, 180, 3, 5, LbajaEquipos);
-           animacion.jLabelXRight(-100, 180, 3, 5, LbajaJugadores);
-           animacion.jLabelXRight(-100, 180, 3, 5, LbajaJefes);
-           animacion.jLabelXRight(-100, 180, 3, 5, LbajaUsuarios);
+           animacion.jLabelXRight(-100, 180, 3, 5, bBajaEquipos);
+           animacion.jLabelXRight(-100, 180, 3, 5, bBajaJugadores);
+           animacion.jLabelXRight(-100, 180, 3, 5, bBajaJefes);
+           animacion.jLabelXRight(-100, 180, 3, 5, bBajaUsuarios);
            
        }
-    }//GEN-LAST:event_LbajaMouseClicked
+    }//GEN-LAST:event_bBajaMouseClicked
 
-    private void LmodificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LmodificacionMouseClicked
+    private void bModificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionMouseClicked
         AnimationClass animacion = new AnimationClass();
         if(listaDesplegable){
            listaDesplegable=false;
-           animacion.jLabelXLeft(180, -100, 3, 5, LmodificacionEquipos);
-           animacion.jLabelXLeft(180, -100, 3, 5, LmodificarJugadores);
-           animacion.jLabelXLeft(180, -100, 3, 5, LmodificacionJefes);
-           animacion.jLabelXLeft(180, -100, 3, 5, LmodificarUsuarios);
+           animacion.jLabelXLeft(180, -100, 3, 5, bModificacionEquipos);
+           animacion.jLabelXLeft(180, -100, 3, 5, bModificarJugadores);
+           animacion.jLabelXLeft(180, -100, 3, 5, bModificacionJefes);
+           animacion.jLabelXLeft(180, -100, 3, 5, bModificarUsuarios);
          
            
            
@@ -400,53 +409,55 @@ private char modo='o';
        }
        else{
            listaDesplegable=true;
-           animacion.jLabelXRight(-100, 180, 3, 5, LmodificacionEquipos);
-           animacion.jLabelXRight(-100, 180, 3, 5, LmodificarJugadores);
-           animacion.jLabelXRight(-100, 180, 3, 5, LmodificacionJefes);
-           animacion.jLabelXRight(-100, 180, 3, 5, LmodificarUsuarios);
+           animacion.jLabelXRight(-100, 180, 3, 5, bModificacionEquipos);
+           animacion.jLabelXRight(-100, 180, 3, 5, bModificarJugadores);
+           animacion.jLabelXRight(-100, 180, 3, 5, bModificacionJefes);
+           animacion.jLabelXRight(-100, 180, 3, 5, bModificarUsuarios);
          
            
        }
-    }//GEN-LAST:event_LmodificacionMouseClicked
+    }//GEN-LAST:event_bModificacionMouseClicked
 
     private void bModoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModoMouseClicked
          
         if(modo==('o')){
            modo='c';
            bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sol.png")));
-           //cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png")));
+           bCerrar.setBackground(new java.awt.Color(255,255,255));
+           bMinimizar.setBackground(new java.awt.Color(255,255,255));
+           bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png")));
            bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar.png")));
            bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu-negro.png")));
            jPanel2.setBackground(new Color(255,255,255));
            Lbienvenido.setForeground(new Color(0,0,0));
            menu.setBackground(new Color (255,255,255,200));
-           Lalta.setForeground(new Color(0,0,0));
-           Lbaja.setForeground(new Color(0,0,0));
-           Lmodificacion.setForeground(new Color(0,0,0));
-           Lcalendario.setForeground(new Color(0,0,0));
-           LrealizarEmparejamientos.setForeground(new Color(0,0,0));
-           LresultadosJornada.setForeground(new Color(0,0,0));
-           LclasificacionGeneral.setForeground(new Color(0,0,0));
-           LbajaEquipos.setForeground(new Color(0,0,0));
-           LbajaJugadores.setForeground(new Color(0,0,0));
-           LbajaJefes.setForeground(new Color(0,0,0));
-           LbajaUsuarios.setForeground(new Color(0,0,0));
-           LmodificacionEquipos.setForeground(new Color(0,0,0));
-           LmodificarJugadores.setForeground(new Color(0,0,0));
-           LmodificacionJefes.setForeground(new Color(0,0,0));
-           LmodificarUsuarios.setForeground(new Color(0,0,0));
-           LaltaEquipos.setForeground(new Color(0,0,0));
-           LaltaJugadores.setForeground(new Color(0,0,0));
-           LaltaJefe.setForeground(new Color(0,0,0));
-           LaltaUsuarios.setForeground(new Color(0,0,0));
-           LbajaEquipos.setForeground(new Color(0,0,0));
-           LbajaJugadores.setForeground(new Color(0,0,0));
-           LbajaJefes.setForeground(new Color(0,0,0));
-           LbajaUsuarios.setForeground(new Color(0,0,0));
-           LmodificacionEquipos.setForeground(new Color(0,0,0));
-           LmodificarJugadores.setForeground(new Color(0,0,0));
-           LmodificacionJefes.setForeground(new Color(0,0,0));
-           LmodificarUsuarios.setForeground(new Color(0,0,0));
+           bAlta.setForeground(new Color(0,0,0));
+           bBaja.setForeground(new Color(0,0,0));
+           bModificacion.setForeground(new Color(0,0,0));
+           bCalendario.setForeground(new Color(0,0,0));
+           bRealizarEmparejamientos.setForeground(new Color(0,0,0));
+           bResultadosJornada.setForeground(new Color(0,0,0));
+           bClasificacionGeneral.setForeground(new Color(0,0,0));
+           bBajaEquipos.setForeground(new Color(0,0,0));
+           bBajaJugadores.setForeground(new Color(0,0,0));
+           bBajaJefes.setForeground(new Color(0,0,0));
+           bBajaUsuarios.setForeground(new Color(0,0,0));
+           bModificacionEquipos.setForeground(new Color(0,0,0));
+           bModificarJugadores.setForeground(new Color(0,0,0));
+           bModificacionJefes.setForeground(new Color(0,0,0));
+           bModificarUsuarios.setForeground(new Color(0,0,0));
+           bAltaEquipos.setForeground(new Color(0,0,0));
+           bAltaJugadores.setForeground(new Color(0,0,0));
+           bAltaJefe.setForeground(new Color(0,0,0));
+           bAltaUsuarios.setForeground(new Color(0,0,0));
+           bBajaEquipos.setForeground(new Color(0,0,0));
+           bBajaJugadores.setForeground(new Color(0,0,0));
+           bBajaJefes.setForeground(new Color(0,0,0));
+           bBajaUsuarios.setForeground(new Color(0,0,0));
+           bModificacionEquipos.setForeground(new Color(0,0,0));
+           bModificarJugadores.setForeground(new Color(0,0,0));
+           bModificacionJefes.setForeground(new Color(0,0,0));
+           bModificarUsuarios.setForeground(new Color(0,0,0));
            
            
            
@@ -455,38 +466,40 @@ private char modo='o';
            modo='o';
            bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/luna.png")));
            bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png")));
+           bCerrar.setBackground(new java.awt.Color(45,45,45));
            bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png")));
+           bMinimizar.setBackground(new java.awt.Color(45,45,45));
            bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png")));
            jPanel2.setBackground(new Color(45,45,45));
            Lbienvenido.setForeground(new Color(255,255,255));
            menu.setBackground(new Color (45,45,45,200));
-           Lalta.setForeground(new Color(255,255,255));
-           Lbaja.setForeground(new Color(255,255,255));
-           Lmodificacion.setForeground(new Color(255,255,255));
-           Lcalendario.setForeground(new Color(255,255,255));
-           LrealizarEmparejamientos.setForeground(new Color(255,255,255));
-           LresultadosJornada.setForeground(new Color(255,255,255));
-           LclasificacionGeneral.setForeground(new Color(255,255,255));
-           LbajaEquipos.setForeground(new Color(255,255,255));
-           LbajaJugadores.setForeground(new Color(255,255,255));
-           LbajaJefes.setForeground(new Color(255,255,255));
-           LbajaUsuarios.setForeground(new Color(255,255,255));
-           LmodificacionEquipos.setForeground(new Color(255,255,255));
-           LmodificarJugadores.setForeground(new Color(255,255,255));
-           LmodificacionJefes.setForeground(new Color(255,255,255));
-           LmodificarUsuarios.setForeground(new Color(255,255,255));
-           LaltaEquipos.setForeground(new Color(255,255,255));
-           LaltaJugadores.setForeground(new Color(255,255,255));
-           LaltaJefe.setForeground(new Color(255,255,255));
-           LaltaUsuarios.setForeground(new Color(255,255,255));
-           LbajaEquipos.setForeground(new Color(255,255,255));
-           LbajaJugadores.setForeground(new Color(255,255,255));
-           LbajaJefes.setForeground(new Color(255,255,255));
-           LbajaUsuarios.setForeground(new Color(255,255,255));
-           LmodificacionEquipos.setForeground(new Color(255,255,255));
-           LmodificarJugadores.setForeground(new Color(255,255,255));
-           LmodificacionJefes.setForeground(new Color(255,255,255));
-           LmodificarUsuarios.setForeground(new Color(255,255,255));
+           bAlta.setForeground(new Color(255,255,255));
+           bBaja.setForeground(new Color(255,255,255));
+           bModificacion.setForeground(new Color(255,255,255));
+           bCalendario.setForeground(new Color(255,255,255));
+           bRealizarEmparejamientos.setForeground(new Color(255,255,255));
+           bResultadosJornada.setForeground(new Color(255,255,255));
+           bClasificacionGeneral.setForeground(new Color(255,255,255));
+           bBajaEquipos.setForeground(new Color(255,255,255));
+           bBajaJugadores.setForeground(new Color(255,255,255));
+           bBajaJefes.setForeground(new Color(255,255,255));
+           bBajaUsuarios.setForeground(new Color(255,255,255));
+           bModificacionEquipos.setForeground(new Color(255,255,255));
+           bModificarJugadores.setForeground(new Color(255,255,255));
+           bModificacionJefes.setForeground(new Color(255,255,255));
+           bModificarUsuarios.setForeground(new Color(255,255,255));
+           bAltaEquipos.setForeground(new Color(255,255,255));
+           bAltaJugadores.setForeground(new Color(255,255,255));
+           bAltaJefe.setForeground(new Color(255,255,255));
+           bAltaUsuarios.setForeground(new Color(255,255,255));
+           bBajaEquipos.setForeground(new Color(255,255,255));
+           bBajaJugadores.setForeground(new Color(255,255,255));
+           bBajaJefes.setForeground(new Color(255,255,255));
+           bBajaUsuarios.setForeground(new Color(255,255,255));
+           bModificacionEquipos.setForeground(new Color(255,255,255));
+           bModificarJugadores.setForeground(new Color(255,255,255));
+           bModificacionJefes.setForeground(new Color(255,255,255));
+           bModificarUsuarios.setForeground(new Color(255,255,255));
        }
     }//GEN-LAST:event_bModoMouseClicked
 
@@ -546,6 +559,14 @@ private char modo='o';
             bMinimizar.setBackground(new java.awt.Color(255,255,255));
         }
     }//GEN-LAST:event_bMinimizarMouseExited
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        jPanel2.requestFocus();
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void LbienvenidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LbienvenidoMouseClicked
+        Lbienvenido.requestFocus();
+    }//GEN-LAST:event_LbienvenidoMouseClicked
   
     /**
      * @param args the command line arguments
@@ -584,30 +605,30 @@ private char modo='o';
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel GIFarriba;
-    private javax.swing.JLabel Lalta;
-    private javax.swing.JLabel LaltaEquipos;
-    private javax.swing.JLabel LaltaJefe;
-    private javax.swing.JLabel LaltaJugadores;
-    private javax.swing.JLabel LaltaUsuarios;
-    private javax.swing.JLabel Lbaja;
-    private javax.swing.JLabel LbajaEquipos;
-    private javax.swing.JLabel LbajaJefes;
-    private javax.swing.JLabel LbajaJugadores;
-    private javax.swing.JLabel LbajaUsuarios;
     private javax.swing.JLabel Lbienvenido;
-    private javax.swing.JLabel Lcalendario;
-    private javax.swing.JLabel LclasificacionGeneral;
-    private javax.swing.JLabel Lmodificacion;
-    private javax.swing.JLabel LmodificacionEquipos;
-    private javax.swing.JLabel LmodificacionJefes;
-    private javax.swing.JLabel LmodificarJugadores;
-    private javax.swing.JLabel LmodificarUsuarios;
-    private javax.swing.JLabel LrealizarEmparejamientos;
-    private javax.swing.JLabel LresultadosJornada;
+    private javax.swing.JLabel bAlta;
+    private javax.swing.JLabel bAltaEquipos;
+    private javax.swing.JLabel bAltaJefe;
+    private javax.swing.JLabel bAltaJugadores;
+    private javax.swing.JLabel bAltaUsuarios;
+    private javax.swing.JLabel bBaja;
+    private javax.swing.JLabel bBajaEquipos;
+    private javax.swing.JLabel bBajaJefes;
+    private javax.swing.JLabel bBajaJugadores;
+    private javax.swing.JLabel bBajaUsuarios;
+    private javax.swing.JLabel bCalendario;
     private javax.swing.JLabel bCerrar;
+    private javax.swing.JLabel bClasificacionGeneral;
     private javax.swing.JLabel bMenu;
     private javax.swing.JLabel bMinimizar;
+    private javax.swing.JLabel bModificacion;
+    private javax.swing.JLabel bModificacionEquipos;
+    private javax.swing.JLabel bModificacionJefes;
+    private javax.swing.JLabel bModificarJugadores;
+    private javax.swing.JLabel bModificarUsuarios;
     private javax.swing.JLabel bModo;
+    private javax.swing.JLabel bRealizarEmparejamientos;
+    private javax.swing.JLabel bResultadosJornada;
     private javax.swing.JLabel barraDrag;
     private javax.swing.JLabel gifAbajo;
     private javax.swing.JLabel jLabel1;
