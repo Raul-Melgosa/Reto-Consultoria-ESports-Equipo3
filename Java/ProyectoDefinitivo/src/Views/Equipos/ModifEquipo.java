@@ -5,17 +5,30 @@
  */
 package Views.Equipos;
 
+import Controlador.Controlador;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alaitzutzu
  */
 public class ModifEquipo extends javax.swing.JFrame {
-
+private int xMouse;
+private int yMouse;
+private char modo;
+private static String [] d;
     /**
      * Creates new form AltaEquipo
+     * @param d
      */
-    public ModifEquipo() {
+    public ModifEquipo(String [] d) {
         initComponents();
+        setLocationRelativeTo(null);
+         jPanel2.requestFocus();
+         tfIdEquipo.setText(d[0]);
+         tfNombre.setText(d[1]);
+         tfIdJefe.setText(d[2]);
     }
 
     /**
@@ -39,13 +52,13 @@ public class ModifEquipo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        TFidEquipo = new javax.swing.JTextField();
-        TFnombre = new javax.swing.JTextField();
-        TFidJefe = new javax.swing.JTextField();
+        tfIdEquipo = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
+        tfIdJefe = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        Baceptar = new javax.swing.JLabel();
+        bAceptar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1500, 750));
@@ -54,14 +67,41 @@ public class ModifEquipo extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
+        minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizarMouseExited(evt);
+            }
+        });
         getContentPane().add(minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 0, 30, -1));
 
         cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
+        cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarMouseClicked(evt);
+            }
+        });
         getContentPane().add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, -1));
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO.png"))); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO-small.png"))); // NOI18N
         getContentPane().add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(-500, 0, 1500, 50));
+
+        barraDrag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                barraDragMouseDragged(evt);
+            }
+        });
+        barraDrag.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                barraDragMousePressed(evt);
+            }
+        });
+        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -83,49 +123,63 @@ public class ModifEquipo extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Id Equipo");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, -1));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equipo-white.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/camiseta-white.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Id Jefe");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/jefe-white.png"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
 
-        TFidEquipo.setEditable(false);
-        TFidEquipo.setBackground(new java.awt.Color(45, 45, 45));
-        TFidEquipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        TFidEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        TFidEquipo.setText("Id Equipo");
-        TFidEquipo.setToolTipText("Introduce el ID del equipo");
-        TFidEquipo.setBorder(null);
-        jPanel2.add(TFidEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 260, -1));
+        tfIdEquipo.setEditable(false);
+        tfIdEquipo.setBackground(new java.awt.Color(45, 45, 45));
+        tfIdEquipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfIdEquipo.setForeground(new java.awt.Color(255, 255, 255));
+        tfIdEquipo.setText("Id Equipo");
+        tfIdEquipo.setToolTipText("Introduce el ID del equipo");
+        tfIdEquipo.setBorder(null);
+        jPanel2.add(tfIdEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 260, -1));
 
-        TFnombre.setEditable(false);
-        TFnombre.setBackground(new java.awt.Color(45, 45, 45));
-        TFnombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        TFnombre.setForeground(new java.awt.Color(255, 255, 255));
-        TFnombre.setText("Nombre Equipo");
-        TFnombre.setToolTipText("Introduce el nombre del equipo");
-        TFnombre.setBorder(null);
-        jPanel2.add(TFnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 250, -1));
-
-        TFidJefe.setBackground(new java.awt.Color(45, 45, 45));
-        TFidJefe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        TFidJefe.setForeground(new java.awt.Color(255, 255, 255));
-        TFidJefe.setText("ID Jefe");
-        TFidJefe.setToolTipText("Introduce el id del jefe");
-        TFidJefe.setBorder(null);
-        TFidJefe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFidJefeActionPerformed(evt);
+        tfNombre.setEditable(false);
+        tfNombre.setBackground(new java.awt.Color(45, 45, 45));
+        tfNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfNombre.setForeground(new java.awt.Color(255, 255, 255));
+        tfNombre.setText("Nombre Equipo");
+        tfNombre.setToolTipText("Introduce el nombre del equipo");
+        tfNombre.setBorder(null);
+        tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNombreFocusLost(evt);
             }
         });
-        jPanel2.add(TFidJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 250, -1));
+        jPanel2.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 250, -1));
+
+        tfIdJefe.setBackground(new java.awt.Color(45, 45, 45));
+        tfIdJefe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfIdJefe.setForeground(new java.awt.Color(255, 255, 255));
+        tfIdJefe.setText("ID Jefe");
+        tfIdJefe.setToolTipText("Introduce el id del jefe");
+        tfIdJefe.setBorder(null);
+        tfIdJefe.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfIdJefeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfIdJefeFocusLost(evt);
+            }
+        });
+        jPanel2.add(tfIdJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 350, 250, -1));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 260, 10));
@@ -133,16 +187,108 @@ public class ModifEquipo extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 218, 260, -1));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 260, 10));
-        jPanel2.add(Baceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, -1, -1));
+
+        bAceptar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar-white.png"))); // NOI18N
+        bAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAceptarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(bAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 470, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 1000, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TFidJefeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFidJefeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TFidJefeActionPerformed
+    private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
+        if(tfNombre.getText().equals("Nombre Equipo")|| tfNombre.getText().equals(d[1]))
+        {
+            tfNombre.setText("");
+        }
+    }//GEN-LAST:event_tfNombreFocusGained
+
+    private void tfIdJefeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfIdJefeFocusGained
+       if(tfIdJefe.getText().equals("ID Jefe")|| tfIdJefe.getText().equals(d[2]))
+        {
+            tfIdJefe.setText("");
+        }
+    }//GEN-LAST:event_tfIdJefeFocusGained
+
+    private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
+       if(tfNombre.getText().equals(""))
+        {
+            tfNombre.setText(d[1]);
+            tfNombre.setForeground(new Color(255,255,255));
+            
+        }
+    }//GEN-LAST:event_tfNombreFocusLost
+
+    private void tfIdJefeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfIdJefeFocusLost
+         if(tfIdJefe.getText().equals(""))
+        {
+            tfIdJefe.setText(d[2]);
+            tfIdJefe.setForeground(new Color(255,255,255));
+            
+        }
+    }//GEN-LAST:event_tfIdJefeFocusLost
+
+    private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
+        Controlador.salir();
+    }//GEN-LAST:event_cerrarMouseClicked
+
+    private void minimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizarMouseClicked
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_minimizarMouseClicked
+
+    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
+        xMouse=evt.getX();
+        yMouse=evt.getY();
+    }//GEN-LAST:event_barraDragMousePressed
+
+    private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
+         int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_barraDragMouseDragged
+
+    private void minimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizarMouseEntered
+       if(modo=='o')
+        {
+            minimizar.setBackground(new Color(255,255,255,50));
+        }
+        else
+        {
+            minimizar.setBackground(new Color(0,0,0,50));
+        }
+    }//GEN-LAST:event_minimizarMouseEntered
+
+    private void minimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizarMouseExited
+         if(modo=='o')
+        {
+            minimizar.setBackground(new java.awt.Color(45, 45, 45));
+        }
+        else
+        {
+            minimizar.setBackground(new java.awt.Color(255,255,255));
+        }
+    }//GEN-LAST:event_minimizarMouseExited
+
+    private void bAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAceptarMouseClicked
+        String n=null;
+        int i=0;
+        boolean modificar=false;
+        if(tfNombre.getText().equals(d[1])&& tfIdJefe.getText() != d[2])
+            modificar=Controlador.ModificarEquipo(n,Integer.parseInt(tfIdJefe.getText()),Integer.parseInt(d[0]));
+        else
+            if(tfNombre.getText().equals(d[1])&& tfIdJefe.getText().equals(d[2]))
+                JOptionPane.showMessageDialog(this,"No se ha echo ningun cambio");
+            else
+                modificar=Controlador.ModificarEquipo(tfNombre.getText(),i,Integer.parseInt(d[0]));
+        Controlador.Volver(this);
+    
+    }//GEN-LAST:event_bAceptarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -175,19 +321,16 @@ public class ModifEquipo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModifEquipo().setVisible(true);
+                new ModifEquipo(d).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Baceptar;
     private javax.swing.JLabel GifAbajo;
     private javax.swing.JLabel GifArriba;
     private javax.swing.JLabel Logo;
-    private javax.swing.JTextField TFidEquipo;
-    private javax.swing.JTextField TFidJefe;
-    private javax.swing.JTextField TFnombre;
+    private javax.swing.JLabel bAceptar;
     private javax.swing.JLabel barraDrag;
     private javax.swing.JLabel cerrar;
     private javax.swing.JLabel jLabel1;
@@ -200,5 +343,8 @@ public class ModifEquipo extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel minimizar;
+    private javax.swing.JTextField tfIdEquipo;
+    private javax.swing.JTextField tfIdJefe;
+    private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

@@ -22,6 +22,9 @@ public class Perfil {
         this.tipo = tipo;
     }
 
+    public Perfil() {
+    }
+    
     public String getNombreUsuario() {
         return nombreUsuario;
     }

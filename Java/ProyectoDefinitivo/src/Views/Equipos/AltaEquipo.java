@@ -4,18 +4,23 @@
  * and open the template in the editor.
  */
 package Views.Equipos;
-
+import Controlador.Controlador;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Alaitzutzu
  */
 public class AltaEquipo extends javax.swing.JFrame {
-
+private char modo;
+private int xMouse;
+private int yMouse;
     /**
      * Creates new form AltaEquipo
      */
     public AltaEquipo() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -36,16 +41,15 @@ public class AltaEquipo extends javax.swing.JFrame {
         GifAbajo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        TFidEquipo = new javax.swing.JTextField();
-        TFnombre = new javax.swing.JTextField();
-        TFidJefe = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
+        tfApellidoJefe = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jSeparator1 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         Baceptar = new javax.swing.JLabel();
+        NombreJefe = new javax.swing.JLabel();
+        tfNombreJefe = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 750));
@@ -55,14 +59,41 @@ public class AltaEquipo extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         minimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
+        minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizarMouseExited(evt);
+            }
+        });
         getContentPane().add(minimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 0, 30, -1));
 
         cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
+        cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarMouseClicked(evt);
+            }
+        });
         getContentPane().add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, -1));
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO.png"))); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO-small.png"))); // NOI18N
         getContentPane().add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(-500, 0, 1500, 50));
+
+        barraDrag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                barraDragMouseDragged(evt);
+            }
+        });
+        barraDrag.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                barraDragMousePressed(evt);
+            }
+        });
+        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -82,68 +113,186 @@ public class AltaEquipo extends javax.swing.JFrame {
         jLabel1.setText("Alta Equipos");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Id Equipo");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, -1));
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/camiseta-white.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Id Jefe");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
-
-        TFidEquipo.setEditable(false);
-        TFidEquipo.setBackground(new java.awt.Color(45, 45, 45));
-        TFidEquipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        TFidEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        TFidEquipo.setText("Id Equipo");
-        TFidEquipo.setToolTipText("Introduce el ID del equipo");
-        TFidEquipo.setBorder(null);
-        jPanel2.add(TFidEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 260, -1));
-
-        TFnombre.setEditable(false);
-        TFnombre.setBackground(new java.awt.Color(45, 45, 45));
-        TFnombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        TFnombre.setForeground(new java.awt.Color(255, 255, 255));
-        TFnombre.setText("Nombre Equipo");
-        TFnombre.setToolTipText("Introduce el nombre del equipo");
-        TFnombre.setBorder(null);
-        jPanel2.add(TFnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 250, -1));
-
-        TFidJefe.setBackground(new java.awt.Color(45, 45, 45));
-        TFidJefe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        TFidJefe.setForeground(new java.awt.Color(255, 255, 255));
-        TFidJefe.setText("ID Jefe");
-        TFidJefe.setToolTipText("Introduce el id del jefe");
-        TFidJefe.setBorder(null);
-        TFidJefe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFidJefeActionPerformed(evt);
+        tfNombre.setEditable(false);
+        tfNombre.setBackground(new java.awt.Color(45, 45, 45));
+        tfNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfNombre.setForeground(new java.awt.Color(255, 255, 255));
+        tfNombre.setText("Nombre Equipo");
+        tfNombre.setToolTipText("Introduce el nombre del equipo");
+        tfNombre.setBorder(null);
+        tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNombreFocusLost(evt);
             }
         });
-        jPanel2.add(TFidJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 250, -1));
+        jPanel2.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 250, 30));
+
+        tfApellidoJefe.setBackground(new java.awt.Color(45, 45, 45));
+        tfApellidoJefe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfApellidoJefe.setForeground(new java.awt.Color(255, 255, 255));
+        tfApellidoJefe.setText("Apellido Jefe");
+        tfApellidoJefe.setToolTipText("Introduce el apellido del jefe");
+        tfApellidoJefe.setBorder(null);
+        tfApellidoJefe.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfApellidoJefeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfApellidoJefeFocusLost(evt);
+            }
+        });
+        jPanel2.add(tfApellidoJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 250, 30));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 260, 10));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 260, 10));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 260, 10));
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 218, 260, -1));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 260, 10));
-        jPanel2.add(Baceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, -1, -1));
+        Baceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar-white.png"))); // NOI18N
+        Baceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BaceptarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(Baceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, -1, -1));
+
+        NombreJefe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nombreJefe-White.png"))); // NOI18N
+        jPanel2.add(NombreJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
+
+        tfNombreJefe.setBackground(new java.awt.Color(45, 45, 45));
+        tfNombreJefe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfNombreJefe.setForeground(new java.awt.Color(255, 255, 255));
+        tfNombreJefe.setText("Nombre Jefe");
+        tfNombreJefe.setToolTipText("Introduce el nombre del jefe");
+        tfNombreJefe.setBorder(null);
+        tfNombreJefe.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNombreJefeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNombreJefeFocusLost(evt);
+            }
+        });
+        jPanel2.add(tfNombreJefe, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 260, -1));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 372, 260, 20));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 1000, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TFidJefeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFidJefeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TFidJefeActionPerformed
+    private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
+       Controlador.salir();
+    }//GEN-LAST:event_cerrarMouseClicked
+
+    private void minimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizarMouseClicked
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_minimizarMouseClicked
+
+    private void minimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizarMouseEntered
+       if(modo=='o')
+        {
+            minimizar.setBackground(new Color(255,255,255,50));
+        }
+        else
+        {
+            minimizar.setBackground(new Color(0,0,0,50));
+        }
+    }//GEN-LAST:event_minimizarMouseEntered
+
+    private void minimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizarMouseExited
+          if(modo=='o')
+        {
+            minimizar.setBackground(new java.awt.Color(45, 45, 45));
+        }
+        else
+        {
+            minimizar.setBackground(new java.awt.Color(255,255,255));
+        }
+    }//GEN-LAST:event_minimizarMouseExited
+
+    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
+        xMouse=evt.getX();
+        yMouse=evt.getY();
+    }//GEN-LAST:event_barraDragMousePressed
+
+    private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_barraDragMouseDragged
+
+    private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
+          if(tfNombre.getText().equals("Nombre Equipo"))
+        {
+            tfNombre.setText("");
+        }
+    }//GEN-LAST:event_tfNombreFocusGained
+
+    private void tfApellidoJefeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfApellidoJefeFocusGained
+        if(tfApellidoJefe.getText().equals("Apellido Jefe"))
+        {
+            tfApellidoJefe.setText("");
+        }
+    }//GEN-LAST:event_tfApellidoJefeFocusGained
+
+    private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
+         if(tfNombre.getText().equals(""))
+        {
+            tfNombre.setText("Nombre Equipo");
+            tfNombre.setForeground(new Color(255,255,255));
+            
+        }
+    }//GEN-LAST:event_tfNombreFocusLost
+
+    private void tfApellidoJefeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfApellidoJefeFocusLost
+       if(tfApellidoJefe.getText().equals(""))
+        {
+            tfApellidoJefe.setText("Apellido Jefe");
+            tfApellidoJefe.setForeground(new Color(255,255,255));
+            
+        }
+    }//GEN-LAST:event_tfApellidoJefeFocusLost
+
+    private void tfNombreJefeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreJefeFocusGained
+       if(tfNombreJefe.getText().equals("Nombre Jefe"))
+        {
+            tfApellidoJefe.setText("");
+        }
+    }//GEN-LAST:event_tfNombreJefeFocusGained
+
+    private void tfNombreJefeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreJefeFocusLost
+        if(tfNombreJefe.getText().equals(""))
+        {
+            tfApellidoJefe.setText("Nombre Jefe");
+            tfApellidoJefe.setForeground(new Color(255,255,255));
+            
+        }
+    }//GEN-LAST:event_tfNombreJefeFocusLost
+
+    private void BaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BaceptarMouseClicked
+        int idJ=0;
+        boolean insertado=false;
+        idJ=Controlador.ComprobarJefe(tfNombreJefe.getText(),tfApellidoJefe.getText() );
+        if(idJ==0){
+            JOptionPane.showMessageDialog(this,"No se ha encontrado ningún jefe con ese nombre y apellido");
+        }
+        else
+            insertado=Controlador.AltaEquipo(tfNombre.getText(), tfNombreJefe.getText(), tfApellidoJefe.getText());
+            if(insertado==true){
+                JOptionPane.showMessageDialog(this,"Equipo insertado correctamente");
+            }
+            else
+                JOptionPane.showMessageDialog(this,"El equipo no se ha insertado correctamente");
+        Controlador.Volver(this);
+    }//GEN-LAST:event_BaceptarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -185,20 +334,19 @@ public class AltaEquipo extends javax.swing.JFrame {
     private javax.swing.JLabel GifAbajo;
     private javax.swing.JLabel GifArriba;
     private javax.swing.JLabel Logo;
-    private javax.swing.JTextField TFidEquipo;
-    private javax.swing.JTextField TFidJefe;
-    private javax.swing.JTextField TFnombre;
+    private javax.swing.JLabel NombreJefe;
     private javax.swing.JLabel barraDrag;
     private javax.swing.JLabel cerrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel minimizar;
+    private javax.swing.JTextField tfApellidoJefe;
+    private javax.swing.JTextField tfNombre;
+    private javax.swing.JTextField tfNombreJefe;
     // End of variables declaration//GEN-END:variables
 }
