@@ -175,11 +175,44 @@ public class Controlador {
             return modificar;
     }
     
-    public static void VentanaAltaJugador(javax.swing.JFrame anterior){
-        anterior.dispose();
+     public static void VentanaAltaJugador(){
         Views.Jugadores.AltaJugador altaJugador=new Views.Jugadores.AltaJugador();
         altaJugador.setVisible(true);
     }
+     public static boolean ValidarNombreEquipo(String nombre){
+         boolean encontrado=false;
+         try{
+             encontrado=tEquipo.SelectID(bd.conectar(),nombre);
+         }
+         catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+         return encontrado;
+     }
+     public static boolean AltaJugador(String dni,String nombre,String apellido,String nickname,String rol,int dorsal,int sueldo,String nombreEquipo){
+        Equipo equipo=new Equipo();
+        equipo.setNombre(nombreEquipo);
+        Jugador jugador=new Jugador(dni,nombre,apellido,nickname,dorsal,sueldo,equipo);
+         
+         switch(rol){
+             case "Jungla": jugador.setRol(TipoRol.JUNGLA);
+             case "Top": jugador.setRol(TipoRol.TOP);
+             case "Mid": jugador.setRol(TipoRol.MID);
+             case "Adc": jugador.setRol(TipoRol.ADC);
+             case "Support": jugador.setRol(TipoRol.SUPPORT);
+             case "Suplente": jugador.setRol(TipoRol.SUPLENTE);            
+         }
+         
+         boolean insert=false;
+         try{
+             insert=tj.Insert(bd.conectar(), jugador);
+             
+         }
+         catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+         return insert;
+     }
      
     public static void VentanaBajaJugador(javax.swing.JFrame anterior){
         anterior.dispose();

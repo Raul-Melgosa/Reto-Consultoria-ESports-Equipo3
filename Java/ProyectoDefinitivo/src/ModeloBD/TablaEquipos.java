@@ -97,4 +97,16 @@ public class TablaEquipos {
          
         return modificar;  
      }
+    public boolean SelectID(Connection c, String n) throws Exception{
+        con=c;
+        String plantilla="Select ID_EQUIPO FROM EQUIPOS WHERE upper(nombre)=upper(?)";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        ps.setString(1, n);
+        boolean encontrado=false;
+        ResultSet resultado=ps.executeQuery();
+         if(resultado.next()){
+             encontrado=true;
+         }
+         return encontrado;
+    }
 }

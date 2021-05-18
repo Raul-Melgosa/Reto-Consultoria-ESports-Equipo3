@@ -18,6 +18,7 @@ public class Jugador {
     private TipoRol rol;
     private int sueldo;
     private int dorsal;
+    private Equipo equipo;
 
     public Jugador(int id, String dni, String nombre, String apellido, String nickname, TipoRol rol, int sueldo, int dorsal) {
         this.id = id;
@@ -29,6 +30,17 @@ public class Jugador {
         this.sueldo = sueldo;
         this.dorsal = dorsal;
     }
+
+    public Jugador(String dni, String nombre, String apellido, String nickname,  int sueldo, int dorsal,Equipo equipo) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nickname = nickname;
+        this.sueldo = sueldo;
+        this.dorsal = dorsal;
+        this.equipo = equipo;
+    }
+    
 
     public Jugador() {
     }
@@ -95,6 +107,14 @@ public class Jugador {
 
     public void setDorsal(int dorsal) {
         this.dorsal = dorsal;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
     }
     
     
