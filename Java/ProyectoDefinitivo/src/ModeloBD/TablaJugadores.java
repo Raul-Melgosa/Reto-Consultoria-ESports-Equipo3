@@ -21,7 +21,7 @@ public class TablaJugadores {
     public boolean Insert(Connection c,Jugador j) throws Exception
     {
         con=c;
-        String plantilla = "INSERT INTO JUGADORES(DNI,NOMBRE,APELLIDOS,NICKNAME,ROL,DORSAL,SUELDO,ID_EQUIPO) VALUES(?,?,?,?,?,?,?)";
+        String plantilla = "INSERT INTO JUGADORES(DNI,NOMBRE,APELLIDOS,NICKNAME,ROL,DORSAL,SUELDO,ID_EQUIPO) VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement ps= con.prepareStatement(plantilla);
         ps.setString(1, j.getDni());
         ps.setString(2, j.getNombre());
@@ -30,14 +30,14 @@ public class TablaJugadores {
         ps.setString(5, j.getRol().toString());
         ps.setInt(6, j.getDorsal());
         ps.setInt(7, j.getSueldo());
-        ps.setString(8,j.getEquipo().getNombre());
+        ps.setString(8, j.getEquipo().getNombre());
         
         boolean insert=false;
-        ps.close();
         int n=ps.executeUpdate();
         if(n==1){
             insert=true;
         }
+        ps.close();
         return insert;    
     }
     public boolean Delete(Connection c, String nombre,String apellido) throws Exception{

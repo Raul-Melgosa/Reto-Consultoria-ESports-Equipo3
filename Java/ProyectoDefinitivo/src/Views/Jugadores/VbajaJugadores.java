@@ -8,6 +8,9 @@ package Views.Jugadores;
 import AppPackage.AnimationClass;
 import Controlador.Controlador;
 import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -69,6 +72,13 @@ AnimationClass animacion = new AnimationClass();
         GIFarriba = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lTitulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        tfNombre = new javax.swing.JTextField();
+        barraNombre = new javax.swing.JSeparator();
+        bAceptar = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        tfApellido = new javax.swing.JTextField();
+        barraApellido = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -294,6 +304,64 @@ AnimationClass animacion = new AnimationClass();
         lTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lTitulo.setText("Baja Jugadores");
         jPanel2.add(lTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 260, -1));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nombre-white.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 30, 30));
+
+        tfNombre.setBackground(new java.awt.Color(45, 45, 45));
+        tfNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfNombre.setForeground(new java.awt.Color(255, 255, 255));
+        tfNombre.setText("Nombre Jugador");
+        tfNombre.setBorder(null);
+        tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNombreFocusLost(evt);
+            }
+        });
+        tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfNombreKeyReleased(evt);
+            }
+        });
+        jPanel2.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 390, 30));
+        jPanel2.add(barraNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 390, 10));
+
+        bAceptar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar-white.png"))); // NOI18N
+        bAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAceptarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(bAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/apellidopng-white.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+
+        tfApellido.setBackground(new java.awt.Color(45, 45, 45));
+        tfApellido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfApellido.setForeground(new java.awt.Color(255, 255, 255));
+        tfApellido.setText("Apellido Jugador");
+        tfApellido.setBorder(null);
+        tfApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfApellidoFocusLost(evt);
+            }
+        });
+        tfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfApellidoKeyReleased(evt);
+            }
+        });
+        jPanel2.add(tfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 380, 30));
+        jPanel2.add(barraApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 380, 20));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 1000, 750));
 
@@ -668,6 +736,77 @@ AnimationClass animacion = new AnimationClass();
         Controlador.VentanaModificacionEquipo(this);
     }//GEN-LAST:event_bModificacionEquiposMouseClicked
 
+    private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
+       if(tfNombre.getText().equals("Nombre Jugador"))
+        {
+            tfNombre.setText("");
+        }
+    }//GEN-LAST:event_tfNombreFocusGained
+
+    private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
+         if(tfNombre.getText().equals(""))
+        {
+            tfNombre.setText("Nombre Jugador");
+            tfNombre.setForeground(new Color(255,255,255));
+            
+        }
+    }//GEN-LAST:event_tfNombreFocusLost
+
+    private void tfNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNombreKeyReleased
+          if(validarNombreYApellido(tfNombre.getText()))
+        {
+            tfNombre.setForeground(new Color(0,204,0));
+            barraNombre.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfNombre.setForeground(new Color(204,0,0));
+            barraNombre.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfNombreKeyReleased
+
+    private void tfApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfApellidoFocusGained
+         if(tfNombre.getText().equals("Apellido Jugador"))
+        {
+            tfNombre.setText("");
+        }
+    }//GEN-LAST:event_tfApellidoFocusGained
+
+    private void tfApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfApellidoFocusLost
+         if(tfNombre.getText().equals(""))
+        {
+            tfNombre.setText("Apellido Jugador");
+            tfNombre.setForeground(new Color(255,255,255));
+            
+        }
+    }//GEN-LAST:event_tfApellidoFocusLost
+
+    private void tfApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfApellidoKeyReleased
+        if(validarNombreYApellido(tfApellido.getText()))
+        {
+            tfApellido.setForeground(new Color(0,204,0));
+            barraApellido.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfApellido.setForeground(new Color(204,0,0));
+            barraApellido.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfApellidoKeyReleased
+
+    private void bAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAceptarMouseClicked
+      boolean borrar=false;
+       borrar=Controlador.BorrarJugador(tfNombre.getText(),tfApellido.getText());
+       if(borrar==true)
+           JOptionPane.showMessageDialog(this,"El jugador ha sido borrado correctamente");
+       else
+           JOptionPane.showMessageDialog(this,"El jugador no ha sido borrado correctamente");
+    }//GEN-LAST:event_bAceptarMouseClicked
+    public boolean validarNombreYApellido(String nYa){
+        Pattern patron = Pattern.compile("^([A-Z]||[a-z])+");
+        Matcher m = patron.matcher(nYa);
+        return m.matches();
+    }
     /**
      * @param args the command line arguments
      */
@@ -705,6 +844,7 @@ AnimationClass animacion = new AnimationClass();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel GIFarriba;
+    private javax.swing.JLabel bAceptar;
     private javax.swing.JLabel bAlta;
     private javax.swing.JLabel bAltaEquipos;
     private javax.swing.JLabel bAltaJefes;
@@ -728,12 +868,18 @@ AnimationClass animacion = new AnimationClass();
     private javax.swing.JLabel bModo;
     private javax.swing.JLabel bRealizarEmparejamientos;
     private javax.swing.JLabel bResultadosJornada;
+    private javax.swing.JSeparator barraApellido;
     private javax.swing.JLabel barraDrag;
+    private javax.swing.JSeparator barraNombre;
     private javax.swing.JLabel gifAbajo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lTitulo;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel menu;
+    private javax.swing.JTextField tfApellido;
+    private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

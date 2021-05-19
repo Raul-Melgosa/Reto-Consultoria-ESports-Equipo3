@@ -7,6 +7,9 @@ package Views.Jefes;
 
 import Controlador.Controlador;
 import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +36,9 @@ public class BajaJefe extends javax.swing.JFrame {
     private void initComponents() {
 
         Logo = new javax.swing.JLabel();
+        bCerrar = new javax.swing.JLabel();
+        bMinimizar = new javax.swing.JLabel();
+        barraDrag = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         GifArriba = new javax.swing.JLabel();
         GifAbajo = new javax.swing.JLabel();
@@ -41,13 +47,10 @@ public class BajaJefe extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
+        barraApellido = new javax.swing.JSeparator();
         Baceptar = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
+        barraNombre = new javax.swing.JSeparator();
         tfApellidos = new javax.swing.JTextField();
-        bCerrar = new javax.swing.JLabel();
-        bMinimizar = new javax.swing.JLabel();
-        barraDrag = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1500, 750));
@@ -55,8 +58,51 @@ public class BajaJefe extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1500, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO.png"))); // NOI18N
-        getContentPane().add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO-small.png"))); // NOI18N
+        getContentPane().add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, -1));
+
+        bCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
+        bCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                bCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bCerrarMouseExited(evt);
+            }
+        });
+        getContentPane().add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, -1));
+
+        bMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
+        bMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bMinimizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                bMinimizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bMinimizarMouseExited(evt);
+            }
+        });
+        getContentPane().add(bMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 0, 30, -1));
+
+        barraDrag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                barraDragMouseDragged(evt);
+            }
+        });
+        barraDrag.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                barraDragMousePressed(evt);
+            }
+        });
+        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -78,12 +124,12 @@ public class BajaJefe extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/jefe-white.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Apellidos");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/apellidopng-white.png"))); // NOI18N
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
 
         tfNombre.setEditable(false);
@@ -93,12 +139,33 @@ public class BajaJefe extends javax.swing.JFrame {
         tfNombre.setText("Nombre");
         tfNombre.setToolTipText("Introduce el nombre del jefe");
         tfNombre.setBorder(null);
-        jPanel2.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 250, -1));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 290, 10));
-        jPanel2.add(Baceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, -1, -1));
+        tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNombreFocusLost(evt);
+            }
+        });
+        tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfNombreKeyReleased(evt);
+            }
+        });
+        jPanel2.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 260, 30));
+        jPanel2.add(barraApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 290, 10));
 
-        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 290, 10));
+        Baceptar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Baceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar-white.png"))); // NOI18N
+        Baceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BaceptarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(Baceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, -1, -1));
+
+        barraNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(barraNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 290, 10));
 
         tfApellidos.setBackground(new java.awt.Color(45, 45, 45));
         tfApellidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -106,54 +173,25 @@ public class BajaJefe extends javax.swing.JFrame {
         tfApellidos.setText("Apellidos");
         tfApellidos.setToolTipText("Introduce el apellido del jefe");
         tfApellidos.setBorder(null);
+        tfApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfApellidosFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfApellidosFocusLost(evt);
+            }
+        });
         tfApellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfApellidosActionPerformed(evt);
             }
         });
-        jPanel2.add(tfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 250, -1));
-
-        bCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
-        bCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bCerrarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                bCerrarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                bCerrarMouseExited(evt);
+        tfApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfApellidosKeyReleased(evt);
             }
         });
-        jPanel2.add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 40, -1));
-
-        bMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
-        bMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bMinimizarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                bMinimizarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                bMinimizarMouseExited(evt);
-            }
-        });
-        jPanel2.add(bMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, 40, -1));
-
-        barraDrag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                barraDragMouseDragged(evt);
-            }
-        });
-        barraDrag.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                barraDragMousePressed(evt);
-            }
-        });
-        jPanel2.add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(-500, 0, 1500, 50));
+        jPanel2.add(tfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 260, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 1000, 750));
 
@@ -222,6 +260,78 @@ public class BajaJefe extends javax.swing.JFrame {
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_barraDragMouseDragged
 
+    private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
+         if(tfNombre.getText().equals("Nombre"))
+        {
+            tfNombre.setText("");
+        }
+    }//GEN-LAST:event_tfNombreFocusGained
+
+    private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
+          if(tfNombre.getText().equals(""))
+        {
+            tfNombre.setText("Nombre");
+            tfNombre.setForeground(new Color(255,255,255));
+            
+        }
+    }//GEN-LAST:event_tfNombreFocusLost
+
+    private void tfApellidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfApellidosFocusGained
+         if(tfApellidos.getText().equals("Apellidos"))
+        {
+            tfApellidos.setText("");
+        }
+    }//GEN-LAST:event_tfApellidosFocusGained
+
+    private void tfApellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfApellidosFocusLost
+        if(tfApellidos.getText().equals(""))
+        {
+            tfApellidos.setText("Apellidos");
+            tfApellidos.setForeground(new Color(255,255,255));
+            
+        }
+    }//GEN-LAST:event_tfApellidosFocusLost
+
+    private void tfNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNombreKeyReleased
+          if(validarNombreYApellido(tfNombre.getText()))
+        {
+            tfNombre.setForeground(new Color(0,204,0));
+            barraNombre.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfNombre.setForeground(new Color(204,0,0));
+            barraNombre.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfNombreKeyReleased
+
+    private void tfApellidosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfApellidosKeyReleased
+          if(validarNombreYApellido(tfApellidos.getText()))
+        {
+            tfApellidos.setForeground(new Color(0,204,0));
+            barraApellido.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfApellidos.setForeground(new Color(204,0,0));
+            barraApellido.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfApellidosKeyReleased
+
+    private void BaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BaceptarMouseClicked
+       boolean baja=false;
+        baja=Controlador.BajaJefe(tfNombre.getText(),tfApellidos.getText());
+        if(baja==true){
+                JOptionPane.showMessageDialog(this,"El jefe ha sido insertado correctamente");
+            }
+            else
+                JOptionPane.showMessageDialog(this,"El jefe no ha sido insertado correctamente");
+    }//GEN-LAST:event_BaceptarMouseClicked
+    public boolean validarNombreYApellido(String nombreApellido){
+        Pattern patron = Pattern.compile("^([A-Z]||[a-z])+");
+        Matcher m = patron.matcher(nombreApellido);
+        return m.matches();
+    }
     /**
      * @param args the command line arguments
      */
@@ -295,14 +405,14 @@ public class BajaJefe extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private javax.swing.JLabel bCerrar;
     private javax.swing.JLabel bMinimizar;
+    private javax.swing.JSeparator barraApellido;
     private javax.swing.JLabel barraDrag;
+    private javax.swing.JSeparator barraNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField tfApellidos;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables

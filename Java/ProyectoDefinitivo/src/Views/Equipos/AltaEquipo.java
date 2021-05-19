@@ -28,6 +28,7 @@ AnimationClass animacion = new AnimationClass();
         initComponents();
         setLocationRelativeTo(null);
         menu.setBackground(new Color(45,45,45,200));
+        jPanel2.requestFocus();
     }
 
     /**

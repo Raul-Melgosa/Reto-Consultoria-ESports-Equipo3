@@ -22,7 +22,7 @@ public class TablaEquipos {
     
      public boolean Insert(Connection c,Equipo e) throws Exception {
          con=c;
-        String plantilla="INSERT INTO EQUIPOS(NOMBRE,ID_JEFE) VALUES(?,?)); ";
+        String plantilla="INSERT INTO EQUIPOS(NOMBRE,ID_JEFE) VALUES(?,?)";
         PreparedStatement ps = con.prepareStatement(plantilla);
         ps.setString(1,e.getNombre());
         ps.setInt(2,e.getJefe().getId());

@@ -38,4 +38,14 @@ public class BaseDeDatos {
         }
         return con;
     }
+    public void desconectar(){
+        try{
+           con.close();
+        }
+        catch(Exception e){
+            System.out.println("Error al cerrar la conexión");
+        }
+
+        
+    }
 }

@@ -32,4 +32,35 @@ public class TablaJefes {
         }
         return id;
     }
+    public boolean Insert(Connection c,Jefe j) throws Exception{
+        con=c;
+        String plantilla="INSERT INTO JEFES(DNI,NOMBRE,APELLIDOS,NICKNAME,EMAIL) VALUES(?,?,?,?,?)";
+        PreparedStatement ps= con.prepareStatement(plantilla);
+        ps.setString(1,j.getDni());
+        ps.setString(2,j.getNombre());
+        ps.setString(3,j.getApellido());
+        ps.setString(4,j.getNickname());
+        ps.setString(5,j.getEmail());
+        
+        int n=ps.executeUpdate();
+        boolean insert=false;
+        if(n==1){
+            insert=true;
+        }
+        return insert;
+    }
+      public boolean Delete(Connection c, String nombre,String apellido) throws Exception{
+        con=c;
+        String plantilla="DELETE FROM JEFES WHERE UPPER(NOMBRE)=UPPER(?) AND UPPER(APELLIDO)=UPPER(?)";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        ps.setString(1,nombre);
+        ps.setString(2,apellido);
+        
+        boolean delete=false;
+        int n=ps.executeUpdate();
+        if(n==1){
+            delete=true;
+        }
+        return delete;
+    }
 }

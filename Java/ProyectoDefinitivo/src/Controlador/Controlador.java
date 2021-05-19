@@ -303,12 +303,18 @@ public class Controlador {
             j.setDni(dni);
             switch(rol){
              case "Jungla": j.setRol(TipoRol.JUNGLA);
+                break;
              case "Top": j.setRol(TipoRol.TOP);
+                break;
              case "Mid": j.setRol(TipoRol.MID);
+                break;
              case "Adc": j.setRol(TipoRol.ADC);
+                break;
              case "Support": j.setRol(TipoRol.SUPPORT);
-             case "Suplente": j.setRol(TipoRol.SUPLENTE);            
-         }
+                break;
+             case "Suplente": j.setRol(TipoRol.SUPLENTE);  
+                break;
+            }
             j.setDorsal(dorsal);
             j.setSueldo(sueldo);
             Equipo e=new Equipo();
@@ -322,7 +328,42 @@ public class Controlador {
         }
        return update;
     }
-     
+     public static void VentanaAltaJefe(javax.swing.JFrame anterior) {
+        anterior.dispose();
+        Views.Jefes.AltaJefe altaJefe=new Views.Jefes.AltaJefe();
+        altaJefe.setVisible(true);
+    }
+    public static boolean AltaJefe(String dni,String nombre,String apellido,String nickname,String email){
+        Jefe jefe=new Jefe();
+        jefe.setDni(dni);
+        jefe.setNombre(nombre);
+        jefe.setApellido(apellido);
+        jefe.setEmail(email);
+        
+        boolean insertar=false;
+        try{
+            insertar=tJefe.Insert(bd.conectar(), jefe);
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+        return insertar;
+    }
+     public static void VentanaBajaJefe(javax.swing.JFrame anterior) {
+        anterior.dispose();
+        Views.Jefes.BajaJefe bajaJefe=new Views.Jefes.BajaJefe();
+        bajaJefe.setVisible(true);
+    }
+      public static boolean BajaJefe(String nombre,String apellido){
+         boolean delete=false;
+         try{
+             delete=tJefe.Delete(bd.conectar(), nombre, apellido);
+         }
+         catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+         return delete;
+     }
     public static void salir()
     {
         System.exit(0);
