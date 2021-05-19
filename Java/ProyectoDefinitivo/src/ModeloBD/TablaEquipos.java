@@ -11,6 +11,7 @@ import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -97,16 +98,43 @@ public class TablaEquipos {
          
         return modificar;  
      }
-    public boolean SelectID(Connection c, String n) throws Exception{
+    public int SelectID(Connection c, String n) throws Exception{
         con=c;
         String plantilla="Select ID_EQUIPO FROM EQUIPOS WHERE upper(nombre)=upper(?)";
         PreparedStatement ps=con.prepareStatement(plantilla);
         ps.setString(1, n);
-        boolean encontrado=false;
+        int id=0;
         ResultSet resultado=ps.executeQuery();
          if(resultado.next()){
-             encontrado=true;
+             id=resultado.getInt("ID_EQUIPO");
          }
-         return encontrado;
+         return id;
+    }
+    public ArrayList SelectGeneral(Connection c) throws Exception{
+        con=c;
+        String plantilla="SELECT NOMBRE FROM equipos ";
+         PreparedStatement ps=con.prepareStatement(plantilla);
+         ResultSet resultado=ps.executeQuery();
+         
+         ArrayList <Equipo> nombreEquipo=new ArrayList();
+         
+         while(resultado.next()){
+            Equipo e =new Equipo();
+            e.setNombre(resultado.getString("NOMBRE"));
+            nombreEquipo.add(e);
+         }
+        return nombreEquipo;
+    }
+    public String SelectNombre(Connection c, int ID) throws Exception{
+        con=c;
+        String plantilla="Select NOMBRE FROM EQUIPOS WHERE ID_EQUIPO=?";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        ps.setInt(1,ID );
+       String nom="";
+        ResultSet resultado=ps.executeQuery();
+         if(resultado.next()){
+            nom=resultado.getString("NOMBRE");
+         }
+         return nom;
     }
 }

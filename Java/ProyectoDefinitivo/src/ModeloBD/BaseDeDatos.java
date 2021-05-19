@@ -38,17 +38,4 @@ public class BaseDeDatos {
         }
         return con;
     }
-    
-    public void desconectar()
-    {
-        try
-        {
-            con.close();
-        }
-        catch(Exception e)
-        {
-            System.out.println("No se ha podido cerrar la conexion a la base de datos");
-            System.out.println(e.getClass());
-        }
-    }
 }

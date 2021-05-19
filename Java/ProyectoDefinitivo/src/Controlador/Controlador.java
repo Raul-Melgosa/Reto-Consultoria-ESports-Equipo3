@@ -10,6 +10,8 @@ import ModeloUML.*;
 import Views.*;
 import Views.Jugadores.AltaJugador;
 import java.sql.Array;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -25,6 +27,8 @@ public class Controlador {
     private static BaseDeDatos bd;
 //Perfil
     private static Perfil usuario;
+//Array
+    private static String [] d;
     
     public static void main(String[] args) {
         try
@@ -175,18 +179,24 @@ public class Controlador {
             return modificar;
     }
     
-     public static void VentanaAltaJugador(){
+     public static void VentanaAltaJugador(javax.swing.JFrame anterior){
+         anterior.dispose();
         Views.Jugadores.AltaJugador altaJugador=new Views.Jugadores.AltaJugador();
         altaJugador.setVisible(true);
     }
-     public static boolean ValidarNombreEquipo(String nombre){
+    public static boolean ValidarNombreEquipo(String nombre){
          boolean encontrado=false;
+         int id=0;
          try{
-             encontrado=tEquipo.SelectID(bd.conectar(),nombre);
+            id=tEquipo.SelectID(bd.conectar(),nombre);
          }
          catch(Exception e){
             System.out.println(e.getClass()+e.getMessage());
         }
+         if(id==0)
+             encontrado=false;
+         else
+             encontrado=true;
          return encontrado;
      }
      public static boolean AltaJugador(String dni,String nombre,String apellido,String nickname,String rol,int dorsal,int sueldo,String nombreEquipo){
@@ -214,10 +224,103 @@ public class Controlador {
          return insert;
      }
      
-    public static void VentanaBajaJugador(javax.swing.JFrame anterior){
-        anterior.dispose();
+     public static void VentanaBajaJugador(javax.swing.JFrame anterior){
+         anterior.dispose();
         Views.Jugadores.VbajaJugadores bajaJugador=new Views.Jugadores.VbajaJugadores();
         bajaJugador.setVisible(true);
+    }
+     public static boolean BorrarJugador(String nombre,String apellido){
+         boolean delete=false;
+         try{
+             delete=tj.Delete(bd.conectar(), nombre, apellido);
+         }
+         catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+         return delete;
+     }
+     public static void LLenarComboBoxEquipo(JComboBox combo){
+         ArrayList <Equipo> nombreEquipos=new ArrayList();
+         try{
+             nombreEquipos=tEquipo.SelectGeneral(bd.conectar());
+             for(int x=0;x<nombreEquipos.size();x++){
+             combo.addItem(nombreEquipos.get(x).getNombre());
+            }
+         }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        } 
+     }
+     public static void LlenarComboBoxJugador(JComboBox CBjugador){
+         ArrayList <Jugador> nombreJugador=new ArrayList();
+         try{
+             nombreJugador=tj.SelectGeneral(bd.conectar());
+             for(int x=0;x<nombreJugador.size();x++){
+             CBjugador.addItem(nombreJugador.get(x).getNombre());
+            }
+         }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+     }
+     public static void VentanaModificarJugador(javax.swing.JFrame anterior){
+         anterior.dispose();
+         Views.Jugadores.ModifJugador modificarJugador = new Views.Jugadores.ModifJugador();
+         modificarJugador.setVisible(true);
+     }
+     public static String [] DatosJugador(String nombre){
+         Jugador j=new Jugador();
+         j.setNombre(nombre);
+         Jugador [] datos=new Jugador[1];
+         String n="";
+         try{
+             datos=tj.SelectJugador(bd.conectar(), j);
+             n=tEquipo.SelectNombre(bd.conectar(), datos[0].getEquipo().getId());
+         }
+         catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+         d=new String [6];
+         
+         d[0]=datos[0].getDni();
+         d[1]=datos[0].getNombre();
+         d[2]=datos[0].getRol().toString();
+         d[3]=Integer.toString(datos[0].getDorsal());
+         d[4]=Integer.toString(datos[0].getSueldo());
+         d[5]=n;
+         
+         return d;   
+
+     }
+    public static boolean ModificarJugador(String dni,String rol,int dorsal,int sueldo,String nEquipo){
+        
+        boolean update=false;
+        int IdEquipo=0;
+         try{
+            IdEquipo=tEquipo.SelectID(bd.conectar(), nEquipo);
+            
+            Jugador j=new Jugador();
+            j.setDni(dni);
+            switch(rol){
+             case "Jungla": j.setRol(TipoRol.JUNGLA);
+             case "Top": j.setRol(TipoRol.TOP);
+             case "Mid": j.setRol(TipoRol.MID);
+             case "Adc": j.setRol(TipoRol.ADC);
+             case "Support": j.setRol(TipoRol.SUPPORT);
+             case "Suplente": j.setRol(TipoRol.SUPLENTE);            
+         }
+            j.setDorsal(dorsal);
+            j.setSueldo(sueldo);
+            Equipo e=new Equipo();
+            e.setId(IdEquipo);
+            j.setEquipo(e);
+            
+            update=tj.Update(bd.conectar(), j);
+         }
+         catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+       return update;
     }
      
     public static void salir()

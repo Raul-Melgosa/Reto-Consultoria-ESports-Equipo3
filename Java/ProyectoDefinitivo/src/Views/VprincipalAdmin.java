@@ -266,6 +266,11 @@ AnimationClass animacion = new AnimationClass();
         bModificacionJugadores.setForeground(new java.awt.Color(255, 255, 255));
         bModificacionJugadores.setText("           Jugadores");
         bModificacionJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacionJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bModificacionJugadoresMouseClicked(evt);
+            }
+        });
         jPanel1.add(bModificacionJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
 
         bModificacionJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -738,6 +743,10 @@ AnimationClass animacion = new AnimationClass();
     private void bModificacionEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionEquiposMouseClicked
         Controlador.VentanaModificacionEquipo(this);
     }//GEN-LAST:event_bModificacionEquiposMouseClicked
+
+    private void bModificacionJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionJugadoresMouseClicked
+        Controlador.VentanaModificarJugador(this);
+    }//GEN-LAST:event_bModificacionJugadoresMouseClicked
   
     /**
      * @param args the command line arguments
