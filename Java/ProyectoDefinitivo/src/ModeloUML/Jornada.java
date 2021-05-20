@@ -25,6 +25,10 @@ public class Jornada {
     public Jornada() {
     }
     
+    public Jornada(int id) {
+        this.id=id;
+    }
+    
     public int getId() {
         return id;
     }

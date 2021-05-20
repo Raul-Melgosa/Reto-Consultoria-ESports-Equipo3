@@ -21,7 +21,7 @@ public class TablaPerfiles {
         try
         {
             con=c;
-            String plantilla="SELECT * FROM perfiles WHERE UPPER(NOMBRE_USUARIO)=UPPER(?) AND UPPER(CONTRASENNA)=UPPER(?)";
+            String plantilla="SELECT * FROM perfiles WHERE NOMBRE_USUARIO=? AND CONTRASENNA=?";
             PreparedStatement ps = con.prepareStatement(plantilla);
             ps.setString(1, nombre);
             ps.setString(2, pass);

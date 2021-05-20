@@ -25,20 +25,18 @@ public class VLogin extends javax.swing.JFrame {
     int xMouse;
     int yMouse;
     char enmascarador;
-    char modo;
     boolean menuAbierto;
     AnimationClass animacion=new AnimationClass();
    
     public VLogin() {
+        
         this.menuAbierto = false;
         initComponents();
         bCerrar.setBackground(new Color(0,0,0,0));
-        bModo.setBackground(new Color(0,0,0,0));
         this.setBackground(new Color(0,0,0,0));
         panelDerecha.requestFocus();
         this.enmascarador = tfPass.getEchoChar();
-        menu.setBackground(new Color(45,45,45,200));
-        this.modo = 'o';
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -55,9 +53,6 @@ public class VLogin extends javax.swing.JFrame {
         barraDrag = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        bMenu = new javax.swing.JLabel();
-        bModo = new javax.swing.JLabel();
-        menu = new javax.swing.JLabel();
         gifAbajo = new javax.swing.JLabel();
         gifArriba = new javax.swing.JLabel();
         panelDerecha = new javax.swing.JPanel();
@@ -128,26 +123,6 @@ public class VLogin extends javax.swing.JFrame {
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO-small.png"))); // NOI18N
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
-
-        bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
-        bMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bMenuMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 50));
-
-        bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/luna.png"))); // NOI18N
-        bModo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bModoMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bModo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 60, 40, 40));
-
-        menu.setBackground(new java.awt.Color(120, 120, 120));
-        menu.setOpaque(true);
-        jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 50, 300, 700));
 
         gifAbajo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gifAbajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte2.gif"))); // NOI18N
@@ -272,14 +247,7 @@ public class VLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_bCerrarMouseEntered
 
     private void bCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseExited
-        if(modo=='o')
-        {
-            bCerrar.setBackground(new java.awt.Color(45, 45, 45));
-        }
-        else
-        {
-            bCerrar.setBackground(new java.awt.Color(255,255,255));
-        }
+        bCerrar.setBackground(new java.awt.Color(45, 45, 45));
     }//GEN-LAST:event_bCerrarMouseExited
 
     private void tfUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUsernameFocusGained
@@ -293,16 +261,8 @@ public class VLogin extends javax.swing.JFrame {
         if(tfUsername.getText().equals(""))
         {
             tfUsername.setText("Nombre de usuario");
-            if(modo=='o')
-            {
-                tfUsername.setForeground(new Color(255,255,255));
-                barraUser.setForeground(new Color(255,255,255));
-            }
-            else
-            {
-                tfUsername.setForeground(new Color(0,0,0));
-                barraUser.setForeground(new Color(0,0,0));
-            }
+            tfUsername.setForeground(new Color(255,255,255));
+            barraUser.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_tfUsernameFocusLost
 
@@ -337,26 +297,11 @@ public class VLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_bMinimizarMouseClicked
 
     private void bMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseEntered
-        
-        if(modo=='o')
-        {
-            bMinimizar.setBackground(new Color(255,255,255,50));
-        }
-        else
-        {
-            bMinimizar.setBackground(new Color(0,0,0,50));
-        }
+        bMinimizar.setBackground(new Color(255,255,255,50));
     }//GEN-LAST:event_bMinimizarMouseEntered
 
     private void bMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseExited
-        if(modo=='o')
-        {
-            bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
-        }
-        else
-        {
-            bMinimizar.setBackground(new java.awt.Color(255,255,255));
-        }
+        bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
     }//GEN-LAST:event_bMinimizarMouseExited
 
     private void bIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bIniciarSesionMouseClicked
@@ -376,62 +321,6 @@ public class VLogin extends javax.swing.JFrame {
             System.out.println(e.getClass());
         }
     }//GEN-LAST:event_bIniciarSesionMouseClicked
-
-    private void bMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMenuMouseClicked
-        if(menuAbierto){
-            menuAbierto=false;
-            animacion.jLabelXLeft(menu.getX(), menu.getX()-300, 3, 5, menu);
-            animacion.jLabelXLeft(bModo.getX(), bModo.getX()-300, 3, 5, bModo);
-        }
-        else{
-            menuAbierto=true;
-            animacion.jLabelXRight(menu.getX(), menu.getX()+300, 3, 5, menu);
-            animacion.jLabelXRight(bModo.getX(), bModo.getX()+300, 3, 5, bModo);
-        }
-    }//GEN-LAST:event_bMenuMouseClicked
-
-    private void bModoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModoMouseClicked
-        if(modo==('o')){
-            modo='c';
-            bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sol.png")));
-            bCerrar.setBackground(new java.awt.Color(255,255,255));
-            bMinimizar.setBackground(new java.awt.Color(255,255,255));
-            bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png")));
-            bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar.png")));
-            bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu-negro.png")));
-            menu.setBackground(new Color (255,255,255,200));
-            panelDerecha.setBackground(new Color (255,255,255));
-            imgUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user.png")));
-            imgPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pass.png")));
-            bOjo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verPass.png")));
-            barraUser.setForeground(new Color(0,0,0));
-            barraPass.setForeground(new Color(0,0,0));
-            tfUsername.setBackground(new Color(255,255,255));
-            tfPass.setBackground(new Color(255,255,255));
-            tfUsername.setForeground(new Color(0,0,0));
-            tfPass.setForeground(new Color(0,0,0));
-        }
-        else{
-            modo='o';
-            bModo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/luna.png")));
-            bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png")));
-            bCerrar.setBackground(new java.awt.Color(45,45,45));
-            bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png")));
-            bMinimizar.setBackground(new java.awt.Color(45,45,45));
-            bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png")));
-            menu.setBackground(new Color (45,45,45,200));
-            panelDerecha.setBackground(new Color (45,45,45));
-            imgUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user-white.png")));
-            imgPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pass-white.png")));
-            bOjo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verPass-white.png")));
-            barraUser.setForeground(new Color(255,255,255));
-            barraPass.setForeground(new Color(255,255,255));
-            tfUsername.setBackground(new Color(45,45,45));
-            tfPass.setBackground(new Color(45,45,45));
-            tfUsername.setForeground(new Color(255,255,255));
-            tfPass.setForeground(new Color(255,255,255));
-        }
-    }//GEN-LAST:event_bModoMouseClicked
 
     private void tfPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPassActionPerformed
         try
@@ -510,9 +399,7 @@ public class VLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bCerrar;
     private javax.swing.JLabel bIniciarSesion;
-    private javax.swing.JLabel bMenu;
     private javax.swing.JLabel bMinimizar;
-    private javax.swing.JLabel bModo;
     private javax.swing.JLabel bOjo;
     private javax.swing.JLabel barraDrag;
     private javax.swing.JSeparator barraPass;
@@ -523,7 +410,6 @@ public class VLogin extends javax.swing.JFrame {
     private javax.swing.JLabel imgUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logo;
-    private javax.swing.JLabel menu;
     private javax.swing.JPanel panelDerecha;
     private javax.swing.JPasswordField tfPass;
     private javax.swing.JTextField tfUsername;

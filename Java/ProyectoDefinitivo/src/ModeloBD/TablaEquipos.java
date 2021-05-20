@@ -112,7 +112,7 @@ public class TablaEquipos {
     }
     public ArrayList SelectGeneral(Connection c) throws Exception{
         con=c;
-        String plantilla="SELECT NOMBRE FROM equipos ";
+        String plantilla="SELECT NOMBRE,ID_EQUIPO FROM equipos ";
          PreparedStatement ps=con.prepareStatement(plantilla);
          ResultSet resultado=ps.executeQuery();
          
@@ -121,6 +121,7 @@ public class TablaEquipos {
          while(resultado.next()){
             Equipo e =new Equipo();
             e.setNombre(resultado.getString("NOMBRE"));
+            e.setId(resultado.getInt("ID_EQUIPO"));
             nombreEquipo.add(e);
          }
         return nombreEquipo;

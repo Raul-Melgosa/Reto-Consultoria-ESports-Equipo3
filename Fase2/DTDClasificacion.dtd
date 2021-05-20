@@ -1,0 +1,4 @@
+<!ELEMENT clasificacion (equipo+)>
+<!ELEMENT equipo (ID_EQUIPO,PUNTOS)>
+<!ELEMENT ID_EQUIPO (#PCDATA)>
+<!ELEMENT PUNTOS (#PCDATA)>

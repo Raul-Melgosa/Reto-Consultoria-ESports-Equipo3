@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="jornada" type="tipoJornada"/>
+  <xs:complexType name="tipoJornada">
+    <xs:sequence>
+      <xs:element name="partido" maxOccurs="unbounded" type="tipoPartido"/>
+      <xs:element name="fechaExpira" maxOccurs="1" minOccurs="0" type="xs:date"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="tipoPartido">
+    <xs:sequence>
+      <xs:element name="ID_PARTIDO" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="HORA" minOccurs="1" maxOccurs="unbounded" type="xs:string"/>
+      <xs:element name="PARTIDAS_GANADAS_LOCAL" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="PARTIDAS_GANADAS_VISITANTE" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="ID_LOCAL" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="ID_VISITANTE" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="ID_JORNADA" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+      <xs:element name="ID_EQUIPO_GANADOR" minOccurs="1" maxOccurs="unbounded" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

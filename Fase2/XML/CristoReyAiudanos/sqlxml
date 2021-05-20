@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<documento xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDClasificacion.xsd">
+ <clasificacion>
+  <CLASIFICACION>
+   <LISTAEQUIPOS>
+    <EQUIPO Id_equipo="1">
+     <PUNTOS>6</PUNTOS>
+    </EQUIPO>
+    <EQUIPO Id_equipo="4">
+     <PUNTOS>6</PUNTOS>
+    </EQUIPO>
+    <EQUIPO Id_equipo="3">
+     <PUNTOS>0</PUNTOS>
+    </EQUIPO>
+    <EQUIPO Id_equipo="2">
+     <PUNTOS>0</PUNTOS>
+    </EQUIPO>
+   </LISTAEQUIPOS>
+  </CLASIFICACION>
+  <FECHA>15/05/21</FECHA>
+ </clasificacion>
+</documento>

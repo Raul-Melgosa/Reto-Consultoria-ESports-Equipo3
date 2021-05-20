@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="documento" type="tipoDocumento"/>
+  
+  <xs:complexType name="tipoDocumento">
+    <xs:sequence>
+      <xs:element name="clasificacion" type="tipoClasificacion"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="tipoClasificacion">
+    <xs:sequence>
+      <xs:element name="CLASIFICACION" type="tipoCLASIFICACION"/>
+      <xs:element name="FECHA" type="tipoFecha"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="tipoFecha">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{2}/[0-9]{2}/[0-9]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="tipoCLASIFICACION">
+    <xs:sequence>
+      <xs:element name="LISTAEQUIPOS" type="listaEquipos"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="listaEquipos">
+    <xs:sequence>
+      <xs:element name="EQUIPO" type="tipoEquipo"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="tipoEquipo">
+    <xs:sequence>
+      <xs:element name="PUNTOS" type="xs:int"/>
+    </xs:sequence>
+    <xs:attribute name="Id_equipo" type="xs:int"/>
+  </xs:complexType>
+</xs:schema>

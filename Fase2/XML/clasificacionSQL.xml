@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE clasificacion SYSTEM "DTDClasificacion.dtd">-->
+<clasificacion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDClasificacion.xsd">
+ <equipo>
+  <ID_EQUIPO>1</ID_EQUIPO>
+  <PUNTOS>6</PUNTOS>
+ </equipo>
+ <equipo>
+  <ID_EQUIPO>4</ID_EQUIPO>
+  <PUNTOS>6</PUNTOS>
+ </equipo>
+ <equipo>
+  <ID_EQUIPO>3</ID_EQUIPO>
+  <PUNTOS>0</PUNTOS>
+ </equipo>
+ <equipo>
+  <ID_EQUIPO>2</ID_EQUIPO>
+  <PUNTOS>0</PUNTOS>
+ </equipo>
+</clasificacion>
