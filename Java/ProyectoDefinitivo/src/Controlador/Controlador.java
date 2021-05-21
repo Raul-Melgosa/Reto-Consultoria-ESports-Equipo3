@@ -42,7 +42,7 @@ public class Controlador {
             tp=new TablaPerfiles();
             tJefe=new TablaJefes();
             tEquipo=new TablaEquipos();
-            VLogin login = new VLogin();
+            Views.VLogin login=new Views.VLogin();
             login.setVisible(true);
         }
         catch(Exception e)
@@ -199,6 +199,7 @@ public class Controlador {
         int id=0;
         try{
             id=tEquipo.SelectID(bd.conectar(),nombre);
+            bd.desconectar();
         }
         catch(Exception e){
             System.out.println(e.getClass()+e.getMessage());
@@ -227,6 +228,7 @@ public class Controlador {
         boolean insert=false;
         try{
             insert=tj.Insert(bd.conectar(), jugador);
+            bd.desconectar();
              
         }
         catch(Exception e){
@@ -245,6 +247,7 @@ public class Controlador {
         boolean delete=false;
         try{
             delete=tj.Delete(bd.conectar(), nombre, apellido);
+            bd.desconectar();
         }
         catch(Exception e){
             System.out.println(e.getClass()+e.getMessage());
@@ -256,6 +259,7 @@ public class Controlador {
         ArrayList <Equipo> nombreEquipos=new ArrayList();
         try{
             nombreEquipos=tEquipo.SelectGeneral(bd.conectar());
+            bd.desconectar();
             for(int x=0;x<nombreEquipos.size();x++){
             combo.addItem(nombreEquipos.get(x).getNombre());
             }
@@ -269,6 +273,7 @@ public class Controlador {
         ArrayList <Jugador> nombreJugador=new ArrayList();
         try{
             nombreJugador=tj.SelectGeneral(bd.conectar());
+            bd.desconectar();
             for(int x=0;x<nombreJugador.size();x++){
             CBjugador.addItem(nombreJugador.get(x).getNombre());
             }
@@ -292,6 +297,7 @@ public class Controlador {
         try{
             datos=tj.SelectJugador(bd.conectar(), j);
             n=tEquipo.SelectNombre(bd.conectar(), datos[0].getEquipo().getId());
+            bd.desconectar();
         }
         catch(Exception e){
             System.out.println(e.getClass()+e.getMessage());
@@ -315,6 +321,7 @@ public class Controlador {
         int IdEquipo=0;
         try{
             IdEquipo=tEquipo.SelectID(bd.conectar(), nEquipo);
+            bd.desconectar();
             
             Jugador j=new Jugador();
             j.setDni(dni);
@@ -339,6 +346,7 @@ public class Controlador {
             j.setEquipo(e);
             
             update=tj.Update(bd.conectar(), j);
+            bd.desconectar();
         }
         catch(Exception e){
             System.out.println(e.getClass()+e.getMessage());
@@ -362,6 +370,7 @@ public class Controlador {
         boolean insertar=false;
         try{
             insertar=tJefe.Insert(bd.conectar(), jefe);
+            bd.desconectar();
         }
         catch(Exception e){
             System.out.println(e.getClass()+e.getMessage());
@@ -385,6 +394,7 @@ public class Controlador {
         boolean delete=false;
         try{
             delete=tJefe.Delete(bd.conectar(), nombre, apellido);
+            bd.desconectar();
         }
         catch(Exception e){
             System.out.println(e.getClass()+e.getMessage());
@@ -427,7 +437,172 @@ public class Controlador {
             System.out.println(e.getClass());
         }
     }
-    
+    public static void VentanaModificarJefes(javax.swing.JFrame anterior){
+        anterior.dispose();
+        Views.Jefes.ModifJefe mj = new Views.Jefes.ModifJefe();
+        mj.setVisible(true);  
+    }
+    public static void LlenarComboBoxJefe(JComboBox CBjefe){
+        ArrayList <Jefe> nombreJefe=new ArrayList();
+        try{
+            nombreJefe=tJefe.SelectNombre(bd.conectar());
+            bd.desconectar();
+            for(int x=0;x<nombreJefe.size();x++){
+            CBjefe.addItem(nombreJefe.get(x).getNombre());
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+    }
+    public static String [] DatosJefe(String nombreJefe){
+        Jefe j=new Jefe();
+        j.setNombre(nombreJefe);
+        ArrayList <Jefe> datos=new ArrayList();
+        try{
+            datos=tJefe.SelectJefe(bd.conectar(), j);
+            bd.desconectar();
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+        d=new String [5];
+        
+        d[0]=datos.get(0).getDni();
+        d[1]=datos.get(0).getApellido();
+        d[2]=datos.get(0).getNickname();
+        d[3]=datos.get(0).getEmail();
+        
+        return d;  
+    }
+    public static boolean ModificarJefe(String dni,String nombre,String apellido,String nickname,String email){
+        Jefe j=new Jefe();
+        j.setDni(dni);
+        j.setNombre(nombre);
+        j.setApellido(apellido);
+        j.setNickname(nickname);
+        j.setEmail(email);
+        
+        boolean modificar=false;
+        try{
+            modificar=tJefe.Update(bd.conectar(), j);
+            bd.desconectar();
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+        return modificar;
+    }
+    public static void VentanaAltaPerfil(javax.swing.JFrame anterior){
+        anterior.dispose();
+        Views.Perfiles.AltaPerfil altaP=new Views.Perfiles.AltaPerfil();
+        altaP.setVisible(true);
+    }
+    public static boolean InsertarPerfil(String NombreUsuario,String contrasena,String email, String tipo ){
+        Perfil p=new Perfil();
+        p.setNombreUsuario(NombreUsuario);
+        p.setPassword(contrasena);
+        p.setEmail(email);
+       
+        switch(tipo){
+            case "Admin": p.setTipo(TipoPerfil.ADMIN);
+                break;
+            case "Usu":p.setTipo(TipoPerfil.USU);
+                break;
+        }
+        
+        boolean insertado=false;
+        try{
+            insertado=tp.Insert(bd.conectar(), p);
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+        return insertado;
+    }
+    public static void VentanaBajaPerfil(javax.swing.JFrame anterior){
+        anterior.dispose();
+        Views.Perfiles.BajaPerfil bp= new Views.Perfiles.BajaPerfil();
+        bp.setVisible(true);
+    }
+    public static boolean BajaPerfil(String nombreUsu,String contrasena){
+        Perfil p=new Perfil();
+        p.setNombreUsuario(nombreUsu);
+        p.setPassword(nombreUsu);
+        
+        boolean baja=false;
+        try{
+            baja=tp.Delete(bd.conectar(), p);
+            bd.desconectar();
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+        return baja;
+    }
+    public static void VentanaModificarPerfil(javax.swing.JFrame anterior){
+         anterior.dispose();
+        Views.Perfiles.ModifPerfil mp= new Views.Perfiles.ModifPerfil();
+        mp.setVisible(true);
+    }
+     public static void LLenarComboBoxPerfil(JComboBox combo){
+        ArrayList <Perfil> nombrePerfiles=new ArrayList();
+        try{
+            nombrePerfiles=tp.SelectGeneral(bd.conectar());
+            bd.desconectar();
+            for(int x=0;x<nombrePerfiles.size();x++){
+            combo.addItem(nombrePerfiles.get(x).getNombreUsuario());
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        } 
+    }
+     public static String [] DatosPerfil(String nombrePerfil){
+        Perfil p=new Perfil();
+        p.setNombreUsuario(nombrePerfil);
+        ArrayList <Perfil> datos=new ArrayList();
+        try{
+            datos=tp.SelectJefe(bd.conectar(), p);
+            bd.desconectar();
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+        d=new String [5];
+        
+        d[0]=datos.get(0).getNombreUsuario();
+        d[1]=datos.get(0).getPassword();
+        d[2]=datos.get(0).getEmail();
+        
+        return d;  
+    }
+      public static boolean ModificarPerfil(String nombreUsu,String contrasenna,String email,String tipo){
+        Perfil p=new Perfil();
+        p.setEmail(email);
+        p.setNombreUsuario(nombreUsu);
+        p.setPassword(contrasenna);
+        
+        switch(tipo){
+            case "Admin": p.setTipo(TipoPerfil.ADMIN);
+                break;
+            case "Usu": p.setTipo(TipoPerfil.USU);
+                break;
+        }
+        
+       boolean modificar=false;
+        int id=0;
+        try{
+            id=tp.SelectID(bd.conectar(), nombreUsu, contrasenna);
+            modificar=tp.Update(bd.conectar(), p, id);
+            bd.desconectar();
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+        return modificar;
+    }
+            
     public static void salir()
     {
         System.exit(0);

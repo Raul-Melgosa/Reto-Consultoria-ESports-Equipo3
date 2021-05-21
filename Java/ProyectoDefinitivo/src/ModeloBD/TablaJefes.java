@@ -9,6 +9,7 @@ import ModeloUML.Jefe;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -62,5 +63,56 @@ public class TablaJefes {
             delete=true;
         }
         return delete;
+    }
+       public ArrayList SelectNombre(Connection c) throws Exception{
+        con=c;
+        String plantilla="SELECT NOMBRE FROM jefes";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        ResultSet resultado=ps.executeQuery();
+         
+        ArrayList <Jefe> nombreEquipo=new ArrayList();
+         
+        while(resultado.next()){
+           Jefe jefe =new Jefe();
+           jefe.setNombre(resultado.getString("NOMBRE"));
+           nombreEquipo.add(jefe);
+        }
+        return nombreEquipo;
+    }
+    public ArrayList <Jefe> SelectJefe(Connection c,Jefe j) throws Exception{
+        con=c;
+        String plantilla="Select * FROM jefes WHERE upper(nombre)=upper(?)";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        ps.setString(1,j.getNombre());
+        
+        ArrayList <Jefe> datos=new ArrayList();
+        ResultSet resultado=ps.executeQuery();
+        if(resultado.next()){
+            j.setDni(resultado.getString("DNI"));
+            j.setApellido(resultado.getString("APELLIDOS"));
+            j.setNickname(resultado.getString("NICKNAME"));
+            j.setEmail(resultado.getString("EMAIL"));
+            
+            datos.add(j);
+        }
+         return datos;
+    }
+    public boolean Update(Connection c,Jefe j) throws Exception{
+        con=c;
+        String plantilla="UPDATE jefes SET nombre=?,apellidos=?,nickname=?,email=? WHERE upper(dni)=upper(?)";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        ps.setString(1,j.getNombre());
+        ps.setString(2,j.getApellido());
+        ps.setString(3,j.getNickname());
+        ps.setString(4,j.getEmail());
+        ps.setString(5,j.getDni());
+         
+        int m=ps.executeUpdate();
+        boolean modificar=false;
+        if(m==1){
+            modificar=true;
+        }
+        ps.close();
+        return modificar;
     }
 }
