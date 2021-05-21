@@ -26,6 +26,11 @@ public class Partido {
         this.idLocal = idLocal;
         this.idVisitante = idVisitante;
     }
+    
+    public Partido(int idLocal, int idVisitante) {
+        this.idLocal = idLocal;
+        this.idVisitante = idVisitante;
+    }
 
     public Partido(int id, LocalTime hora, int partidasGanadasLocal, int partidasGanadasVisitante, int idLocal, int idVisitante, int idGanador) {
         this.id = id;

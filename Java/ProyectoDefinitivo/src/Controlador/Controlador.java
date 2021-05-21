@@ -402,41 +402,6 @@ public class Controlador {
         return delete;
     }
     
-    public static void generarLiga()
-    {
-        try
-        {
-            Connection c=bd.conectar();
-//            if(tl.generarLiga(c))
-//            {
-                ArrayList<Equipo> listaEquipos=tEquipo.SelectGeneral(c);
-                ArrayList<Jornada> listaJornadas=tl.SelectJornadas(c);
-                for(int x=0;x<listaEquipos.size();x++)
-                {
-                    ArrayList<Equipo> emparejador = (ArrayList<Equipo>)listaEquipos.clone();
-                    for(int y=0;y<=x;y++)
-                    {
-                        emparejador.remove(0);
-                    }
-                    int limite=emparejador.size();
-                    for(int z=0;z<limite;z++)
-                    {
-                        int a=(int) (Math.random()*(emparejador.size()));
-                        Partido p=new Partido(1,LocalTime.now(),emparejador.get(a).getId(),listaEquipos.get(x).getId());
-                        Partido p2=new Partido(1,LocalTime.now(),listaEquipos.get(x).getId(),emparejador.get(a).getId());
-                        tl.insertarPartido(c,emparejador.get(a).getId(),listaEquipos.get(x).getId(),(z+1));
-                        tl.insertarPartido(c,listaEquipos.get(x).getId(),emparejador.get(a).getId(),((z+1)+(listaJornadas.size()/2)));
-                        emparejador.remove(a);
-                    }
-                }
-//            }
-            bd.desconectar();
-        }
-        catch(Exception e)
-        {
-            System.out.println(e.getClass());
-        }
-    }
     public static void VentanaModificarJefes(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Jefes.ModifJefe mj = new Views.Jefes.ModifJefe();
@@ -602,7 +567,133 @@ public class Controlador {
         }
         return modificar;
     }
+      
+    public static void generarLiga()
+    {
+        try
+        {
+            Connection c=bd.conectar();
+            if(tl.generarLiga(c))
+            {
+                ArrayList<Equipo> listaEquipos=tEquipo.SelectGeneral(c);
+                int maximoPartidos=(listaEquipos.size()/2);
+                ArrayList<Jornada> listaJornadas=tl.SelectJornadas(c);
+                for(int x=0;x<listaEquipos.size();x++)
+                {
+                    ArrayList<Equipo> emparejador = (ArrayList<Equipo>)listaEquipos.clone();
+                    for(int y=0;y<=x;y++)
+                    {
+                        emparejador.remove(0);
+                    }
+                    int limite=emparejador.size();
+                    for(int z=0;z<limite;z++)
+                    {
+                        int a=(int) (Math.random()*(emparejador.size()));
+                        boolean partidoInsertado=false;
+                        for(int f=0;f<listaJornadas.size()&&!partidoInsertado;f++)
+                        {
+                            if(listaJornadas.get(f).getListaPartidos().isEmpty())
+                            {
+                                tl.InsertarPartido(c,emparejador.get(a).getId(),listaEquipos.get(x).getId(),listaJornadas.get(f).getId(),horaAleatoria());
+                                listaJornadas.get(f).getListaPartidos().add(new Partido(emparejador.get(a).getId(),listaEquipos.get(x).getId()));
+                                tl.InsertarPartido(c,listaEquipos.get(x).getId(),emparejador.get(a).getId(),(listaJornadas.get(f).getId()+listaJornadas.size()/2),horaAleatoria());
+                                listaJornadas.get((f+(listaJornadas.size()/2))).getListaPartidos().add(new Partido(listaEquipos.get(x).getId(),emparejador.get(a).getId()));
+                                partidoInsertado=true;
+                            }
+                            else if(listaJornadas.get(f).getListaPartidos().size()==maximoPartidos)
+                            {
+                                
+                            }
+                            else
+                            {
+                                boolean apto=true;
+                                for(int h=0;h<listaJornadas.get(f).getListaPartidos().size()&&!partidoInsertado;h++)
+                                {
+                                    if(listaJornadas.get(f).getListaPartidos().get(h).getIdLocal()==listaEquipos.get(x).getId() ||
+                                       listaJornadas.get(f).getListaPartidos().get(h).getIdVisitante()==listaEquipos.get(x).getId() ||
+                                       listaJornadas.get(f).getListaPartidos().get(h).getIdLocal()==emparejador.get(a).getId() ||
+                                       listaJornadas.get(f).getListaPartidos().get(h).getIdVisitante()==emparejador.get(a).getId())
+                                    {
+                                        apto=false;
+                                    }
+                                }
+                                if(apto)
+                                {
+                                    tl.InsertarPartido(c,emparejador.get(a).getId(),listaEquipos.get(x).getId(),listaJornadas.get(f).getId(),horaAleatoria());
+                                    listaJornadas.get(f).getListaPartidos().add(new Partido(emparejador.get(a).getId(),listaEquipos.get(x).getId()));
+                                    tl.InsertarPartido(c,listaEquipos.get(x).getId(),emparejador.get(a).getId(),(listaJornadas.get(f).getId()+listaJornadas.size()/2),horaAleatoria());
+                                    listaJornadas.get((f+(listaJornadas.size()/2))).getListaPartidos().add(new Partido(listaEquipos.get(x).getId(),emparejador.get(a).getId()));
+                                    partidoInsertado=true;
+                                }
+                                
+                            }
+                        }
+                        emparejador.remove(a);
+                    }
+                }
+            }
+            bd.desconectar();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getClass());
+        }
+    }
+    
+    public static void rellenarClasificacion(javax.swing.JTable tabla)
+    {
+        try
+        {
+           Connection c=bd.conectar();
+            ArrayList<String[]> datos=tl.SelectClasificacion(c);
             
+            javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) tabla.getModel();
+            for(int x=0;x<datos.size();x++)
+            {
+                String nombre=tEquipo.SelectNombre(c, Integer.parseInt(datos.get(x)[0]));
+                model.addRow(new Object[]{x+1,nombre , datos.get(x)[1]});
+            }
+            bd.desconectar();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getClass());
+        }
+    }
+    
+    public static String horaAleatoria()
+    {
+        String devolver="";
+        switch((int)(Math.random()*7))
+        {
+            case 0:
+                devolver="16:15:00";
+                break;
+            case 1:
+                devolver="17:00:00";
+                break;
+            case 2:
+                devolver="18:00:00";
+                break;
+            case 3:
+                devolver="19:00:00";
+                break;
+            case 4:
+                devolver="21:00:00";
+                break;
+            case 5:
+                devolver="22:00:00";
+                break;
+            case 6:
+                devolver="17:30:00";
+                break;
+            default:
+                devolver="18:30:00";
+                break;
+        }
+        return devolver;
+    }
+    
     public static void salir()
     {
         System.exit(0);
