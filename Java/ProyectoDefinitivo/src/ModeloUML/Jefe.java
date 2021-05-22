@@ -86,6 +86,11 @@ public class Jefe {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+    @Override
+    public String toString() {
+        return "id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ",nickname=" + nickname;
+    }
     
     
 }

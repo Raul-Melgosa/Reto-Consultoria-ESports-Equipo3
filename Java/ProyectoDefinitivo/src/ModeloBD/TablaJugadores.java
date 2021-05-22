@@ -54,7 +54,7 @@ public class TablaJugadores {
         }
         return delete;
     }
-     public ArrayList SelectGeneral(Connection c) throws Exception{
+     public ArrayList SelectNombre(Connection c) throws Exception{
         con=c;
         String plantilla="SELECT NOMBRE FROM JUGADORES ORDER BY ID_EQUIPO";
          PreparedStatement ps=con.prepareStatement(plantilla);
@@ -110,5 +110,44 @@ public class TablaJugadores {
          }
          
         return modificar;  
+     }
+     public ArrayList <Integer> Sueldos(Connection c) throws Exception {
+        con=c;
+        String plantilla="SELECT SUELDO FROM JUGADORES";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        
+        ResultSet rs= ps.executeQuery();
+       ArrayList <Integer> sueldosJ=new ArrayList();
+        if(rs.next()){
+             int sueldo=0;
+            sueldo=rs.getInt("SUELDO");
+            sueldosJ.add(sueldo);
+        }
+        return sueldosJ;
+    }
+      public ArrayList <Jugador> SelectGeneral(Connection c) throws Exception {
+         con=c;
+         String plantilla="SELECT * FROM jugadores";
+         PreparedStatement ps=con.prepareStatement(plantilla);
+         
+         ResultSet resultado=ps.executeQuery();
+         
+         ArrayList <Jugador> datos=new ArrayList();
+         if(resultado.next()){
+             Equipo e= new Equipo();
+             Jugador j=new Jugador();
+             e.setId(resultado.getInt("ID_EQUIPO"));
+             j.setEquipo(e);
+             j.setId(resultado.getInt("ID_JUGADORES"));
+             j.setDni(resultado.getString("DNI"));
+             j.setApellido(resultado.getString("APELLIDO"));
+             j.setNickname(resultado.getString("NICKNAME"));
+             j.setRol(TipoRol.valueOf(resultado.getString("ROL")));
+             j.setSueldo(resultado.getInt("SUELDO"));
+             j.setDorsal(resultado.getInt("Dorsal"));
+             
+             datos.add(j);
+         }
+         return datos;
      }
 }

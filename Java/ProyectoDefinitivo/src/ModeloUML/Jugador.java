@@ -116,6 +116,11 @@ public class Jugador {
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
+
+    @Override
+    public String toString() {
+        return "id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", nickname=" + nickname + ", rol=" + rol + ", sueldo=" + sueldo + ", dorsal=" + dorsal + ", equipo=" + equipo ;
+    }
     
     
 }

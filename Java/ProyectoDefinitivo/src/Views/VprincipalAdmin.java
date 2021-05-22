@@ -113,7 +113,6 @@ AnimationClass animacion = new AnimationClass();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
         setUndecorated(true);
         setResizable(false);
@@ -1068,7 +1067,7 @@ AnimationClass animacion = new AnimationClass();
     }//GEN-LAST:event_bConsultaMouseClicked
 
     private void bConsultaEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaEquiposMouseClicked
-        // TODO add your handling code here:
+       Controlador.VentanaConsulta(this);
     }//GEN-LAST:event_bConsultaEquiposMouseClicked
 
     private void bConsultaJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaJugadoresMouseClicked

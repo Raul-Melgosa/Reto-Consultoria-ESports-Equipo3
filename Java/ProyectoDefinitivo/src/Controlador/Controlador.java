@@ -26,6 +26,7 @@ public class Controlador {
     private static TablaPerfiles tp;
     private static TablaJefes tJefe;
     private static TablaEquipos tEquipo;
+    private static TablaTecnicos tTecnico;
 //Base de datos
     private static BaseDeDatos bd;
 //Perfil
@@ -42,8 +43,11 @@ public class Controlador {
             tp=new TablaPerfiles();
             tJefe=new TablaJefes();
             tEquipo=new TablaEquipos();
-            Views.VLogin login=new Views.VLogin();
-            login.setVisible(true);
+            tTecnico=new TablaTecnicos();
+            //Views.VLogin login=new Views.VLogin();
+            //login.setVisible(true);
+            Views.Vconsulta vc=new Views.Vconsulta();
+            vc.setVisible(true);
         }
         catch(Exception e)
         {
@@ -258,7 +262,7 @@ public class Controlador {
      public static void LLenarComboBoxEquipo(JComboBox combo){
         ArrayList <Equipo> nombreEquipos=new ArrayList();
         try{
-            nombreEquipos=tEquipo.SelectGeneral(bd.conectar());
+            nombreEquipos=tEquipo.SelectNombreId(bd.conectar());
             bd.desconectar();
             for(int x=0;x<nombreEquipos.size();x++){
             combo.addItem(nombreEquipos.get(x).getNombre());
@@ -272,7 +276,7 @@ public class Controlador {
     public static void LlenarComboBoxJugador(JComboBox CBjugador){
         ArrayList <Jugador> nombreJugador=new ArrayList();
         try{
-            nombreJugador=tj.SelectGeneral(bd.conectar());
+            nombreJugador=tj.SelectNombre(bd.conectar());
             bd.desconectar();
             for(int x=0;x<nombreJugador.size();x++){
             CBjugador.addItem(nombreJugador.get(x).getNombre());
@@ -513,7 +517,7 @@ public class Controlador {
      public static void LLenarComboBoxPerfil(JComboBox combo){
         ArrayList <Perfil> nombrePerfiles=new ArrayList();
         try{
-            nombrePerfiles=tp.SelectGeneral(bd.conectar());
+            nombrePerfiles=tp.SelectNombreUsuario(bd.conectar());
             bd.desconectar();
             for(int x=0;x<nombrePerfiles.size();x++){
             combo.addItem(nombrePerfiles.get(x).getNombreUsuario());
@@ -575,7 +579,7 @@ public class Controlador {
             Connection c=bd.conectar();
             if(tl.generarLiga(c))
             {
-                ArrayList<Equipo> listaEquipos=tEquipo.SelectGeneral(c);
+                ArrayList<Equipo> listaEquipos=tEquipo.SelectNombreId(c);
                 int maximoPartidos=(listaEquipos.size()/2);
                 ArrayList<Jornada> listaJornadas=tl.SelectJornadas(c);
                 for(int x=0;x<listaEquipos.size();x++)
@@ -693,7 +697,275 @@ public class Controlador {
         }
         return devolver;
     }
-    
+    public static void VentanaAltaTecnico(javax.swing.JFrame anterior){
+        anterior.dispose();
+        Views.Tecnicos.AltaTecnico altaT=new Views.Tecnicos.AltaTecnico();
+        altaT.setVisible(true);
+    }
+    public static boolean ValidarTecnicos(String tipo,String nombreEquipo){
+       boolean tieneTecnico=false;
+        try{
+            int id=0;
+            id=tEquipo.SelectID(bd.conectar(), nombreEquipo);
+            bd.desconectar();
+            
+            Tecnico t=new Tecnico();
+            Equipo e=new Equipo();
+            e.setId(id);
+            t.setEquipo(e);
+           
+           String tipoTecnico="";
+           tipoTecnico=tTecnico.ValidarTecnico(bd.conectar(), t);
+           bd.desconectar();
+           
+           
+           if(tipoTecnico.equals(tipo)){
+               tieneTecnico=true;
+           } 
+
+        }
+         catch(Exception ex)
+        {
+            System.out.println(ex.getClass());
+        }
+        
+        return tieneTecnico;
+        
+    }
+    public static boolean ValidarSueldo(int sueldo){
+        boolean mediaSueldo=false;
+        try{
+            //media tecnicos
+            int mediaT=0;
+            ArrayList <Integer> sueldosT=new ArrayList();
+            sueldosT=tTecnico.Sueldos(bd.conectar());
+            bd.desconectar();
+            for(int x=0;x<sueldosT.get(x);x++){
+                mediaT=sueldosT.get(x);
+            }
+            mediaT=mediaT+sueldo;
+            mediaT=mediaT/(sueldosT.size()+1);
+            
+            //media Jugadores
+            int mediaJ=0;
+            ArrayList <Integer> sueldosJ=new ArrayList();
+            sueldosJ=tj.Sueldos(bd.conectar());
+            bd.desconectar();
+            for(int x=0;x<sueldosJ.get(x);x++){
+                mediaJ=sueldosJ.get(x);
+            }
+            mediaJ=mediaJ/(sueldosJ.size());
+            
+            //media Jefes
+            int mediaJefe=0;
+            ArrayList <Integer> sueldosJefe=new ArrayList();
+            sueldosJefe=tJefe.Sueldos(bd.conectar());
+            bd.desconectar();
+            for(int x=0;x<sueldosJefe.get(x);x++){
+                mediaJefe=sueldosJefe.get(x);
+            }
+            mediaJefe=mediaJefe/(sueldosJefe.size());
+            
+            int mediaTotal=(mediaT+mediaJ+mediaJefe)/3;
+            
+            if(mediaTotal>=2000000)
+                mediaSueldo=true;
+        }
+         catch(Exception ex)
+        {
+            System.out.println(ex.getClass());
+        }
+        return mediaSueldo;
+    }
+    public static boolean AltaTecnico(String dni,String nombre,String apellido,String nickname,int sueldo,String tipo,String nombreEquipo){
+        boolean alta=false;
+        try{
+             Tecnico t=new Tecnico();
+             t.setDni(dni);
+             t.setNombre(nombre);
+             t.setApellido(apellido);
+             t.setNickname(nickname);
+             t.setSueldo(sueldo);
+           
+             switch(tipo){
+                 case "Principal": t.setTipo(TipoTecnico.PRINCIPAL);
+                    break;
+                 case "Asistente": t.setTipo(TipoTecnico.ASISTENTE);
+                    break;
+             }
+             
+            int id=0;
+            id=tEquipo.SelectID(bd.conectar(), nombreEquipo);
+            bd.desconectar();
+            
+           
+            Equipo e=new Equipo();
+            e.setId(id);
+            t.setEquipo(e);
+           
+            alta=tTecnico.Insert(bd.conectar(), t);
+            bd.desconectar();
+        }
+          catch(Exception ex)
+        {
+            System.out.println(ex.getClass());
+        }
+        
+        
+        
+        return alta;
+    }
+     public static void VentanaBajaTecnico(javax.swing.JFrame anterior){
+        anterior.dispose();
+        Views.Tecnicos.BajaTecnico bajaT=new Views.Tecnicos.BajaTecnico();
+        bajaT.setVisible(true);
+    }
+    public static boolean BajaTecnico(String nombre,String apellido){
+        boolean baja=false;
+        Tecnico t=new Tecnico ();
+        t.setNombre(nombre);
+        t.setApellido(apellido);
+        try{
+            baja=tTecnico.Delete(bd.conectar(), t);
+            bd.desconectar();
+        }
+          catch(Exception ex)
+        {
+            System.out.println(ex.getClass());
+        }
+        return baja;
+    }
+     public static void VentanaModificarTecnico(javax.swing.JFrame anterior){
+        anterior.dispose();
+        Views.Tecnicos.ModifTecnico modificarT=new Views.Tecnicos.ModifTecnico();
+        modificarT.setVisible(true);
+    }
+    public static void LlenarComboBoxTecnico(JComboBox CBtecnico){
+        ArrayList <Jugador> nombreTecnico=new ArrayList();
+        try{
+            nombreTecnico=tTecnico.SelectNombre(bd.conectar());
+            bd.desconectar();
+            for(int x=0;x<nombreTecnico.size();x++){
+            CBtecnico.addItem(nombreTecnico.get(x).getNombre());
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+    }
+    public static String [] DatosTecnico(String nombre){
+       String nombreEquipo="";
+        Tecnico t=new Tecnico();
+       t.setNombre(nombre);
+       Tecnico [] datosTecnico=new Tecnico[2];
+        try{
+            datosTecnico=tTecnico.SelectTecnico(bd.conectar(), t);
+            bd.desconectar();
+            nombreEquipo=tEquipo.SelectNombre(bd.conectar(), datosTecnico[0].getEquipo().getId());
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }
+        String [] datos= new String [8];
+        datos[0]=datosTecnico[0].getDni();
+        datos[1]=datosTecnico[0].getNombre();
+        datos[2]=datosTecnico[0].getApellido();
+        datos[3]=datosTecnico[0].getNickname();
+        datos[4]=nombreEquipo;
+        datos[5]=Integer.toString(datosTecnico[0].getSueldo());
+        datos[6]=datosTecnico[0].getTipo().toString();
+        
+        return datos;
+    }
+    public static boolean ModificarTecnico(String dni,String nombre,String apellido,String nickname,int sueldo,String tipo,String nombreEquipo){
+        boolean modificar=false,mediaSueldo=false;
+        
+        mediaSueldo=ValidarSueldo(sueldo);
+        if(mediaSueldo==true)
+            modificar=false;
+        else
+            try{
+                Tecnico t=new Tecnico();
+                
+                int id=0;
+                id=tEquipo.SelectID(bd.conectar(), nombreEquipo);
+                bd.desconectar();
+                
+                 switch(tipo){
+                 case "Principal": t.setTipo(TipoTecnico.PRINCIPAL);
+                    break;
+                 case "Asistente": t.setTipo(TipoTecnico.ASISTENTE);
+                    break;
+                }
+                 
+                 t.setDni(dni);
+                 t.setNombre(nombre);
+                 t.setApellido(apellido);
+                 t.setNickname(nickname);
+                 t.setSueldo(sueldo);
+                 
+                 modificar=tTecnico.Update(bd.conectar(), t);
+                
+            }
+            catch(Exception e){
+                System.out.println(e.getClass()+e.getMessage());
+            }  
+        
+        return modificar;
+    }
+
+    public static void VentanaConsulta(javax.swing.JFrame anterior){
+        anterior.dispose();
+        Views.Vconsulta vc=new Views.Vconsulta();
+        vc.setVisible(true);
+    }
+    public static ArrayList <String> Datos(String t){
+       ArrayList <Equipo> eq=new ArrayList();
+       ArrayList <Jugador> ju=new ArrayList();
+       ArrayList <Jefe> je=new ArrayList();
+       ArrayList <Tecnico> te=new ArrayList();
+       ArrayList <Perfil> pe=new ArrayList();
+       ArrayList <String> datos=new ArrayList();
+       
+       try{
+           switch(t){
+            case "Equipos": eq=tEquipo.SelectGeneral(bd.conectar());
+                            bd.desconectar();
+                            for(int x=0;x<eq.size();x++){
+                                datos.add(eq.get(x).toString());
+                            }                   
+                break;
+            case "Jugadores":  ju=tj.SelectGeneral(bd.conectar());
+                            bd.desconectar();
+                            for(int x=0;x<ju.size();x++){
+                                datos.add(ju.get(x).toString());
+                            }
+                break;
+            case "Jefes":  je=tJefe.SelectGeneral(bd.conectar());
+                            bd.desconectar();
+                            for(int x=0;x<je.size();x++){
+                                datos.add(je.get(x).toString());
+                            }
+                break;
+            case "Tecnicos": te=tTecnico.SelectGeneral(bd.conectar());
+                            bd.desconectar();
+                            for(int x=0;x<te.size();x++){
+                                datos.add(te.get(x).toString());
+                            }
+                break;
+            case "Perfiles": pe=tp.SelectGeneral(bd.conectar());
+                            bd.desconectar();
+                            for(int x=0;x<pe.size();x++){
+                                datos.add(pe.get(x).toString());
+                            }
+                break;
+           }
+       }
+        catch(Exception e){
+                System.out.println(e.getClass()+e.getMessage());
+            }  
+        return datos;
+    }
     public static void salir()
     {
         System.exit(0);

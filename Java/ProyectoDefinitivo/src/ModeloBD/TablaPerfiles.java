@@ -82,7 +82,7 @@ public class TablaPerfiles {
        }
        return insert;
     }
-     public ArrayList SelectGeneral(Connection c) throws Exception{
+     public ArrayList SelectNombreUsuario(Connection c) throws Exception{
         con=c;
         String plantilla="SELECT NOMBRE_USUARIO FROM perfiles ";
          PreparedStatement ps=con.prepareStatement(plantilla);
@@ -146,5 +146,22 @@ public class TablaPerfiles {
         ps.close();
         return modificar;
     }
+     public ArrayList <Perfil> SelectGeneral(Connection c) throws Exception {
+         con=c;
+         String plantilla="SELECT * FROM perfiles";
+         PreparedStatement ps=con.prepareStatement(plantilla);
+         
+         ResultSet resultado=ps.executeQuery();
+         
+         ArrayList <Perfil> datos=new ArrayList();
+         if(resultado.next()){
+             Perfil p=new Perfil();
+             p.setId(resultado.getInt("ID_PERFIL"));
+             p.setNombreUsuario(resultado.getString("NOMBRE_USUARIO"));
+             p.setEmail(resultado.getString("EMAIL"));
+             datos.add(p);
+         }
+         return datos;
+     }
 
 }

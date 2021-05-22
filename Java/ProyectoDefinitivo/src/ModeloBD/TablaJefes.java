@@ -115,4 +115,39 @@ public class TablaJefes {
         ps.close();
         return modificar;
     }
+    public ArrayList <Integer> Sueldos(Connection c) throws Exception {
+        con=c;
+        String plantilla="SELECT SUELDO FROM JEFES";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        
+        ResultSet rs= ps.executeQuery();
+       ArrayList <Integer> sueldosJefe=new ArrayList();
+        if(rs.next()){
+             int sueldo=0;
+            sueldo=rs.getInt("SUELDO");
+            sueldosJefe.add(sueldo);
+        }
+        return sueldosJefe;
+    }
+     public ArrayList <Jefe> SelectGeneral(Connection c) throws Exception {
+         con=c;
+         String plantilla="SELECT * FROM jefes";
+         PreparedStatement ps=con.prepareStatement(plantilla);
+         
+         ResultSet resultado=ps.executeQuery();
+         
+         ArrayList <Jefe> datos=new ArrayList();
+         if(resultado.next()){
+             Jefe j=new Jefe();
+             j.setNombre(resultado.getString("NOMBRE"));
+             j.setApellido(resultado.getString("APELLIDO"));
+             j.setDni(resultado.getString("DNI"));
+             j.setId(resultado.getInt("ID_JEFE"));
+             j.setEmail(resultado.getString("EMAIL"));
+             j.setNickname(resultado.getString("NICKNAME"));
+             datos.add(j);
+         }
+         return datos;
+     }
+
 }

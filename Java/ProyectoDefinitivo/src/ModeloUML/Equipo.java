@@ -91,6 +91,11 @@ public class Equipo {
     public void setAsistente(Tecnico asistente) {
         this.asistente = asistente;
     }
+
+    @Override
+    public String toString() {
+        return "id=" + id + ", nombre=" + nombre + ", jugadoresEquipo=" + jugadoresEquipo + ", principal=" + principal + ", asistente=" + asistente + ", jefe=" + jefe ;
+    }
     
     
 }

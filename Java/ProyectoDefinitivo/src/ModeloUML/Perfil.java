@@ -14,6 +14,7 @@ public class Perfil {
     private String password;
     private String email;
     private TipoPerfil tipo;
+    private int id;
 
     public Perfil(String nombreUsuario, String password, String email, TipoPerfil tipo) {
         this.nombreUsuario = nombreUsuario;
@@ -57,5 +58,19 @@ public class Perfil {
         this.tipo = tipo;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "id=" + id + "nombreUsuario=" + nombreUsuario + ", password=" + password + ", email=" + email + ", tipo=" + tipo ;
+    }
+    
+    
     
 }

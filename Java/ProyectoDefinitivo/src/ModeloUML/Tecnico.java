@@ -17,6 +17,7 @@ public class Tecnico {
     private int sueldo;
     private String nickname;
     private TipoTecnico tipo;
+    private Equipo equipo;
 
     public Tecnico(int id, String dni, String nombre, String apellido, int sueldo, String nickname, TipoTecnico tipo) {
         this.id = id;
@@ -28,13 +29,14 @@ public class Tecnico {
         this.tipo = tipo;
     }
 
-    public Tecnico(int id, String dni, String nombre, String apellido, int sueldo, TipoTecnico tipo) {
+    public Tecnico(int id, String dni, String nombre, String apellido, int sueldo, TipoTecnico tipo,Equipo equipo) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.sueldo = sueldo;
         this.tipo = tipo;
+        this.equipo = equipo;
     }
 
     public Tecnico() {
@@ -94,6 +96,19 @@ public class Tecnico {
 
     public void setTipo(TipoTecnico tipo) {
         this.tipo = tipo;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
+    @Override
+    public String toString() {
+        return  "id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", sueldo=" + sueldo + ", nickname=" + nickname + ", tipo=" + tipo + ", equipo=" + equipo ;
     }
 
     

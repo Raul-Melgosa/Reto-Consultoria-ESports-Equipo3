@@ -110,7 +110,7 @@ public class TablaEquipos {
          }
          return id;
     }
-    public ArrayList SelectGeneral(Connection c) throws Exception{
+    public ArrayList SelectNombreId(Connection c) throws Exception{
         con=c;
         String plantilla="SELECT NOMBRE,ID_EQUIPO FROM equipos ";
          PreparedStatement ps=con.prepareStatement(plantilla);
@@ -138,4 +138,23 @@ public class TablaEquipos {
          }
          return nom;
     }
+     public ArrayList <Equipo> SelectGeneral(Connection c) throws Exception {
+         con=c;
+         String plantilla="SELECT * FROM equipos";
+         PreparedStatement ps=con.prepareStatement(plantilla);
+         
+         ResultSet resultado=ps.executeQuery();
+         
+         ArrayList <Equipo> datos=new ArrayList();
+         if(resultado.next()){
+             Equipo e= new Equipo();
+             Jefe j=new Jefe();
+             e.setNombre(resultado.getString("NOMBRE"));
+             e.setId(resultado.getInt("ID_EQUIPO"));
+             j.setId(resultado.getInt("ID_JEFE"));
+             e.setJefe(j);
+             datos.add(e);
+         }
+         return datos;
+     }
 }
