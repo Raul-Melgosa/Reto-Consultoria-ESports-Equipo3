@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Alaitzutzu
+ * Ventana de alta de tecnicos
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class AltaTecnico extends javax.swing.JFrame {
 private int xMouse,yMouse;

@@ -6,7 +6,7 @@
 package ModeloUML;
 
 /**
- *
+ * Clase para almacenar el tipo de rol
  * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public enum TipoRol {

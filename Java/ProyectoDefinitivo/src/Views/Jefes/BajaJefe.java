@@ -13,8 +13,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Alaitzutzu
+ * Ventana de baja de jefes
+ *@author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class BajaJefe extends javax.swing.JFrame {
 private int xMouse,yMouse;

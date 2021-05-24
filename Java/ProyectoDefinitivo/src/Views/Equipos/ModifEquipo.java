@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Alaitzutzu
+ * Ventana de modificacion de equipos
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class ModifEquipo extends javax.swing.JFrame {
 private int xMouse,yMouse;

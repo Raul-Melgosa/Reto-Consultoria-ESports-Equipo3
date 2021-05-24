@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 1GDAW07
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class TablaJefes {
     Connection con;

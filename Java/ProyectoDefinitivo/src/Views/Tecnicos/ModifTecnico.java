@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Alaitzutzu
+ * Ventana de modificacion de tecnicos
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class ModifTecnico extends javax.swing.JFrame {
 private int xMouse,yMouse;

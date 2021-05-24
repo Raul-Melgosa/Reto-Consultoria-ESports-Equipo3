@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 1GDAW09
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class TablaPerfiles {
     Connection con;

@@ -57,6 +57,13 @@ public class Controlador {
         
     }
     
+    /**
+     * Metodo para comprobar si el usuario de login es correcto
+     * @param username Se utiliza para almacenar el nombre de usuario y comprobar que es correcto
+     * @param password Se utiliza para almacenar la contraseña del usuario y comprobar que es correcta
+     * @return Se utiliza para saber si los datos introducidos son o no correctos
+     * @throws Exception Se utiliza para prevenir posibles errores
+     */
     public static boolean comprobarUsuario(String username,String password) throws Exception
     {
         usuario=tp.buscarUsuario(bd.conectar(),username,password);
@@ -71,6 +78,11 @@ public class Controlador {
         }
     }
     
+    /**
+     * Metodo para volver al la pagina principal del proyecto
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     * @throws Exception Se utiliza para prevenir posibles errores
+     */
     public static void irVPrincipal(javax.swing.JFrame anterior) throws Exception
     {
         anterior.dispose();
@@ -86,12 +98,23 @@ public class Controlador {
         }
     }
     
+    /**
+     * Metodo para ir al la ventana AltaEquipo
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaAltaEquipo(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Equipos.AltaEquipo altaE=new Views.Equipos.AltaEquipo();
         altaE.setVisible(true);
     }
     
+    /**
+     * Metodo para dar de alta un equipo
+     * @param nombreEquipo Se utiliza para almacenar el nombre del equipo e insertarlo en la base de datos
+     * @param nombreJefe Se utiliza para almacenar el nombre del jefe e insertarlo en la base de datos
+     * @param apellidoJefe Se utiliza para almacenar el apellido del jefe e insertarlo en la base de datos
+     * @return Se utiliza para comprobar si los datos del equipo se han introducido correctamente
+     */
     public static boolean AltaEquipo(String nombreEquipo,String nombreJefe,String apellidoJefe){
         int idJefe;
         idJefe=ComprobarJefe(nombreJefe,apellidoJefe);
@@ -112,6 +135,12 @@ public class Controlador {
         return insertadoCorrectamente;
     }
     
+    /**
+     * Metodo para comprobar que los datos de un jefe son correctos
+     * @param nombreJ Se utiliza para almacenar el nombre del jefe
+     * @param apellidoJ Se utiliza para almacenar el apellido del jefe
+     * @return Se utiliza para comprobar si el jefe esta introducido en la base de datos
+     */
     public static int ComprobarJefe(String nombreJ,String apellidoJ){
         int id_Jefe=0;
         Jefe jefe=new Jefe();
@@ -127,12 +156,21 @@ public class Controlador {
         return id_Jefe;
     }
     
+    /**
+     * Metodo para ir al la ventana BajaEquipo
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaBajaEquipo(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Equipos.BajaEquipo bajaEquipo=new Views.Equipos.BajaEquipo();
         bajaEquipo.setVisible(true);
     }
     
+    /**
+     * Metodo para dar de baja un equipo
+     * @param nombre Se utiliza para almacenar el nombre del equipo
+     * @return se utiliza para comprobar si el equipo se ha dado de baja correctamente
+     */
     public static boolean BajaEquipo(String nombre){
         Equipo eq = new Equipo();
         eq.setNombre(nombre);
@@ -147,6 +185,10 @@ public class Controlador {
         return baja;
     }
     
+    /**
+     * Metodo para ir a la ventana ModifEquipo
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaModificacionEquipo(javax.swing.JFrame anterior){
         anterior.dispose();
         String [] d= new String [3];
@@ -155,6 +197,11 @@ public class Controlador {
         modificarEquipo.setVisible(true);
     }
     
+    /**
+     * Metodo que se utiliza para mostrar los datos de un equipo
+     * @param id_equipo Se utiliza para almacenar el ide de un equipo
+     * @return Se utiliza para devolver los datos de un equipo
+     */
     public static String [] DatosEquipo(int id_equipo){
         Equipo equipo=new Equipo();
         Equipo datosEquipo=new Equipo();
@@ -172,6 +219,13 @@ public class Controlador {
         return datos;
     }
     
+    /**
+     * Metodo para modificar los datos de un equipo
+     * @param nombreE Se utiliza para almacenar el nombre de un equipo
+     * @param idJefe Se utiliza para almacenar el id del jefe de un equipo
+     * @param idEquipo se utiliza para almacenar el id de un equipo
+     * @return Se utiliza para comprobar que un equipo se ha modificado correctamente
+     */
     public static boolean ModificarEquipo(String nombreE,int idJefe,int idEquipo){
         boolean modificar=false;
             try{
@@ -192,12 +246,21 @@ public class Controlador {
             return modificar;
     }
     
+    /**
+     * Metodo para ir al la viata AltaJugador
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaAltaJugador(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Jugadores.AltaJugador altaJugador=new Views.Jugadores.AltaJugador();
         altaJugador.setVisible(true);
     }
     
+    /**
+     * Metodo para validar el nombre de un equipo
+     * @param nombre Se utiliza para almacenr el nombre de un equipo
+     * @return Se utiliza para comprobar si el equipo existe o no en la base de datos
+     */
     public static boolean ValidarNombreEquipo(String nombre){
         boolean encontrado=false;
         int id=0;
@@ -215,6 +278,18 @@ public class Controlador {
         return encontrado;
     }
     
+    /**
+     * Metodo para dar de alta un jugador
+     * @param dni Se utiliza para almacenar el dni de un jugador
+     * @param nombre Se utiliza para almacenar el nombre de un jugador
+     * @param apellido Se utiliza para almacenar el apellido de un jugador
+     * @param nickname Se utiliza para almacenar el nickname de un jugador
+     * @param rol Se utiliza para almacenar el rol de un jugador
+     * @param dorsal Se utiliza para almacenar el dorsal de un jugador
+     * @param sueldo Se utiliza para almacenar el sueldo de un jugador
+     * @param nombreEquipo Se utiliza para almacenar el nombre del equipo de un jugador
+     * @return Se utiliza para comprobar que un jugador se ha insertado correctamente
+     */
     public static boolean AltaJugador(String dni,String nombre,String apellido,String nickname,String rol,int dorsal,int sueldo,String nombreEquipo){
         Equipo equipo=new Equipo();
         equipo.setNombre(nombreEquipo);
@@ -239,15 +314,25 @@ public class Controlador {
             System.out.println(e.getClass()+e.getMessage());
         }
         return insert;
-     }
-     
-     public static void VentanaBajaJugador(javax.swing.JFrame anterior){
-         anterior.dispose();
+    }
+    
+    /**
+     * Metodo para ir a la ventana BajaJugador
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
+    public static void VentanaBajaJugador(javax.swing.JFrame anterior){
+        anterior.dispose();
         Views.Jugadores.VbajaJugadores bajaJugador=new Views.Jugadores.VbajaJugadores();
         bajaJugador.setVisible(true);
     }
-     
-     public static boolean BorrarJugador(String nombre,String apellido){
+    
+    /**
+     * Metodo para dar de baja un jugador
+     * @param nombre Se utiliza para almacenar el nombre de un jugador
+     * @param apellido Se utiliza para almacenar el apellido de un jugador
+     * @return Se utiliza para comprobar que un jugador ha sido dado de baja correctamente
+     */
+    public static boolean BorrarJugador(String nombre,String apellido){
         boolean delete=false;
         try{
             delete=tj.Delete(bd.conectar(), nombre, apellido);
@@ -258,8 +343,12 @@ public class Controlador {
         }
         return delete;
     }
-     
-     public static void LLenarComboBoxEquipo(JComboBox combo){
+    
+    /**
+     * Metodo para llenar una ComboBox con los datos de los equipos
+     * @param combo Se utiliza para almacenar los datos de los equipos
+     */
+    public static void LLenarComboBoxEquipo(JComboBox combo){
         ArrayList <Equipo> nombreEquipos=new ArrayList();
         try{
             nombreEquipos=tEquipo.SelectNombreId(bd.conectar());
@@ -272,7 +361,11 @@ public class Controlador {
             System.out.println(e.getClass()+e.getMessage());
         } 
     }
-     
+    
+    /**
+     * Metodo para llenar una ComboBox con los datos de los jugadores
+     * @param CBjugador Se utiliza para almacenar los datos de los jugadores
+     */
     public static void LlenarComboBoxJugador(JComboBox CBjugador){
         ArrayList <Jugador> nombreJugador=new ArrayList();
         try{
@@ -287,12 +380,21 @@ public class Controlador {
         }
     }
     
+    /**
+     * Metodo para ir a la ventana ModifJugador
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaModificarJugador(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Jugadores.ModifJugador modificarJugador = new Views.Jugadores.ModifJugador();
         modificarJugador.setVisible(true);
     }
     
+    /**
+     * Metodo para mostrar los datos de un jugador
+     * @param nombre Se utiliza para almacenar el nombre de un jugador
+     * @return Se utiliza par devolver los datos de un jugador
+     */
     public static String [] DatosJugador(String nombre){
         Jugador j=new Jugador();
         j.setNombre(nombre);
@@ -319,6 +421,15 @@ public class Controlador {
 
     }
     
+    /**
+     * Metodo para modificar los datos de un jugador
+     * @param dni Se utiliza para almacenar el dni de un jugador
+     * @param rol Se utiliza para almacenar el rol de un jugador
+     * @param dorsal Se utiliza para almacenar el dorsal de un jugador
+     * @param sueldo Se utiliza para almacenar el sueldo de un jugador
+     * @param nEquipo Se utiliza para almacenar el nombre del equipo de un jugador
+     * @return Se utiliza para comprobar que un jugador se ha modificado correctamente
+     */
     public static boolean ModificarJugador(String dni,String rol,int dorsal,int sueldo,String nEquipo){
         
         boolean update=false;
@@ -357,13 +468,26 @@ public class Controlador {
         }
        return update;
     }
-     
+    
+    /**
+     * Metodo para ir a la ventana AltaJefe
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaAltaJefe(javax.swing.JFrame anterior) {
         anterior.dispose();
         Views.Jefes.AltaJefe altaJefe=new Views.Jefes.AltaJefe();
         altaJefe.setVisible(true);
     }
     
+    /**
+     * Metodo para dar de alta un jefe
+     * @param dni Se utiliza para almacenar el dni de un jefe
+     * @param nombre Se utiliza para almacenar el nombre de un jefe
+     * @param apellido Se utiliza para almacenar el apellido de un jefe
+     * @param nickname Se utiliza para almacenar el nickname de un jefe
+     * @param email Se utiliza para almacenar el email de un jefe
+     * @return Se utiliza para comprobar que un jefe se ha introducido correctamente
+     */
     public static boolean AltaJefe(String dni,String nombre,String apellido,String nickname,String email){
         Jefe jefe=new Jefe();
         jefe.setDni(dni);
@@ -382,18 +506,32 @@ public class Controlador {
         return insertar;
     }
     
+    /**
+     * Metodo para ir a la ventana BajaJefe
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaBajaJefe(javax.swing.JFrame anterior) {
         anterior.dispose();
         Views.Jefes.BajaJefe bajaJefe=new Views.Jefes.BajaJefe();
         bajaJefe.setVisible(true);
     }
     
+    /**
+     * Metodo para ir a la ventana VLogin
+     * @param anterior Se utiliza para referenciar a la vista anterior 
+     */
     public static void VentanaLogin(javax.swing.JFrame anterior) {
         anterior.dispose();
         VLogin vLog=new VLogin();
         vLog.setVisible(true);
     }
     
+    /**
+     * Metodo para dar de baja un jefe
+     * @param nombre Se utiliza para almacenar el nombre de un jefe
+     * @param apellido Se utiliza para almacenar el apellido de un jefe
+     * @return Se utiliza para comprobar que un jefe se ha dado de baja correctamente
+     */
     public static boolean BajaJefe(String nombre,String apellido){
         boolean delete=false;
         try{
@@ -406,11 +544,20 @@ public class Controlador {
         return delete;
     }
     
+    /**
+     * Metodo para ir al la ventana ModifJefe
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaModificarJefes(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Jefes.ModifJefe mj = new Views.Jefes.ModifJefe();
         mj.setVisible(true);  
     }
+    
+    /**
+     * Metodo para llenar una ComboBox con los datos de los jefes
+     * @param CBjefe Se utiliza para almacenar los datos de los jefes
+     */
     public static void LlenarComboBoxJefe(JComboBox CBjefe){
         ArrayList <Jefe> nombreJefe=new ArrayList();
         try{
@@ -424,6 +571,12 @@ public class Controlador {
             System.out.println(e.getClass()+e.getMessage());
         }
     }
+    
+    /**
+     * Metodo para mostrar los datos de los jefes
+     * @param nombreJefe Se utiliza para almacenar el nombre de un jefe
+     * @return Se utiliza para devolver los datos de los jefes
+     */
     public static String [] DatosJefe(String nombreJefe){
         Jefe j=new Jefe();
         j.setNombre(nombreJefe);
@@ -444,6 +597,16 @@ public class Controlador {
         
         return d;  
     }
+    
+    /**
+     * Metodo para modificar los datos de un jefe
+     * @param dni Se utiliza para almacenar el dni de un jefe
+     * @param nombre Se utiliza para almacenar el nombre de un jefe
+     * @param apellido Se utiliza para almacenar el apellido de un jefe
+     * @param nickname Se utiliza para almacenar el nickname de un jefe
+     * @param email Se utiliza para almacenar el email de un jefe
+     * @return Se utiliza para comprobar que se han modificado correctamente los datos del jefe
+     */
     public static boolean ModificarJefe(String dni,String nombre,String apellido,String nickname,String email){
         Jefe j=new Jefe();
         j.setDni(dni);
@@ -462,11 +625,25 @@ public class Controlador {
         }
         return modificar;
     }
+    
+    /**
+     * Metodo para ir a la ventana AltaPerfil
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaAltaPerfil(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Perfiles.AltaPerfil altaP=new Views.Perfiles.AltaPerfil();
         altaP.setVisible(true);
     }
+    
+    /**
+     * Metodo para dar de alta un perfil
+     * @param NombreUsuario Se utiliza para almacenar el nombre de usuario de un perfil
+     * @param contrasena Se utiliza para almacenar la contraseña de un perfil
+     * @param email Se utiliza para almacenar el email de un perfil
+     * @param tipo Se utiliza para almacenar el tipo de un perfil
+     * @return Se utiliza para comprobar que los datos se han insertado correctamente en la base de datos
+     */
     public static boolean InsertarPerfil(String NombreUsuario,String contrasena,String email, String tipo ){
         Perfil p=new Perfil();
         p.setNombreUsuario(NombreUsuario);
@@ -489,11 +666,23 @@ public class Controlador {
         }
         return insertado;
     }
+    
+    /**
+     * Metodo para ir a la ventana BajaPerfil
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaBajaPerfil(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Perfiles.BajaPerfil bp= new Views.Perfiles.BajaPerfil();
         bp.setVisible(true);
     }
+    
+    /**
+     * Metodo para dar de baja un perfil
+     * @param nombreUsu Se utiliza para almacenar el nombre de usuario de un perfil
+     * @param contrasena Se utiliza para almacenar la contraseña de un perfil
+     * @return Se utiliza para comprobar que el perfil se ha dado de baja correctamente
+     */
     public static boolean BajaPerfil(String nombreUsu,String contrasena){
         Perfil p=new Perfil();
         p.setNombreUsuario(nombreUsu);
@@ -509,12 +698,22 @@ public class Controlador {
         }
         return baja;
     }
+    
+    /**
+     * Metodo para ir a la ventana ModifPerfil
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaModificarPerfil(javax.swing.JFrame anterior){
          anterior.dispose();
         Views.Perfiles.ModifPerfil mp= new Views.Perfiles.ModifPerfil();
         mp.setVisible(true);
     }
-     public static void LLenarComboBoxPerfil(JComboBox combo){
+    
+    /**
+     * Metodo para llenar una ComboBox con los datos de los perfiles
+     * @param combo Se utiliza para almacenar los datos de los perfiles
+     */
+    public static void LLenarComboBoxPerfil(JComboBox combo){
         ArrayList <Perfil> nombrePerfiles=new ArrayList();
         try{
             nombrePerfiles=tp.SelectNombreUsuario(bd.conectar());
@@ -527,7 +726,13 @@ public class Controlador {
             System.out.println(e.getClass()+e.getMessage());
         } 
     }
-     public static String [] DatosPerfil(String nombrePerfil){
+     
+    /**
+     * Metodo para mostrar los datos de los perfiles
+     * @param nombrePerfil Se utiliza para almacenar el nombre de usuario de un perfil
+     * @return Se utiliza para devolver los datos de los perfiles
+     */
+    public static String [] DatosPerfil(String nombrePerfil){
         Perfil p=new Perfil();
         p.setNombreUsuario(nombrePerfil);
         ArrayList <Perfil> datos=new ArrayList();
@@ -546,7 +751,16 @@ public class Controlador {
         
         return d;  
     }
-      public static boolean ModificarPerfil(String nombreUsu,String contrasenna,String email,String tipo){
+    
+    /**
+     * Metodo para modificar los datos de un perfil
+     * @param nombreUsu Se utiliza para almacenar el nombre de usuario de un perfil
+     * @param contrasenna Se utiliza para almacenar la contraseña de un perfil
+     * @param email Se utiliza para almacenar el email de un perfil
+     * @param tipo Se utiliza para almacenar el tipo de perfil
+     * @return Se utiliza para comprobar que un perfil se ha modificado correctamente
+     */
+    public static boolean ModificarPerfil(String nombreUsu,String contrasenna,String email,String tipo){
         Perfil p=new Perfil();
         p.setEmail(email);
         p.setNombreUsuario(nombreUsu);
@@ -571,7 +785,10 @@ public class Controlador {
         }
         return modificar;
     }
-      
+    
+    /**
+     * Metodo que genera la liga con sus emparejamientos
+     */
     public static void generarLiga()
     {
         try
@@ -644,6 +861,10 @@ public class Controlador {
         }
     }
     
+    /**
+     * Metodo para llenar la tabla de la clasificacion general
+     * @param tabla Se utiliza para almacenar los datos de la clasificacion
+     */
     public static void rellenarClasificacion(javax.swing.JTable tabla)
     {
         try
@@ -665,6 +886,10 @@ public class Controlador {
         }
     }
     
+    /**
+     * Metodo para elegir aleatoriamente una hora
+     * @return Se utiliza para devolver la hora
+     */
     public static String horaAleatoria()
     {
         String devolver="";
@@ -697,11 +922,23 @@ public class Controlador {
         }
         return devolver;
     }
+    
+    /**
+     * Metodo para ir a la ventana AltaTecnico
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
     public static void VentanaAltaTecnico(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Tecnicos.AltaTecnico altaT=new Views.Tecnicos.AltaTecnico();
         altaT.setVisible(true);
     }
+    
+    /**
+     * Metodo para comprobar si un equipo ya tiene un tecnico de cada tipo
+     * @param tipo Se utiliza para almacenar el tipo de tecnico
+     * @param nombreEquipo Se utiliza para almacenar el nombre del equipo
+     * @return Se utiliza para comprobarsi un equipo ya tiene un tecnico de cada tipo
+     */
     public static boolean ValidarTecnicos(String tipo,String nombreEquipo){
        boolean tieneTecnico=false;
         try{
@@ -732,6 +969,12 @@ public class Controlador {
         return tieneTecnico;
         
     }
+    
+    /**
+     * Metodo para validar que el sueldo total de un equipo no excede los 200.000 euros anuales
+     * @param sueldo Se utiliza para almacenar el sueldo
+     * @return Se utiliza para devolver la media del sueldo
+     */
     public static boolean ValidarSueldo(int sueldo){
         boolean mediaSueldo=false;
         try{
@@ -777,6 +1020,18 @@ public class Controlador {
         }
         return mediaSueldo;
     }
+    
+    /**
+     * Metodo para dar de alta un tecnico
+     * @param dni Se utiliza para almacenar el dni del tecnico
+     * @param nombre Se utiliza para almacenar el nombre del tecnico
+     * @param apellido Se utiliza para almacenar el apellido del tecnico
+     * @param nickname Se utiliza para almacenar el nickname del tecnico
+     * @param sueldo Se utiliza para almacenar el sueldo del tecnico
+     * @param tipo Se utiliza para almacenar el tipo de tecnico
+     * @param nombreEquipo Se utiliza para almacenar el nombre del equipo
+     * @return Se utiliza para comprobar si se ha dado de alta correctamente
+     */
     public static boolean AltaTecnico(String dni,String nombre,String apellido,String nickname,int sueldo,String tipo,String nombreEquipo){
         boolean alta=false;
         try{
@@ -815,11 +1070,23 @@ public class Controlador {
         
         return alta;
     }
-     public static void VentanaBajaTecnico(javax.swing.JFrame anterior){
+    
+    /**
+     * Metodo para ir a la ventana BajaTecnico
+     * @param anterior Se utiliza para referenciar a la vista anterior
+     */
+    public static void VentanaBajaTecnico(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Tecnicos.BajaTecnico bajaT=new Views.Tecnicos.BajaTecnico();
         bajaT.setVisible(true);
     }
+    
+    /**
+     * Metodo para dar de baja un tecnico
+     * @param nombre Se utiliza para almacenar el nombre del tecnico
+     * @param apellido Se utiliza para almacenar el apellido del tecnico
+     * @return Se utiliza para comprobar que se ha dado de baja correctamente
+     */
     public static boolean BajaTecnico(String nombre,String apellido){
         boolean baja=false;
         Tecnico t=new Tecnico ();
@@ -835,11 +1102,21 @@ public class Controlador {
         }
         return baja;
     }
-     public static void VentanaModificarTecnico(javax.swing.JFrame anterior){
+    
+    /**
+     * Metodo para ir a la ventana ModifTecnico
+     * @param anterior Se utiliza para referenciar a la vista anterior 
+     */
+    public static void VentanaModificarTecnico(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Tecnicos.ModifTecnico modificarT=new Views.Tecnicos.ModifTecnico();
         modificarT.setVisible(true);
     }
+    
+    /**
+     * Metodo para llenar una ComboBox con los datos de los tecnicos
+     * @param CBtecnico Se utiliza para almacenar los datos de los tecnicos
+     */
     public static void LlenarComboBoxTecnico(JComboBox CBtecnico){
         ArrayList <Jugador> nombreTecnico=new ArrayList();
         try{
@@ -853,6 +1130,12 @@ public class Controlador {
             System.out.println(e.getClass()+e.getMessage());
         }
     }
+    
+    /**
+     * Metodo para mostrar los datos de los tecnicos
+     * @param nombre Se utiliza para almacenar el nombre del tecnico
+     * @return Se utiliza para devolver los datos de los tecnicos
+     */
     public static String [] DatosTecnico(String nombre){
        String nombreEquipo="";
         Tecnico t=new Tecnico();
@@ -877,6 +1160,17 @@ public class Controlador {
         
         return datos;
     }
+    /**
+     * Metodo para modificar los datos de un tecnico
+     * @param dni Se utiliza para almacenar el dni de un tecnico
+     * @param nombre Se utiliza para almacenar el nombre de un tecnico
+     * @param apellido Se utiliza para almacenar el apellido de un tecnico
+     * @param nickname Se utiliza para almacenar el nickname de un tecnico
+     * @param sueldo Se utiliza para almacenar el sueldo de un tecnico
+     * @param tipo Se utiliza para almacenar el tipo de tecnico
+     * @param nombreEquipo Se utiliza para almacenar el nombre del equipo
+     * @return Se utiliza para comprobar si se ha modificado correctamente
+     */
     public static boolean ModificarTecnico(String dni,String nombre,String apellido,String nickname,int sueldo,String tipo,String nombreEquipo){
         boolean modificar=false,mediaSueldo=false;
         
@@ -914,11 +1208,20 @@ public class Controlador {
         return modificar;
     }
 
+    /**
+     * Metodo para ir a la ventana VConsulta
+     * @param anterior Se utiliza para referenciar a la vista anterior 
+     */
     public static void VentanaConsulta(javax.swing.JFrame anterior){
         anterior.dispose();
         Views.Vconsulta vc=new Views.Vconsulta();
         vc.setVisible(true);
     }
+    /**
+     * Metodo para obtener los datos de equipos, jugadores, jefes, tecnicos y perfiles
+     * @param t Se utiliza para almacenar el tipo dato que es
+     * @return Se utiliza para devolver los datos
+     */
     public static ArrayList <String> Datos(String t){
        ArrayList <Equipo> eq=new ArrayList();
        ArrayList <Jugador> ju=new ArrayList();

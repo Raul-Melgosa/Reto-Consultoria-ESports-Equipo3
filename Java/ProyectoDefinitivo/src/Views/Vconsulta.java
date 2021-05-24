@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author 1GDAW08
+ * Ventana de consultas
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class Vconsulta extends javax.swing.JFrame {
 private int xMouse,yMouse;

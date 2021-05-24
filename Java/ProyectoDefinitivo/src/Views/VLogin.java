@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Raul Melgosa
+ * Ventana de login
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class VLogin extends javax.swing.JFrame {
 

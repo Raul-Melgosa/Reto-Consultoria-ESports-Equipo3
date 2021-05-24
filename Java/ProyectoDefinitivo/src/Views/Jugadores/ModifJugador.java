@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
- * @author Alaitzutzu
+ * Ventana de modificacion de jugadores
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class ModifJugador extends javax.swing.JFrame {
 

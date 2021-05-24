@@ -10,8 +10,8 @@ import Controlador.Controlador;
 import java.awt.Color;
 
 /**
- *
- * @author 1GDAW08
+ * Ventana para ver la clasificacion siendo administrador
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class VClasificacionAdmin extends javax.swing.JFrame {
 private int xMouse,yMouse;

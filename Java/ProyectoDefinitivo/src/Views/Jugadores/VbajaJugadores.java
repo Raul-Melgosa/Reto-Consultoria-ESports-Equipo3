@@ -13,8 +13,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author 1GDAW07
+ * Ventana de baja de jugadores
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class VbajaJugadores extends javax.swing.JFrame {
 private int xMouse;

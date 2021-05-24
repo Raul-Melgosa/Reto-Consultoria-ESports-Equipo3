@@ -10,8 +10,8 @@ import Controlador.Controlador;
 import java.awt.Color;
 
 /**
- *
- * @author 1GDAW08
+ * Ventana para ver la clasificacion siendo usuario
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class VClasificacionUsu extends javax.swing.JFrame {
 private int xMouse,yMouse;

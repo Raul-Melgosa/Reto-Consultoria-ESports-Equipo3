@@ -11,8 +11,8 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Alaitzutzu
+ * Ventana de alta de jefes
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class AltaJefe extends javax.swing.JFrame {
 private int xMouse,yMouse;

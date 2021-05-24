@@ -10,8 +10,8 @@ import Controlador.Controlador;
 import java.awt.Color;
 
 /**
- *
- * @author 1GDAW08
+ * Ventana principal de administrador
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class VprincipalAdmin extends javax.swing.JFrame {
 private int xMouse,yMouse;

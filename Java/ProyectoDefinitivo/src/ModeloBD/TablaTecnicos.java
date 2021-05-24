@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Alaitzutzu
+ * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class TablaTecnicos {
     Connection con;

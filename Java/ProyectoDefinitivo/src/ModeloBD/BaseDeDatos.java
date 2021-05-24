@@ -14,6 +14,10 @@ import java.sql.*;
 public class BaseDeDatos {
     private Connection con;
     
+    /**
+     * Metodo para conectarse con la base de datos
+     * @return devuelve la conexion
+     */
     public Connection conectar()
     {
         try
@@ -38,6 +42,10 @@ public class BaseDeDatos {
         }
         return con;
     }
+    
+    /**
+     * Metodo para desconectarse de la base de datos
+     */
     public void desconectar(){
         try{
            con.close();
