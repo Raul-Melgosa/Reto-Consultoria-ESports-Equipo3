@@ -27,6 +27,10 @@ public class Controlador {
     private static TablaJefes tJefe;
     private static TablaEquipos tEquipo;
     private static TablaTecnicos tTecnico;
+    private static TablaJornada tJornada;
+    private static TablaPartido tPartidos;
+    private static  ArrayList <Jornada> listaJornadas;
+  
 //Base de datos
     private static BaseDeDatos bd;
 //Perfil
@@ -35,6 +39,7 @@ public class Controlador {
     private static String [] d;
     
     public static void main(String[] args) {
+        
         try
         {
             bd=new BaseDeDatos();
@@ -44,10 +49,10 @@ public class Controlador {
             tJefe=new TablaJefes();
             tEquipo=new TablaEquipos();
             tTecnico=new TablaTecnicos();
-            //Views.VLogin login=new Views.VLogin();
-            //login.setVisible(true);
-            Views.Vconsulta vc=new Views.Vconsulta();
-            vc.setVisible(true);
+            tJornada=new TablaJornada();
+            tPartidos=new TablaPartido();
+            Views.VLogin login=new Views.VLogin();
+            login.setVisible(true);
         }
         catch(Exception e)
         {
@@ -737,7 +742,7 @@ public class Controlador {
         p.setNombreUsuario(nombrePerfil);
         ArrayList <Perfil> datos=new ArrayList();
         try{
-            datos=tp.SelectJefe(bd.conectar(), p);
+            datos=tp.SelectPerfil(bd.conectar(), p);
             bd.desconectar();
         }
         catch(Exception e){
@@ -975,44 +980,18 @@ public class Controlador {
      * @param sueldo Se utiliza para almacenar el sueldo
      * @return Se utiliza para devolver la media del sueldo
      */
-    public static boolean ValidarSueldo(int sueldo){
+    public static boolean ValidarSueldo(String nombre, int sueldoExtra){
         boolean mediaSueldo=false;
+        Connection c=bd.conectar();
+        System.out.println("");
         try{
-            //media tecnicos
-            int mediaT=0;
-            ArrayList <Integer> sueldosT=new ArrayList();
-            sueldosT=tTecnico.Sueldos(bd.conectar());
-            bd.desconectar();
-            for(int x=0;x<sueldosT.get(x);x++){
-                mediaT=sueldosT.get(x);
-            }
-            mediaT=mediaT+sueldo;
-            mediaT=mediaT/(sueldosT.size()+1);
-            
-            //media Jugadores
-            int mediaJ=0;
-            ArrayList <Integer> sueldosJ=new ArrayList();
-            sueldosJ=tj.Sueldos(bd.conectar());
-            bd.desconectar();
-            for(int x=0;x<sueldosJ.get(x);x++){
-                mediaJ=sueldosJ.get(x);
-            }
-            mediaJ=mediaJ/(sueldosJ.size());
-            
-            //media Jefes
-            int mediaJefe=0;
-            ArrayList <Integer> sueldosJefe=new ArrayList();
-            sueldosJefe=tJefe.Sueldos(bd.conectar());
-            bd.desconectar();
-            for(int x=0;x<sueldosJefe.get(x);x++){
-                mediaJefe=sueldosJefe.get(x);
-            }
-            mediaJefe=mediaJefe/(sueldosJefe.size());
-            
-            int mediaTotal=(mediaT+mediaJ+mediaJefe)/3;
-            
-            if(mediaTotal>=2000000)
+            int id=tEquipo.SelectID(c, nombre);
+            int sueldo=(tEquipo.comprobarSueldo(c,id)+sueldoExtra);
+            if(sueldo>200000)
+            {
                 mediaSueldo=true;
+                bd.desconectar();
+            }
         }
          catch(Exception ex)
         {
@@ -1174,7 +1153,7 @@ public class Controlador {
     public static boolean ModificarTecnico(String dni,String nombre,String apellido,String nickname,int sueldo,String tipo,String nombreEquipo){
         boolean modificar=false,mediaSueldo=false;
         
-        mediaSueldo=ValidarSueldo(sueldo);
+        mediaSueldo=ValidarSueldo(nombreEquipo,sueldo);
         if(mediaSueldo==true)
             modificar=false;
         else
@@ -1212,63 +1191,160 @@ public class Controlador {
      * Metodo para ir a la ventana VConsulta
      * @param anterior Se utiliza para referenciar a la vista anterior 
      */
-    public static void VentanaConsulta(javax.swing.JFrame anterior){
+    public static void VentanaConsulta(javax.swing.JFrame anterior, int elect){
         anterior.dispose();
-        Views.Vconsulta vc=new Views.Vconsulta();
+        Views.Vconsulta vc=new Views.Vconsulta(elect);
         vc.setVisible(true);
     }
+    
     /**
      * Metodo para obtener los datos de equipos, jugadores, jefes, tecnicos y perfiles
      * @param t Se utiliza para almacenar el tipo dato que es
      * @return Se utiliza para devolver los datos
      */
     public static ArrayList <String> Datos(String t){
-       ArrayList <Equipo> eq=new ArrayList();
-       ArrayList <Jugador> ju=new ArrayList();
-       ArrayList <Jefe> je=new ArrayList();
-       ArrayList <Tecnico> te=new ArrayList();
-       ArrayList <Perfil> pe=new ArrayList();
-       ArrayList <String> datos=new ArrayList();
+        ArrayList <Equipo> eq=new ArrayList();
+        ArrayList <Jugador> ju=new ArrayList();
+        ArrayList <Jefe> je=new ArrayList();
+        ArrayList <Tecnico> te=new ArrayList();
+        ArrayList <Perfil> pe=new ArrayList();
+        ArrayList <String> datos=new ArrayList();
        
-       try{
-           switch(t){
-            case "Equipos": eq=tEquipo.SelectGeneral(bd.conectar());
-                            bd.desconectar();
-                            for(int x=0;x<eq.size();x++){
-                                datos.add(eq.get(x).toString());
-                            }                   
-                break;
-            case "Jugadores":  ju=tj.SelectGeneral(bd.conectar());
-                            bd.desconectar();
-                            for(int x=0;x<ju.size();x++){
-                                datos.add(ju.get(x).toString());
-                            }
-                break;
-            case "Jefes":  je=tJefe.SelectGeneral(bd.conectar());
-                            bd.desconectar();
-                            for(int x=0;x<je.size();x++){
-                                datos.add(je.get(x).toString());
-                            }
-                break;
-            case "Tecnicos": te=tTecnico.SelectGeneral(bd.conectar());
-                            bd.desconectar();
-                            for(int x=0;x<te.size();x++){
-                                datos.add(te.get(x).toString());
-                            }
-                break;
-            case "Perfiles": pe=tp.SelectGeneral(bd.conectar());
-                            bd.desconectar();
-                            for(int x=0;x<pe.size();x++){
-                                datos.add(pe.get(x).toString());
-                            }
-                break;
-           }
-       }
+        try{
+            switch(t){
+                case "Equipos": 
+                    eq=tEquipo.SelectGeneral(bd.conectar());
+                    bd.desconectar();
+                    for(int x=0;x<eq.size();x++){
+                        datos.add(eq.get(x).toString());
+                    }                   
+                    break;
+                case "Jugadores":
+                    ju=tj.SelectGeneral(bd.conectar());
+                    bd.desconectar();
+                    for(int x=0;x<ju.size();x++){
+                        datos.add(ju.get(x).toString());
+                    }
+                    break;
+                case "Jefes":  
+                    je=tJefe.SelectGeneral(bd.conectar());
+                    bd.desconectar();
+                    for(int x=0;x<je.size();x++){
+                        datos.add(je.get(x).toString());
+                    }
+                    break;
+                case "Tecnicos": 
+                    te=tTecnico.SelectGeneral(bd.conectar());
+                    bd.desconectar();
+                    for(int x=0;x<te.size();x++){
+                        datos.add(te.get(x).toString());
+                    }
+                    break;
+                case "Perfiles": 
+                    pe=tp.SelectGeneral(bd.conectar());
+                    bd.desconectar();
+                    for(int x=0;x<pe.size();x++){
+                        datos.add(pe.get(x).toString());
+                    }
+                    break;
+                }
+        }
         catch(Exception e){
                 System.out.println(e.getClass()+e.getMessage());
             }  
         return datos;
     }
+    /**
+     * Método que obtiene la lista de todas las jornadas y sus correspondientes partidos y los guarda en una variable global
+     * @return devuelve una lista con datos de las jornadas
+     */
+    public static ArrayList<String> PedirJornada(){
+       listaJornadas= new ArrayList();
+        ArrayList <String> jornadas= new ArrayList();
+        
+       try{
+           listaJornadas=tJornada.ListaJornada(bd.conectar());
+           bd.desconectar();
+           for(int x=0;x<listaJornadas.size();x++){
+               jornadas.add(listaJornadas.get(x).toString());
+           }
+       }
+       catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
+        }  
+       return jornadas;
+    }
+    /**
+     * Método para llenar de datos la combobox de la ventana Partidos
+     * @param cbPartido es la propia combobox
+     */
+    public static void LlenarComboPartido(javax.swing.JComboBox cbPartido){
+        for(int x=0;x<listaJornadas.size();x++){
+            for(int y=0;y<listaJornadas.get(x).getListaPartidos().size();y++)
+            {
+                cbPartido.addItem(listaJornadas.get(x).getListaPartidos().get(y).getId());
+            }
+        }
+    }
+    
+    public static ArrayList<String> getDatosPartido(int idPartido) throws Exception
+    {
+        ArrayList<String> datos=new ArrayList();
+        Partido p=new Partido();
+        boolean encontrado=false;
+        for(int x=0;x<listaJornadas.size() && !encontrado;x++)
+        {
+            for(int y=0;y<listaJornadas.get(x).getListaPartidos().size() && !encontrado;y++)
+            {
+                if(listaJornadas.get(x).getListaPartidos().get(y).getId()==idPartido)
+                {
+                    Connection c=bd.conectar();
+                    p=listaJornadas.get(x).getListaPartidos().get(y);
+                    encontrado=true;
+                    datos.add(tEquipo.SelectNombre(c,p.getIdLocal()));
+                    datos.add(tPartidos.SelectPartidasLocal(c,p.getIdLocal()));
+                    datos.add(p.getHora().getHour()+":"+p.getHora().getMinute()+":"+p.getHora().getSecond());
+                    datos.add(tEquipo.SelectNombre(c,p.getIdVisitante()));
+                    datos.add(tPartidos.SelectPartidasVisitante(c,p.getIdVisitante()));
+                }
+            }
+        }
+        return datos;
+    }
+    /**
+     * Método para cambiar de ventana a la ventana para ver y modificar los resultados de los partidos
+     * @param anterior 
+     */
+    public static void VentanaPartidos(javax.swing.JFrame anterior){
+        anterior.dispose();
+        
+        if(usuario.getTipo().equals(TipoPerfil.ADMIN))
+        {
+            VpartidosAdmin vp=new VpartidosAdmin();
+            vp.setVisible(true);
+        }
+        else
+        {
+            VpartidosUsu vp=new VpartidosUsu();
+            vp.setVisible(true);
+        }
+    }
+    
+    public static void VentanaClasificacion(javax.swing.JFrame anterior){
+        anterior.dispose();
+        
+        if(usuario.getTipo().equals(TipoPerfil.ADMIN))
+        {
+            VClasificacionAdmin vc=new VClasificacionAdmin();
+            vc.setVisible(true);
+        }
+        else
+        {
+            VClasificacionUsu vp=new VClasificacionUsu();
+            vp.setVisible(true);
+        }
+    }
+    
     public static void salir()
     {
         System.exit(0);

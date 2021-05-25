@@ -16,6 +16,10 @@ import java.awt.Color;
 public class VClasificacionUsu extends javax.swing.JFrame {
 private int xMouse,yMouse;
 private boolean menuAbierto=false;
+private boolean listaDesplegableAlta;
+private boolean listaDesplegableBaja;
+private boolean listaDesplegableModificaciones;
+private boolean listaDesplegableConsulta;
 AnimationClass animacion = new AnimationClass();
     /**
      * Creates new form VprincipalAdmin
@@ -132,13 +136,13 @@ AnimationClass animacion = new AnimationClass();
         bResultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
         bResultadosJornada.setText("     Resultados Jornada");
         bResultadosJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bResultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 110, 300, 30));
+        jPanel1.add(bResultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 120, 300, 30));
 
         bClasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bClasificacionGeneral.setForeground(new java.awt.Color(255, 255, 255));
         bClasificacionGeneral.setText("     Clasificación general");
         bClasificacionGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bClasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 150, 300, 30));
+        jPanel1.add(bClasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 160, 300, 30));
 
         menu.setBackground(new java.awt.Color(120, 120, 120));
         menu.setOpaque(true);
@@ -212,40 +216,45 @@ AnimationClass animacion = new AnimationClass();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+       
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        jPanel2.requestFocus();
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     private void bMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMenuMouseClicked
         if(menuAbierto){
             menuAbierto=false;
-            animacion.jLabelXLeft(menu.getX(), menu.getX()-300, 3, 5, menu);
-            animacion.jLabelXLeft(bResultadosJornada.getX(),bResultadosJornada.getX()-300, 3, 5, bResultadosJornada);
+            animacion.jLabelXLeft(menu.getX(), menu.getX()-300, 3, 5, menu);animacion.jLabelXLeft(bResultadosJornada.getX(),bResultadosJornada.getX()-300, 3, 5, bResultadosJornada);
             animacion.jLabelXLeft(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()-300, 3, 5, bClasificacionGeneral);
             animacion.jLabelXLeft(bLogout.getX(), bLogout.getX()-300, 3, 5, bLogout);
         }
         else{
-            bResultadosJornada.setLocation(-300, 350);
-            bClasificacionGeneral.setLocation(-300, 390);
+
+            bResultadosJornada.setLocation(-300, 110);
+            bClasificacionGeneral.setLocation(-300, 150);
             menuAbierto=true;
             animacion.jLabelXRight(menu.getX(), menu.getX()+300, 3, 5, menu);
+
             animacion.jLabelXRight(bResultadosJornada.getX(),bResultadosJornada.getX()+300, 3, 5, bResultadosJornada);
             animacion.jLabelXRight(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()+300, 3, 5, bClasificacionGeneral);
             animacion.jLabelXRight(bLogout.getX(), bLogout.getX()+300, 3, 5, bLogout);
         }
     }//GEN-LAST:event_bMenuMouseClicked
-       
+
     private void bLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLogoutMouseClicked
         Controlador.VentanaLogin(this);
     }//GEN-LAST:event_bLogoutMouseClicked
-
-    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
-        xMouse=evt.getX();
-        yMouse=evt.getY();
-    }//GEN-LAST:event_barraDragMousePressed
 
     private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_barraDragMouseDragged
+
+    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
+        xMouse=evt.getX();
+        yMouse=evt.getY();
+    }//GEN-LAST:event_barraDragMousePressed
 
     private void bCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseClicked
         Controlador.salir();
@@ -271,10 +280,6 @@ AnimationClass animacion = new AnimationClass();
         bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
     }//GEN-LAST:event_bMinimizarMouseExited
 
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-        jPanel2.requestFocus();
-    }//GEN-LAST:event_jPanel2MouseClicked
-  
     /**
      * @param args the command line arguments
      */

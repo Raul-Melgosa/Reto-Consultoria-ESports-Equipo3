@@ -97,15 +97,15 @@ public class TablaPerfiles {
          }
         return nombreEquipo;
     }
-       public ArrayList <Perfil> SelectJefe(Connection c,Perfil p) throws Exception{
+       public ArrayList <Perfil> SelectPerfil(Connection c,Perfil p) throws Exception{
         con=c;
-        String plantilla="Select * FROM jefes WHERE upper(nombre)=upper(?)";
+        String plantilla="Select * FROM PERFILES WHERE upper(NOMBRE_USUARIO)=upper(?)";
         PreparedStatement ps=con.prepareStatement(plantilla);
         ps.setString(1,p.getNombreUsuario());
         
         ArrayList <Perfil> datos=new ArrayList();
         ResultSet resultado=ps.executeQuery();
-        if(resultado.next()){
+        while(resultado.next()){
             p.setNombreUsuario(resultado.getString("NOMBRE_USUARIO"));
             p.setPassword(resultado.getString("CONTRASENNA"));
             p.setEmail(resultado.getString("EMAIL"));
@@ -154,11 +154,12 @@ public class TablaPerfiles {
          ResultSet resultado=ps.executeQuery();
          
          ArrayList <Perfil> datos=new ArrayList();
-         if(resultado.next()){
+         while(resultado.next()){
              Perfil p=new Perfil();
              p.setId(resultado.getInt("ID_PERFIL"));
              p.setNombreUsuario(resultado.getString("NOMBRE_USUARIO"));
              p.setEmail(resultado.getString("EMAIL"));
+             p.setTipo(TipoPerfil.valueOf(resultado.getString("TIPO")));
              datos.add(p);
          }
          return datos;

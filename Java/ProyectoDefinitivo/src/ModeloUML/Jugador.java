@@ -119,7 +119,15 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", nickname=" + nickname + ", rol=" + rol + ", sueldo=" + sueldo + ", dorsal=" + dorsal + ", equipo=" + equipo ;
+        return "ID: " + id +"\n"+
+               "DNI: " + dni +"\n"+
+               "Nombre: " + nombre +"\n"+
+               "Apellidos: " + apellido +"\n"+
+               "Nickname: " + nickname +"\n"+
+               "Rol: " + rol +"\n"+
+               "Dorsal: " + dorsal +"\n"+
+               "Sueldo: " + sueldo +"\n"+
+               "Nombre del equipo: " + equipo.getNombre();
     }
     
     

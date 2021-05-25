@@ -68,7 +68,10 @@ public class Perfil {
 
     @Override
     public String toString() {
-        return "id=" + id + "nombreUsuario=" + nombreUsuario + ", password=" + password + ", email=" + email + ", tipo=" + tipo ;
+        return "ID: " + id + "\n"+
+               "Nombre de usuario: " + nombreUsuario + "\n"+
+               "Correo electrónico: " + email + "\n"+
+               "Tipo: " + tipo;
     }
     
     

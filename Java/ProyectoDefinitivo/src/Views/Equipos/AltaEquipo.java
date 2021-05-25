@@ -26,8 +26,15 @@ AnimationClass animacion = new AnimationClass();
      */
     public AltaEquipo() {
         initComponents();
+        bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png")));
         setLocationRelativeTo(null);
+        barraDrag.setBackground(new java.awt.Color(0,0,0,0));
         menu.setBackground(new Color(45,45,45,200));
+        this.menuAbierto=false;
+        this.listaDesplegableAlta=false;
+        this.listaDesplegableBaja=false;
+        this.listaDesplegableModificaciones=false;
+        this.listaDesplegableConsulta=false;
         jPanel2.requestFocus();
     }
 
@@ -40,20 +47,9 @@ AnimationClass animacion = new AnimationClass();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bMinimizar = new javax.swing.JLabel();
         bCerrar = new javax.swing.JLabel();
+        bMinimizar = new javax.swing.JLabel();
         barraDrag = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        tfNombre = new javax.swing.JTextField();
-        tfApellidoJefe = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        Baceptar = new javax.swing.JLabel();
-        NombreJefe = new javax.swing.JLabel();
-        tfNombreJefe = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         bMenu = new javax.swing.JLabel();
         bLogout = new javax.swing.JLabel();
@@ -67,18 +63,6 @@ AnimationClass animacion = new AnimationClass();
         bBajaEquipos = new javax.swing.JLabel();
         bBajaJugadores = new javax.swing.JLabel();
         bBajaTecnicos = new javax.swing.JLabel();
-        bAltaTecnicos2 = new javax.swing.JLabel();
-        bAlta2 = new javax.swing.JLabel();
-        bMenu2 = new javax.swing.JLabel();
-        bAltaEquipos2 = new javax.swing.JLabel();
-        bAltaJugadores2 = new javax.swing.JLabel();
-        bAltaUsuarios2 = new javax.swing.JLabel();
-        bBajaEquipos2 = new javax.swing.JLabel();
-        bLogout2 = new javax.swing.JLabel();
-        bBaja2 = new javax.swing.JLabel();
-        bAltaJefes2 = new javax.swing.JLabel();
-        bBajaJugadores2 = new javax.swing.JLabel();
-        bBajaTecnicos1 = new javax.swing.JLabel();
         bBajaJefes = new javax.swing.JLabel();
         bBajaUsuarios = new javax.swing.JLabel();
         bModificacion = new javax.swing.JLabel();
@@ -93,7 +77,6 @@ AnimationClass animacion = new AnimationClass();
         bConsultaTecnicos = new javax.swing.JLabel();
         bConsultaJefes = new javax.swing.JLabel();
         bConsultaUsuarios = new javax.swing.JLabel();
-        bCalendario = new javax.swing.JLabel();
         bRealizarEmparejamientos = new javax.swing.JLabel();
         bResultadosJornada = new javax.swing.JLabel();
         bClasificacionGeneral = new javax.swing.JLabel();
@@ -101,17 +84,17 @@ AnimationClass animacion = new AnimationClass();
         logo = new javax.swing.JLabel();
         gifAbajo = new javax.swing.JLabel();
         GIFarriba = new javax.swing.JLabel();
-        bMenu1 = new javax.swing.JLabel();
-        bLogout1 = new javax.swing.JLabel();
-        bAltaJugadores1 = new javax.swing.JLabel();
-        bAltaEquipos1 = new javax.swing.JLabel();
-        bAlta1 = new javax.swing.JLabel();
-        bAltaJefes1 = new javax.swing.JLabel();
-        bAltaTecnicos1 = new javax.swing.JLabel();
-        bAltaUsuarios1 = new javax.swing.JLabel();
-        bBaja1 = new javax.swing.JLabel();
-        bBajaEquipos1 = new javax.swing.JLabel();
-        bBajaJugadores1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        tfNombre = new javax.swing.JTextField();
+        tfApellidoJefe = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        Baceptar = new javax.swing.JLabel();
+        NombreJefe = new javax.swing.JLabel();
+        tfNombreJefe = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1500, 750));
@@ -119,8 +102,27 @@ AnimationClass animacion = new AnimationClass();
         setSize(new java.awt.Dimension(1500, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        bCerrar.setBackground(new java.awt.Color(45, 45, 45));
+        bCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
+        bCerrar.setOpaque(true);
+        bCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                bCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bCerrarMouseExited(evt);
+            }
+        });
+        getContentPane().add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, 30));
+
+        bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
         bMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
+        bMinimizar.setOpaque(true);
         bMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bMinimizarMouseClicked(evt);
@@ -134,15 +136,6 @@ AnimationClass animacion = new AnimationClass();
         });
         getContentPane().add(bMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1420, 0, 40, -1));
 
-        bCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
-        bCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bCerrarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, -1));
-
         barraDrag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 barraDragMouseDragged(evt);
@@ -154,6 +147,337 @@ AnimationClass animacion = new AnimationClass();
             }
         });
         getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 30));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
+        bMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bMenuMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 50));
+
+        bLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        bLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bLogoutMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 60, 40, 40));
+
+        bAlta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bAlta.setForeground(new java.awt.Color(255, 255, 255));
+        bAlta.setText("     Alta");
+        bAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAlta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 110, 300, 30));
+
+        bAltaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bAltaEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        bAltaEquipos.setText("           Equipos");
+        bAltaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAltaEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaEquiposMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bAltaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 150, 300, 30));
+
+        bAltaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bAltaJugadores.setForeground(new java.awt.Color(255, 255, 255));
+        bAltaJugadores.setText("           Jugadores");
+        bAltaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAltaJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaJugadoresMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bAltaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
+
+        bAltaTecnicos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bAltaTecnicos.setForeground(new java.awt.Color(255, 255, 255));
+        bAltaTecnicos.setText("           Técnicos");
+        bAltaTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAltaTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaTecnicosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bAltaTecnicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
+
+        bAltaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bAltaJefes.setForeground(new java.awt.Color(255, 255, 255));
+        bAltaJefes.setText("           Jefes");
+        bAltaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAltaJefes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaJefesMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bAltaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
+
+        bAltaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bAltaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        bAltaUsuarios.setText("           Usuarios");
+        bAltaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAltaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaUsuariosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bAltaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
+
+        bBaja.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bBaja.setForeground(new java.awt.Color(255, 255, 255));
+        bBaja.setText("     Baja");
+        bBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bBaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBajaMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 150, 300, 30));
+
+        bBajaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bBajaEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        bBajaEquipos.setText("           Equipos");
+        bBajaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bBajaEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBajaEquiposMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bBajaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
+
+        bBajaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bBajaJugadores.setForeground(new java.awt.Color(255, 255, 255));
+        bBajaJugadores.setText("           Jugadores");
+        bBajaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bBajaJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBajaJugadoresMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bBajaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
+
+        bBajaTecnicos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bBajaTecnicos.setForeground(new java.awt.Color(255, 255, 255));
+        bBajaTecnicos.setText("           Técnicos");
+        bBajaTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bBajaTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBajaTecnicosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bBajaTecnicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
+
+        bBajaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bBajaJefes.setForeground(new java.awt.Color(255, 255, 255));
+        bBajaJefes.setText("           Jefes");
+        bBajaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bBajaJefes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBajaJefesMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bBajaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
+
+        bBajaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bBajaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        bBajaUsuarios.setText("           Usuarios");
+        bBajaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bBajaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBajaUsuariosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bBajaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
+
+        bModificacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bModificacion.setForeground(new java.awt.Color(255, 255, 255));
+        bModificacion.setText("     Modificación");
+        bModificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bModificacionMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
+
+        bModificacionEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bModificacionEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        bModificacionEquipos.setText("           Equipos");
+        bModificacionEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacionEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bModificacionEquiposMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bModificacionEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
+
+        bModificacionJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bModificacionJugadores.setForeground(new java.awt.Color(255, 255, 255));
+        bModificacionJugadores.setText("           Jugadores");
+        bModificacionJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacionJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bModificacionJugadoresMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bModificacionJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
+
+        bModificacionTecnicos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bModificacionTecnicos.setForeground(new java.awt.Color(255, 255, 255));
+        bModificacionTecnicos.setText("           Técnicos");
+        bModificacionTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacionTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bModificacionTecnicosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bModificacionTecnicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
+
+        bModificacionJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bModificacionJefes.setForeground(new java.awt.Color(255, 255, 255));
+        bModificacionJefes.setText("           Jefes");
+        bModificacionJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacionJefes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bModificacionJefesMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bModificacionJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
+
+        bModificacionUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bModificacionUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        bModificacionUsuarios.setText("           Usuarios");
+        bModificacionUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacionUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bModificacionUsuariosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bModificacionUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 390, 300, 30));
+
+        bConsulta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        bConsulta.setText("     Consulta");
+        bConsulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bConsultaMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
+
+        bConsultaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bConsultaEquipos.setForeground(new java.awt.Color(255, 255, 255));
+        bConsultaEquipos.setText("           Equipos");
+        bConsultaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bConsultaEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bConsultaEquiposMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bConsultaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
+
+        bConsultaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bConsultaJugadores.setForeground(new java.awt.Color(255, 255, 255));
+        bConsultaJugadores.setText("           Jugadores");
+        bConsultaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bConsultaJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bConsultaJugadoresMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bConsultaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
+
+        bConsultaTecnicos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bConsultaTecnicos.setForeground(new java.awt.Color(255, 255, 255));
+        bConsultaTecnicos.setText("           Técnicos");
+        bConsultaTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bConsultaTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bConsultaTecnicosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bConsultaTecnicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
+
+        bConsultaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bConsultaJefes.setForeground(new java.awt.Color(255, 255, 255));
+        bConsultaJefes.setText("           Jefes");
+        bConsultaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bConsultaJefes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bConsultaJefesMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bConsultaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 390, 300, 30));
+
+        bConsultaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bConsultaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        bConsultaUsuarios.setText("           Usuarios");
+        bConsultaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bConsultaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bConsultaUsuariosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bConsultaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 430, 300, 30));
+
+        bRealizarEmparejamientos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bRealizarEmparejamientos.setForeground(new java.awt.Color(255, 255, 255));
+        bRealizarEmparejamientos.setText("     Realizar Emparejamientos");
+        bRealizarEmparejamientos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bRealizarEmparejamientos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bRealizarEmparejamientosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bRealizarEmparejamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
+
+        bResultadosJornada.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bResultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
+        bResultadosJornada.setText("     Resultados Jornada");
+        bResultadosJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bResultadosJornada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bResultadosJornadaMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bResultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
+
+        bClasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bClasificacionGeneral.setForeground(new java.awt.Color(255, 255, 255));
+        bClasificacionGeneral.setText("     Clasificación general");
+        bClasificacionGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bClasificacionGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bClasificacionGeneralMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bClasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
+
+        menu.setBackground(new java.awt.Color(120, 120, 120));
+        menu.setOpaque(true);
+        jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 50, 300, 700));
+
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO-small.png"))); // NOI18N
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
+
+        gifAbajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte2.gif"))); // NOI18N
+        jPanel1.add(gifAbajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 500, 500));
+
+        GIFarriba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte1.gif"))); // NOI18N
+        jPanel1.add(GIFarriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -120, 500, 500));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 750));
 
         jPanel2.setBackground(new java.awt.Color(45, 45, 45));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -248,528 +572,8 @@ AnimationClass animacion = new AnimationClass();
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 1000, 750));
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
-        bMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bMenuMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 50));
-
-        bLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
-        bLogout.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bLogoutMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 60, 40, 40));
-
-        bAlta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bAlta.setForeground(new java.awt.Color(255, 255, 255));
-        bAlta.setText("     Alta");
-        bAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bAlta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bAltaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 110, 300, 30));
-
-        bAltaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaEquipos.setText("           Equipos");
-        bAltaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bAltaEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bAltaEquiposMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bAltaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 150, 300, 30));
-
-        bAltaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaJugadores.setText("           Jugadores");
-        bAltaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bAltaJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bAltaJugadoresMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bAltaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
-
-        bAltaTecnicos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaTecnicos.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaTecnicos.setText("           Técnicos");
-        bAltaTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bAltaTecnicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
-
-        bAltaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaJefes.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaJefes.setText("           Jefes");
-        bAltaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bAltaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
-
-        bAltaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaUsuarios.setText("           Usuarios");
-        bAltaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bAltaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
-
-        bBaja.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bBaja.setForeground(new java.awt.Color(255, 255, 255));
-        bBaja.setText("     Baja");
-        bBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBaja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBajaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 150, 300, 30));
-
-        bBajaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaEquipos.setText("           Equipos");
-        bBajaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBajaEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBajaEquiposMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBajaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
-
-        bBajaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaJugadores.setText("           Jugadores");
-        bBajaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBajaJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBajaJugadoresMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBajaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
-
-        bBajaTecnicos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaTecnicos.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaTecnicos.setText("           Técnicos");
-        bBajaTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBajaTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBajaTecnicosMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBajaTecnicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
-
-        bAltaTecnicos2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaTecnicos2.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaTecnicos2.setText("           Técnicos");
-        bAltaTecnicos2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bAltaTecnicos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
-
-        bAlta2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bAlta2.setForeground(new java.awt.Color(255, 255, 255));
-        bAlta2.setText("     Alta");
-        bAlta2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bAlta2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bAlta2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bAlta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 110, 300, 30));
-
-        bMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
-        bMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bMenu2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bMenu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 50));
-
-        bAltaEquipos2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaEquipos2.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaEquipos2.setText("           Equipos");
-        bAltaEquipos2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bAltaEquipos2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bAltaEquipos2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bAltaEquipos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 150, 300, 30));
-
-        bAltaJugadores2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaJugadores2.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaJugadores2.setText("           Jugadores");
-        bAltaJugadores2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bAltaJugadores2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bAltaJugadores2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bAltaJugadores2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
-
-        bAltaUsuarios2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaUsuarios2.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaUsuarios2.setText("           Usuarios");
-        bAltaUsuarios2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bAltaUsuarios2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
-
-        bBajaEquipos2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaEquipos2.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaEquipos2.setText("           Equipos");
-        bBajaEquipos2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBajaEquipos2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBajaEquipos2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBajaEquipos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
-
-        bLogout2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
-        bLogout2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bLogout2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bLogout2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 60, 40, 40));
-
-        bBaja2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bBaja2.setForeground(new java.awt.Color(255, 255, 255));
-        bBaja2.setText("     Baja");
-        bBaja2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBaja2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBaja2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBaja2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 150, 300, 30));
-
-        bAltaJefes2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaJefes2.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaJefes2.setText("           Jefes");
-        bAltaJefes2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bAltaJefes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
-
-        bBajaJugadores2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaJugadores2.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaJugadores2.setText("           Jugadores");
-        bBajaJugadores2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBajaJugadores2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBajaJugadores2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBajaJugadores2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
-
-        bBajaTecnicos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaTecnicos1.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaTecnicos1.setText("           Técnicos");
-        bBajaTecnicos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBajaTecnicos1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBajaTecnicos1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBajaTecnicos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
-
-        bBajaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaJefes.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaJefes.setText("           Jefes");
-        bBajaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bBajaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
-
-        bBajaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaUsuarios.setText("           Usuarios");
-        bBajaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bBajaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
-
-        bModificacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bModificacion.setForeground(new java.awt.Color(255, 255, 255));
-        bModificacion.setText("     Modificación");
-        bModificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bModificacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bModificacionMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bModificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
-
-        bModificacionEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bModificacionEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        bModificacionEquipos.setText("           Equipos");
-        bModificacionEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bModificacionEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bModificacionEquiposMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bModificacionEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
-
-        bModificacionJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bModificacionJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        bModificacionJugadores.setText("           Jugadores");
-        bModificacionJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bModificacionJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bModificacionJugadoresMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bModificacionJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
-
-        bModificacionTecnicos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bModificacionTecnicos.setForeground(new java.awt.Color(255, 255, 255));
-        bModificacionTecnicos.setText("           Técnicos");
-        bModificacionTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bModificacionTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bModificacionTecnicosMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bModificacionTecnicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
-
-        bModificacionJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bModificacionJefes.setForeground(new java.awt.Color(255, 255, 255));
-        bModificacionJefes.setText("           Jefes");
-        bModificacionJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bModificacionJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
-
-        bModificacionUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bModificacionUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        bModificacionUsuarios.setText("           Usuarios");
-        bModificacionUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bModificacionUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 390, 300, 30));
-
-        bConsulta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        bConsulta.setText("     Consulta");
-        bConsulta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bConsultaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
-
-        bConsultaEquipos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bConsultaEquipos.setForeground(new java.awt.Color(255, 255, 255));
-        bConsultaEquipos.setText("           Equipos");
-        bConsultaEquipos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bConsultaEquipos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bConsultaEquiposMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bConsultaEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
-
-        bConsultaJugadores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bConsultaJugadores.setForeground(new java.awt.Color(255, 255, 255));
-        bConsultaJugadores.setText("           Jugadores");
-        bConsultaJugadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bConsultaJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bConsultaJugadoresMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bConsultaJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
-
-        bConsultaTecnicos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bConsultaTecnicos.setForeground(new java.awt.Color(255, 255, 255));
-        bConsultaTecnicos.setText("           Técnicos");
-        bConsultaTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bConsultaTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bConsultaTecnicosMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bConsultaTecnicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
-
-        bConsultaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bConsultaJefes.setForeground(new java.awt.Color(255, 255, 255));
-        bConsultaJefes.setText("           Jefes");
-        bConsultaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bConsultaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 390, 300, 30));
-
-        bConsultaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bConsultaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
-        bConsultaUsuarios.setText("           Usuarios");
-        bConsultaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bConsultaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 430, 300, 30));
-
-        bCalendario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bCalendario.setForeground(new java.awt.Color(255, 255, 255));
-        bCalendario.setText("     Calendario");
-        bCalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
-
-        bRealizarEmparejamientos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bRealizarEmparejamientos.setForeground(new java.awt.Color(255, 255, 255));
-        bRealizarEmparejamientos.setText("     Realizar Emparejamientos");
-        bRealizarEmparejamientos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bRealizarEmparejamientos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bRealizarEmparejamientosMouseClicked(evt);
-            }
-        });
-        jPanel1.add(bRealizarEmparejamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
-
-        bResultadosJornada.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bResultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
-        bResultadosJornada.setText("     Resultados Jornada");
-        bResultadosJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bResultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
-
-        bClasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bClasificacionGeneral.setForeground(new java.awt.Color(255, 255, 255));
-        bClasificacionGeneral.setText("     Clasificación general");
-        bClasificacionGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bClasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 390, 300, 30));
-
-        menu.setBackground(new java.awt.Color(120, 120, 120));
-        menu.setOpaque(true);
-        jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 50, 300, 700));
-
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO-small.png"))); // NOI18N
-        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
-
-        gifAbajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte2.gif"))); // NOI18N
-        jPanel1.add(gifAbajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 500, 500));
-
-        GIFarriba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte1.gif"))); // NOI18N
-        jPanel1.add(GIFarriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -120, 500, 500));
-
-        bMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
-        bMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bMenu1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 50));
-
-        bLogout1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
-        bLogout1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bLogout1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bLogout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 60, 40, 40));
-
-        bAltaJugadores1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaJugadores1.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaJugadores1.setText("           Jugadores");
-        bAltaJugadores1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bAltaJugadores1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bAltaJugadores1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bAltaJugadores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
-
-        bAltaEquipos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaEquipos1.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaEquipos1.setText("           Equipos");
-        bAltaEquipos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bAltaEquipos1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bAltaEquipos1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bAltaEquipos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 150, 300, 30));
-
-        bAlta1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bAlta1.setForeground(new java.awt.Color(255, 255, 255));
-        bAlta1.setText("     Alta");
-        bAlta1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bAlta1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bAlta1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bAlta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 110, 300, 30));
-
-        bAltaJefes1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaJefes1.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaJefes1.setText("           Jefes");
-        bAltaJefes1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bAltaJefes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
-
-        bAltaTecnicos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaTecnicos1.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaTecnicos1.setText("           Técnicos");
-        bAltaTecnicos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bAltaTecnicos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
-
-        bAltaUsuarios1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bAltaUsuarios1.setForeground(new java.awt.Color(255, 255, 255));
-        bAltaUsuarios1.setText("           Usuarios");
-        bAltaUsuarios1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bAltaUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
-
-        bBaja1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bBaja1.setForeground(new java.awt.Color(255, 255, 255));
-        bBaja1.setText("     Baja");
-        bBaja1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBaja1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBaja1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBaja1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 150, 300, 30));
-
-        bBajaEquipos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaEquipos1.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaEquipos1.setText("           Equipos");
-        bBajaEquipos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBajaEquipos1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBajaEquipos1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBajaEquipos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 190, 300, 30));
-
-        bBajaJugadores1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bBajaJugadores1.setForeground(new java.awt.Color(255, 255, 255));
-        bBajaJugadores1.setText("           Jugadores");
-        bBajaJugadores1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bBajaJugadores1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bBajaJugadores1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(bBajaJugadores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 750));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseClicked
-       Controlador.salir();
-    }//GEN-LAST:event_bCerrarMouseClicked
-
-    private void bMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseClicked
-        this.setState(ICONIFIED);
-    }//GEN-LAST:event_bMinimizarMouseClicked
-
-    private void bMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseEntered
-    bMinimizar.setBackground(new Color(255,255,255,50));  
-    }//GEN-LAST:event_bMinimizarMouseEntered
-
-    private void bMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseExited
-    bMinimizar.setBackground(new java.awt.Color(45, 45, 45));    
-    }//GEN-LAST:event_bMinimizarMouseExited
-
-    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
-        xMouse=evt.getX();
-        yMouse=evt.getY();
-    }//GEN-LAST:event_barraDragMousePressed
-
-    private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_barraDragMouseDragged
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
           if(tfNombre.getText().equals("Nombre Equipo"))
@@ -834,7 +638,12 @@ AnimationClass animacion = new AnimationClass();
             else
                 JOptionPane.showMessageDialog(this,"El equipo no se ha insertado correctamente");
     }//GEN-LAST:event_BaceptarMouseClicked
-private void ocultarSubmenu(int eleccion)
+    
+    /**
+     * Este método utiliza metodos de la clase Animation para ocultar los submenus de las diferentes opciones del menu
+     * @param eleccion es un parámetro para saber que conjunto de opciones ocultar
+     */
+    private void ocultarSubmenu(int eleccion)
     {
         switch(eleccion)
         {
@@ -868,11 +677,46 @@ private void ocultarSubmenu(int eleccion)
                 break;
         }
     }
-    
+     
     
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         jPanel2.requestFocus();
     }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void bCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseClicked
+        Controlador.salir();
+    }//GEN-LAST:event_bCerrarMouseClicked
+
+    private void bCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseEntered
+        bCerrar.setBackground(new java.awt.Color(255,0,0));
+    }//GEN-LAST:event_bCerrarMouseEntered
+
+    private void bCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseExited
+        bCerrar.setBackground(new java.awt.Color(45, 45, 45));
+    }//GEN-LAST:event_bCerrarMouseExited
+
+    private void bMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseClicked
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_bMinimizarMouseClicked
+
+    private void bMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseEntered
+        bMinimizar.setBackground(new Color(100,100,100));
+    }//GEN-LAST:event_bMinimizarMouseEntered
+
+    private void bMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseExited
+        bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
+    }//GEN-LAST:event_bMinimizarMouseExited
+
+    private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_barraDragMouseDragged
+
+    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
+        xMouse=evt.getX();
+        yMouse=evt.getY();
+    }//GEN-LAST:event_barraDragMousePressed
 
     private void bMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMenuMouseClicked
         if(menuAbierto){
@@ -898,7 +742,6 @@ private void ocultarSubmenu(int eleccion)
             animacion.jLabelXLeft(bBaja.getX(),bBaja.getX()-300, 3, 5, bBaja);
             animacion.jLabelXLeft(bModificacion.getX(),bModificacion.getX()-300, 3, 5, bModificacion);
             animacion.jLabelXLeft(bConsulta.getX(),bConsulta.getX()-300, 3, 5, bConsulta);
-            animacion.jLabelXLeft(bCalendario.getX(),bCalendario.getX()-300, 3, 5, bCalendario);
             animacion.jLabelXLeft(bRealizarEmparejamientos.getX(),bRealizarEmparejamientos.getX()-300, 3, 5, bRealizarEmparejamientos);
             animacion.jLabelXLeft(bResultadosJornada.getX(),bResultadosJornada.getX()-300, 3, 5, bResultadosJornada);
             animacion.jLabelXLeft(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()-300, 3, 5, bClasificacionGeneral);
@@ -909,17 +752,15 @@ private void ocultarSubmenu(int eleccion)
             bBaja.setLocation(-300, 150);
             bModificacion.setLocation(-300, 190);
             bConsulta.setLocation(-300, 230);
-            bCalendario.setLocation(-300, 270);
-            bRealizarEmparejamientos.setLocation(-300, 310);
-            bResultadosJornada.setLocation(-300, 350);
-            bClasificacionGeneral.setLocation(-300, 390);
+            bRealizarEmparejamientos.setLocation(-300, 270);
+            bResultadosJornada.setLocation(-300, 310);
+            bClasificacionGeneral.setLocation(-300, 350);
             menuAbierto=true;
             animacion.jLabelXRight(menu.getX(), menu.getX()+300, 3, 5, menu);
             animacion.jLabelXRight(bAlta.getX(),bAlta.getX()+300, 3, 5, bAlta);
             animacion.jLabelXRight(bBaja.getX(),bBaja.getX()+300, 3, 5, bBaja);
             animacion.jLabelXRight(bModificacion.getX(),bModificacion.getX()+300, 3, 5, bModificacion);
             animacion.jLabelXRight(bConsulta.getX(),bConsulta.getX()+300, 3, 5, bConsulta);
-            animacion.jLabelXRight(bCalendario.getX(),bCalendario.getX()+300, 3, 5, bCalendario);
             animacion.jLabelXRight(bRealizarEmparejamientos.getX(),bRealizarEmparejamientos.getX()+300, 3, 5, bRealizarEmparejamientos);
             animacion.jLabelXRight(bResultadosJornada.getX(),bResultadosJornada.getX()+300, 3, 5, bResultadosJornada);
             animacion.jLabelXRight(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()+300, 3, 5, bClasificacionGeneral);
@@ -937,7 +778,6 @@ private void ocultarSubmenu(int eleccion)
             animacion.jLabelYUp(bBaja.getY(), bBaja.getY()-200, 3, 5, bBaja);
             animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
             animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
-            animacion.jLabelYUp(bCalendario.getY(), bCalendario.getY()-200, 3, 5, bCalendario);
             animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
             animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
             animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
@@ -973,7 +813,6 @@ private void ocultarSubmenu(int eleccion)
                 animacion.jLabelYDown(bBaja.getY(), bBaja.getY()+200, 3, 5, bBaja);
                 animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
                 animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
-                animacion.jLabelYDown(bCalendario.getY(), bCalendario.getY()+200, 3, 5, bCalendario);
                 animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
                 animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
                 animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
@@ -994,12 +833,23 @@ private void ocultarSubmenu(int eleccion)
         Controlador.VentanaAltaJugador(this);
     }//GEN-LAST:event_bAltaJugadoresMouseClicked
 
+    private void bAltaTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaTecnicosMouseClicked
+        Controlador.VentanaAltaTecnico(this);
+    }//GEN-LAST:event_bAltaTecnicosMouseClicked
+
+    private void bAltaJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaJefesMouseClicked
+        Controlador.VentanaAltaJefe(this);
+    }//GEN-LAST:event_bAltaJefesMouseClicked
+
+    private void bAltaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaUsuariosMouseClicked
+        Controlador.VentanaAltaPerfil(this);
+    }//GEN-LAST:event_bAltaUsuariosMouseClicked
+
     private void bBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaMouseClicked
         if(listaDesplegableBaja){
             listaDesplegableBaja=false;
             animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
             animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
-            animacion.jLabelYUp(bCalendario.getY(), bCalendario.getY()-200, 3, 5, bCalendario);
             animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
             animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
             animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
@@ -1032,7 +882,6 @@ private void ocultarSubmenu(int eleccion)
             {
                 animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
                 animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
-                animacion.jLabelYDown(bCalendario.getY(), bCalendario.getY()+200, 3, 5, bCalendario);
                 animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
                 animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
                 animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
@@ -1054,50 +903,21 @@ private void ocultarSubmenu(int eleccion)
     }//GEN-LAST:event_bBajaJugadoresMouseClicked
 
     private void bBajaTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaTecnicosMouseClicked
-        // TODO add your handling code here:
+        Controlador.VentanaBajaTecnico(this);
     }//GEN-LAST:event_bBajaTecnicosMouseClicked
 
-    private void bAlta2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAlta2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bAlta2MouseClicked
+    private void bBajaJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaJefesMouseClicked
+        Controlador.VentanaBajaJefe(this);
+    }//GEN-LAST:event_bBajaJefesMouseClicked
 
-    private void bMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMenu2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bMenu2MouseClicked
-
-    private void bAltaEquipos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaEquipos2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bAltaEquipos2MouseClicked
-
-    private void bAltaJugadores2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaJugadores2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bAltaJugadores2MouseClicked
-
-    private void bBajaEquipos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaEquipos2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bBajaEquipos2MouseClicked
-
-    private void bLogout2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLogout2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bLogout2MouseClicked
-
-    private void bBaja2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBaja2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bBaja2MouseClicked
-
-    private void bBajaJugadores2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaJugadores2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bBajaJugadores2MouseClicked
-
-    private void bBajaTecnicos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaTecnicos1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bBajaTecnicos1MouseClicked
+    private void bBajaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaUsuariosMouseClicked
+        Controlador.VentanaBajaPerfil(this);
+    }//GEN-LAST:event_bBajaUsuariosMouseClicked
 
     private void bModificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionMouseClicked
         if(listaDesplegableModificaciones){
             listaDesplegableModificaciones=false;
             animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
-            animacion.jLabelYUp(bCalendario.getY(), bCalendario.getY()-200, 3, 5, bCalendario);
             animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
             animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
             animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
@@ -1128,7 +948,6 @@ private void ocultarSubmenu(int eleccion)
             else
             {
                 animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
-                animacion.jLabelYDown(bCalendario.getY(), bCalendario.getY()+200, 3, 5, bCalendario);
                 animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
                 animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
                 animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
@@ -1150,13 +969,20 @@ private void ocultarSubmenu(int eleccion)
     }//GEN-LAST:event_bModificacionJugadoresMouseClicked
 
     private void bModificacionTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionTecnicosMouseClicked
-        // TODO add your handling code here:
+        Controlador.VentanaModificarTecnico(this);
     }//GEN-LAST:event_bModificacionTecnicosMouseClicked
+
+    private void bModificacionJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionJefesMouseClicked
+        Controlador.VentanaModificarJefes(this);
+    }//GEN-LAST:event_bModificacionJefesMouseClicked
+
+    private void bModificacionUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionUsuariosMouseClicked
+        Controlador.VentanaModificarPerfil(this);
+    }//GEN-LAST:event_bModificacionUsuariosMouseClicked
 
     private void bConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaMouseClicked
         if(listaDesplegableConsulta){
             listaDesplegableConsulta=false;
-            animacion.jLabelYUp(bCalendario.getY(), bCalendario.getY()-200, 3, 5, bCalendario);
             animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
             animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
             animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
@@ -1189,7 +1015,6 @@ private void ocultarSubmenu(int eleccion)
             }
             else
             {
-                animacion.jLabelYDown(bCalendario.getY(), bCalendario.getY()+200, 3, 5, bCalendario);
                 animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
                 animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
                 animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
@@ -1203,52 +1028,36 @@ private void ocultarSubmenu(int eleccion)
     }//GEN-LAST:event_bConsultaMouseClicked
 
     private void bConsultaEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaEquiposMouseClicked
-        // TODO add your handling code here:
+        Controlador.VentanaConsulta(this,1);
     }//GEN-LAST:event_bConsultaEquiposMouseClicked
 
     private void bConsultaJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaJugadoresMouseClicked
-        // TODO add your handling code here:
+        Controlador.VentanaConsulta(this,2);
     }//GEN-LAST:event_bConsultaJugadoresMouseClicked
 
     private void bConsultaTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaTecnicosMouseClicked
-        // TODO add your handling code here:
+        Controlador.VentanaConsulta(this,4);
     }//GEN-LAST:event_bConsultaTecnicosMouseClicked
+
+    private void bConsultaJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaJefesMouseClicked
+        Controlador.VentanaConsulta(this,3);
+    }//GEN-LAST:event_bConsultaJefesMouseClicked
+
+    private void bConsultaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaUsuariosMouseClicked
+        Controlador.VentanaConsulta(this,5);
+    }//GEN-LAST:event_bConsultaUsuariosMouseClicked
 
     private void bRealizarEmparejamientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bRealizarEmparejamientosMouseClicked
         Controlador.generarLiga();
     }//GEN-LAST:event_bRealizarEmparejamientosMouseClicked
 
-    private void bMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMenu1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bMenu1MouseClicked
+    private void bResultadosJornadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bResultadosJornadaMouseClicked
+        Controlador.VentanaPartidos(this);
+    }//GEN-LAST:event_bResultadosJornadaMouseClicked
 
-    private void bLogout1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLogout1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bLogout1MouseClicked
-
-    private void bAltaJugadores1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaJugadores1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bAltaJugadores1MouseClicked
-
-    private void bAltaEquipos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaEquipos1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bAltaEquipos1MouseClicked
-
-    private void bAlta1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAlta1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bAlta1MouseClicked
-
-    private void bBaja1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBaja1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bBaja1MouseClicked
-
-    private void bBajaEquipos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaEquipos1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bBajaEquipos1MouseClicked
-
-    private void bBajaJugadores1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaJugadores1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bBajaJugadores1MouseClicked
+    private void bClasificacionGeneralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bClasificacionGeneralMouseClicked
+        Controlador.VentanaClasificacion(this);
+    }//GEN-LAST:event_bClasificacionGeneralMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1290,37 +1099,17 @@ private void ocultarSubmenu(int eleccion)
     private javax.swing.JLabel GIFarriba;
     private javax.swing.JLabel NombreJefe;
     private javax.swing.JLabel bAlta;
-    private javax.swing.JLabel bAlta1;
-    private javax.swing.JLabel bAlta2;
     private javax.swing.JLabel bAltaEquipos;
-    private javax.swing.JLabel bAltaEquipos1;
-    private javax.swing.JLabel bAltaEquipos2;
     private javax.swing.JLabel bAltaJefes;
-    private javax.swing.JLabel bAltaJefes1;
-    private javax.swing.JLabel bAltaJefes2;
     private javax.swing.JLabel bAltaJugadores;
-    private javax.swing.JLabel bAltaJugadores1;
-    private javax.swing.JLabel bAltaJugadores2;
     private javax.swing.JLabel bAltaTecnicos;
-    private javax.swing.JLabel bAltaTecnicos1;
-    private javax.swing.JLabel bAltaTecnicos2;
     private javax.swing.JLabel bAltaUsuarios;
-    private javax.swing.JLabel bAltaUsuarios1;
-    private javax.swing.JLabel bAltaUsuarios2;
     private javax.swing.JLabel bBaja;
-    private javax.swing.JLabel bBaja1;
-    private javax.swing.JLabel bBaja2;
     private javax.swing.JLabel bBajaEquipos;
-    private javax.swing.JLabel bBajaEquipos1;
-    private javax.swing.JLabel bBajaEquipos2;
     private javax.swing.JLabel bBajaJefes;
     private javax.swing.JLabel bBajaJugadores;
-    private javax.swing.JLabel bBajaJugadores1;
-    private javax.swing.JLabel bBajaJugadores2;
     private javax.swing.JLabel bBajaTecnicos;
-    private javax.swing.JLabel bBajaTecnicos1;
     private javax.swing.JLabel bBajaUsuarios;
-    private javax.swing.JLabel bCalendario;
     private javax.swing.JLabel bCerrar;
     private javax.swing.JLabel bClasificacionGeneral;
     private javax.swing.JLabel bConsulta;
@@ -1330,11 +1119,7 @@ private void ocultarSubmenu(int eleccion)
     private javax.swing.JLabel bConsultaTecnicos;
     private javax.swing.JLabel bConsultaUsuarios;
     private javax.swing.JLabel bLogout;
-    private javax.swing.JLabel bLogout1;
-    private javax.swing.JLabel bLogout2;
     private javax.swing.JLabel bMenu;
-    private javax.swing.JLabel bMenu1;
-    private javax.swing.JLabel bMenu2;
     private javax.swing.JLabel bMinimizar;
     private javax.swing.JLabel bModificacion;
     private javax.swing.JLabel bModificacionEquipos;

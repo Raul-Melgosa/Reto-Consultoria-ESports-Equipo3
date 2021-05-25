@@ -19,6 +19,7 @@ public class Partido {
     private int idLocal;
     private int idVisitante;
     private int idGanador;
+    
 
     public Partido(int id, LocalTime hora, int idLocal, int idVisitante) {
         this.id = id;

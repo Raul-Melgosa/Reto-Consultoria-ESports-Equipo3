@@ -77,7 +77,6 @@ AnimationClass animacion = new AnimationClass();
         bConsultaTecnicos = new javax.swing.JLabel();
         bConsultaJefes = new javax.swing.JLabel();
         bConsultaUsuarios = new javax.swing.JLabel();
-        bCalendario = new javax.swing.JLabel();
         bRealizarEmparejamientos = new javax.swing.JLabel();
         bResultadosJornada = new javax.swing.JLabel();
         bClasificacionGeneral = new javax.swing.JLabel();
@@ -199,18 +198,33 @@ AnimationClass animacion = new AnimationClass();
         bAltaTecnicos.setForeground(new java.awt.Color(255, 255, 255));
         bAltaTecnicos.setText("           Técnicos");
         bAltaTecnicos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAltaTecnicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaTecnicosMouseClicked(evt);
+            }
+        });
         jPanel1.add(bAltaTecnicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 230, 300, 30));
 
         bAltaJefes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bAltaJefes.setForeground(new java.awt.Color(255, 255, 255));
         bAltaJefes.setText("           Jefes");
         bAltaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAltaJefes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaJefesMouseClicked(evt);
+            }
+        });
         jPanel1.add(bAltaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
 
         bAltaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bAltaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         bAltaUsuarios.setText("           Usuarios");
         bAltaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bAltaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bAltaUsuariosMouseClicked(evt);
+            }
+        });
         jPanel1.add(bAltaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
 
         bBaja.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -261,12 +275,22 @@ AnimationClass animacion = new AnimationClass();
         bBajaJefes.setForeground(new java.awt.Color(255, 255, 255));
         bBajaJefes.setText("           Jefes");
         bBajaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bBajaJefes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBajaJefesMouseClicked(evt);
+            }
+        });
         jPanel1.add(bBajaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
 
         bBajaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bBajaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         bBajaUsuarios.setText("           Usuarios");
         bBajaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bBajaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBajaUsuariosMouseClicked(evt);
+            }
+        });
         jPanel1.add(bBajaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
 
         bModificacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -317,12 +341,22 @@ AnimationClass animacion = new AnimationClass();
         bModificacionJefes.setForeground(new java.awt.Color(255, 255, 255));
         bModificacionJefes.setText("           Jefes");
         bModificacionJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacionJefes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bModificacionJefesMouseClicked(evt);
+            }
+        });
         jPanel1.add(bModificacionJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
 
         bModificacionUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bModificacionUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         bModificacionUsuarios.setText("           Usuarios");
         bModificacionUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bModificacionUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bModificacionUsuariosMouseClicked(evt);
+            }
+        });
         jPanel1.add(bModificacionUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 390, 300, 30));
 
         bConsulta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -373,19 +407,23 @@ AnimationClass animacion = new AnimationClass();
         bConsultaJefes.setForeground(new java.awt.Color(255, 255, 255));
         bConsultaJefes.setText("           Jefes");
         bConsultaJefes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bConsultaJefes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bConsultaJefesMouseClicked(evt);
+            }
+        });
         jPanel1.add(bConsultaJefes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 390, 300, 30));
 
         bConsultaUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bConsultaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         bConsultaUsuarios.setText("           Usuarios");
         bConsultaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bConsultaUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bConsultaUsuariosMouseClicked(evt);
+            }
+        });
         jPanel1.add(bConsultaUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 430, 300, 30));
-
-        bCalendario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bCalendario.setForeground(new java.awt.Color(255, 255, 255));
-        bCalendario.setText("     Calendario");
-        bCalendario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
 
         bRealizarEmparejamientos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bRealizarEmparejamientos.setForeground(new java.awt.Color(255, 255, 255));
@@ -396,19 +434,29 @@ AnimationClass animacion = new AnimationClass();
                 bRealizarEmparejamientosMouseClicked(evt);
             }
         });
-        jPanel1.add(bRealizarEmparejamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
+        jPanel1.add(bRealizarEmparejamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 270, 300, 30));
 
         bResultadosJornada.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bResultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
         bResultadosJornada.setText("     Resultados Jornada");
         bResultadosJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bResultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
+        bResultadosJornada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bResultadosJornadaMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bResultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 310, 300, 30));
 
         bClasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bClasificacionGeneral.setForeground(new java.awt.Color(255, 255, 255));
         bClasificacionGeneral.setText("     Clasificación general");
         bClasificacionGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(bClasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 390, 300, 30));
+        bClasificacionGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bClasificacionGeneralMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bClasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 350, 300, 30));
 
         menu.setBackground(new java.awt.Color(120, 120, 120));
         menu.setOpaque(true);
@@ -483,60 +531,10 @@ AnimationClass animacion = new AnimationClass();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMenuMouseClicked
-        if(menuAbierto){
-            menuAbierto=false;
-            if(listaDesplegableAlta)
-            {
-                bAltaMouseClicked(evt);
-            }
-            else if(listaDesplegableBaja)
-            {
-                bBajaMouseClicked(evt);
-            }
-            else if (listaDesplegableModificaciones)
-            {
-                bModificacionMouseClicked(evt);
-            }
-            else if (listaDesplegableConsulta)
-            {
-                bConsultaMouseClicked(evt);
-            }
-            animacion.jLabelXLeft(menu.getX(), menu.getX()-300, 3, 5, menu);
-            animacion.jLabelXLeft(bAlta.getX(),bAlta.getX()-300, 3, 5, bAlta);
-            animacion.jLabelXLeft(bBaja.getX(),bBaja.getX()-300, 3, 5, bBaja);
-            animacion.jLabelXLeft(bModificacion.getX(),bModificacion.getX()-300, 3, 5, bModificacion);
-            animacion.jLabelXLeft(bConsulta.getX(),bConsulta.getX()-300, 3, 5, bConsulta);
-            animacion.jLabelXLeft(bCalendario.getX(),bCalendario.getX()-300, 3, 5, bCalendario);
-            animacion.jLabelXLeft(bRealizarEmparejamientos.getX(),bRealizarEmparejamientos.getX()-300, 3, 5, bRealizarEmparejamientos);
-            animacion.jLabelXLeft(bResultadosJornada.getX(),bResultadosJornada.getX()-300, 3, 5, bResultadosJornada);
-            animacion.jLabelXLeft(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()-300, 3, 5, bClasificacionGeneral);
-            animacion.jLabelXLeft(bLogout.getX(), bLogout.getX()-300, 3, 5, bLogout);
-        }
-        else{
-            bAlta.setLocation(-300, 110);
-            bBaja.setLocation(-300, 150);
-            bModificacion.setLocation(-300, 190);
-            bConsulta.setLocation(-300, 230);
-            bCalendario.setLocation(-300, 270);
-            bRealizarEmparejamientos.setLocation(-300, 310);
-            bResultadosJornada.setLocation(-300, 350);
-            bClasificacionGeneral.setLocation(-300, 390);
-            menuAbierto=true;
-            animacion.jLabelXRight(menu.getX(), menu.getX()+300, 3, 5, menu);
-            animacion.jLabelXRight(bAlta.getX(),bAlta.getX()+300, 3, 5, bAlta);
-            animacion.jLabelXRight(bBaja.getX(),bBaja.getX()+300, 3, 5, bBaja);
-            animacion.jLabelXRight(bModificacion.getX(),bModificacion.getX()+300, 3, 5, bModificacion);
-            animacion.jLabelXRight(bConsulta.getX(),bConsulta.getX()+300, 3, 5, bConsulta);
-            animacion.jLabelXRight(bCalendario.getX(),bCalendario.getX()+300, 3, 5, bCalendario);
-            animacion.jLabelXRight(bRealizarEmparejamientos.getX(),bRealizarEmparejamientos.getX()+300, 3, 5, bRealizarEmparejamientos);
-            animacion.jLabelXRight(bResultadosJornada.getX(),bResultadosJornada.getX()+300, 3, 5, bResultadosJornada);
-            animacion.jLabelXRight(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()+300, 3, 5, bClasificacionGeneral);
-            animacion.jLabelXRight(bLogout.getX(), bLogout.getX()+300, 3, 5, bLogout);
-        }
-    }//GEN-LAST:event_bMenuMouseClicked
-
-    
+    /**
+     * Este método utiliza metodos de la clase Animation para ocultar los submenus de las diferentes opciones del menu
+     * @param eleccion es un parámetro para saber que conjunto de opciones ocultar
+     */
     private void ocultarSubmenu(int eleccion)
     {
         switch(eleccion)
@@ -573,177 +571,12 @@ AnimationClass animacion = new AnimationClass();
     }
     
     
-    private void bAltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaMouseClicked
-        if(listaDesplegableAlta){
-            listaDesplegableAlta=false;
-            animacion.jLabelYUp(bBaja.getY(), bBaja.getY()-200, 3, 5, bBaja);
-            animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
-            animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
-            animacion.jLabelYUp(bCalendario.getY(), bCalendario.getY()-200, 3, 5, bCalendario);
-            animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
-            animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
-            animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
-
-            ocultarSubmenu(1);
-        }
-        else{
-            listaDesplegableAlta=true;
-            if(listaDesplegableBaja)
-            {
-                listaDesplegableBaja=false;
-                ocultarSubmenu(2);
-                
-                animacion.jLabelYDown(bBaja.getY(), bBaja.getY()+200, 3, 5, bBaja);
-            }else if(listaDesplegableModificaciones)
-            {
-                listaDesplegableModificaciones=false;
-                ocultarSubmenu(3);
-                
-                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
-                animacion.jLabelYDown(bBaja.getY(), bBaja.getY()+200, 3, 5, bBaja);
-            }else if(listaDesplegableConsulta)
-            {
-                listaDesplegableConsulta=false;
-                ocultarSubmenu(4);
-                
-                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
-                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
-                animacion.jLabelYDown(bBaja.getY(), bBaja.getY()+200, 3, 5, bBaja);
-            }
-            else
-            {
-                animacion.jLabelYDown(bBaja.getY(), bBaja.getY()+200, 3, 5, bBaja);
-                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
-                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
-                animacion.jLabelYDown(bCalendario.getY(), bCalendario.getY()+200, 3, 5, bCalendario);
-                animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
-                animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
-                animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
-            }
-            animacion.jLabelXRight(bAltaEquipos.getX(), bAltaEquipos.getX()+300, 3, 5, bAltaEquipos);
-            animacion.jLabelXRight(bAltaJugadores.getX(), bAltaJugadores.getX()+300, 3, 5, bAltaJugadores);
-            animacion.jLabelXRight(bAltaTecnicos.getX(), bAltaTecnicos.getX()+300, 3, 5, bAltaTecnicos);
-            animacion.jLabelXRight(bAltaJefes.getX(), bAltaJefes.getX()+300, 3, 5, bAltaJefes);
-            animacion.jLabelXRight(bAltaUsuarios.getX(), bAltaUsuarios.getX()+300, 3, 5, bAltaUsuarios);
-        }
-    }//GEN-LAST:event_bAltaMouseClicked
-
     
     
-    
-    private void bBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaMouseClicked
-        if(listaDesplegableBaja){
-            listaDesplegableBaja=false;
-            animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
-            animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
-            animacion.jLabelYUp(bCalendario.getY(), bCalendario.getY()-200, 3, 5, bCalendario);
-            animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
-            animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
-            animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
-
-            ocultarSubmenu(2);
-        }
-        else{
-            listaDesplegableBaja=true;
-            if(listaDesplegableAlta)
-            {
-                listaDesplegableAlta=false;
-                ocultarSubmenu(1);
-                
-                animacion.jLabelYUp(bBaja.getY(), bBaja.getY()-200, 3, 5, bBaja);
-            }else if(listaDesplegableModificaciones)
-            {
-                listaDesplegableModificaciones=false;
-                ocultarSubmenu(3);
-                
-                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
-            }else if(listaDesplegableConsulta)
-            {
-                listaDesplegableConsulta=false;
-                ocultarSubmenu(4);
-                
-                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
-                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
-            }
-            else
-            {
-                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
-                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
-                animacion.jLabelYDown(bCalendario.getY(), bCalendario.getY()+200, 3, 5, bCalendario);
-                animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
-                animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
-                animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
-            }
-            animacion.jLabelXRight(bBajaEquipos.getX(), bBajaEquipos.getX()+300, 3, 5, bBajaEquipos);
-            animacion.jLabelXRight(bBajaJugadores.getX(), bBajaJugadores.getX()+300, 3, 5, bBajaJugadores);
-            animacion.jLabelXRight(bBajaTecnicos.getX(), bBajaTecnicos.getX()+300, 3, 5, bBajaTecnicos);
-            animacion.jLabelXRight(bBajaJefes.getX(), bBajaJefes.getX()+300, 3, 5, bBajaJefes);
-            animacion.jLabelXRight(bBajaUsuarios.getX(), bBajaUsuarios.getX()+300, 3, 5, bBajaUsuarios);
-        }
-    }//GEN-LAST:event_bBajaMouseClicked
-   
-    private void bModificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionMouseClicked
-        if(listaDesplegableModificaciones){
-           listaDesplegableModificaciones=false;
-           animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
-           animacion.jLabelYUp(bCalendario.getY(), bCalendario.getY()-200, 3, 5, bCalendario);
-           animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
-           animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
-           animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
-           
-           ocultarSubmenu(3);
-        }
-        else{
-            listaDesplegableModificaciones=true;
-            if(listaDesplegableAlta)
-            {
-                listaDesplegableAlta=false;
-                ocultarSubmenu(1);
-                
-                animacion.jLabelYUp(bBaja.getY(), bBaja.getY()-200, 3, 5, bBaja);
-                animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
-            }else if(listaDesplegableBaja)
-            {
-                listaDesplegableBaja=false;
-                ocultarSubmenu(2);
-                
-                animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
-            }else if(listaDesplegableConsulta)
-            {
-                listaDesplegableConsulta=false;
-                ocultarSubmenu(4);
-                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
-            }
-            else
-            {
-                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
-                animacion.jLabelYDown(bCalendario.getY(), bCalendario.getY()+200, 3, 5, bCalendario);
-                animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
-                animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
-                animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
-            }
-            animacion.jLabelXRight(bModificacionEquipos.getX(), bModificacionEquipos.getX()+300, 3, 5, bModificacionEquipos);
-            animacion.jLabelXRight(bModificacionJugadores.getX(), bModificacionJugadores.getX()+300, 3, 5, bModificacionJugadores);
-            animacion.jLabelXRight(bModificacionTecnicos.getX(), bModificacionTecnicos.getX()+300, 3, 5, bModificacionTecnicos);
-            animacion.jLabelXRight(bModificacionJefes.getX(), bModificacionJefes.getX()+300, 3, 5, bModificacionJefes);
-            animacion.jLabelXRight(bModificacionUsuarios.getX(), bModificacionUsuarios.getX()+300, 3, 5, bModificacionUsuarios);
-        }
-    }//GEN-LAST:event_bModificacionMouseClicked
-
-    private void bLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLogoutMouseClicked
-        Controlador.VentanaLogin(this);
-    }//GEN-LAST:event_bLogoutMouseClicked
-
-    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
-        xMouse=evt.getX();
-        yMouse=evt.getY();
-    }//GEN-LAST:event_barraDragMousePressed
-
-    private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_barraDragMouseDragged
+       
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        jPanel2.requestFocus();
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     private void bCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseClicked
         Controlador.salir();
@@ -769,9 +602,123 @@ AnimationClass animacion = new AnimationClass();
         bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
     }//GEN-LAST:event_bMinimizarMouseExited
 
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-        jPanel2.requestFocus();
-    }//GEN-LAST:event_jPanel2MouseClicked
+    private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_barraDragMouseDragged
+
+    private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
+        xMouse=evt.getX();
+        yMouse=evt.getY();
+    }//GEN-LAST:event_barraDragMousePressed
+
+    private void bMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMenuMouseClicked
+        if(menuAbierto){
+            menuAbierto=false;
+            if(listaDesplegableAlta)
+            {
+                bAltaMouseClicked(evt);
+            }
+            else if(listaDesplegableBaja)
+            {
+                bBajaMouseClicked(evt);
+            }
+            else if (listaDesplegableModificaciones)
+            {
+                bModificacionMouseClicked(evt);
+            }
+            else if (listaDesplegableConsulta)
+            {
+                bConsultaMouseClicked(evt);
+            }
+            animacion.jLabelXLeft(menu.getX(), menu.getX()-300, 3, 5, menu);
+            animacion.jLabelXLeft(bAlta.getX(),bAlta.getX()-300, 3, 5, bAlta);
+            animacion.jLabelXLeft(bBaja.getX(),bBaja.getX()-300, 3, 5, bBaja);
+            animacion.jLabelXLeft(bModificacion.getX(),bModificacion.getX()-300, 3, 5, bModificacion);
+            animacion.jLabelXLeft(bConsulta.getX(),bConsulta.getX()-300, 3, 5, bConsulta);
+            animacion.jLabelXLeft(bRealizarEmparejamientos.getX(),bRealizarEmparejamientos.getX()-300, 3, 5, bRealizarEmparejamientos);
+            animacion.jLabelXLeft(bResultadosJornada.getX(),bResultadosJornada.getX()-300, 3, 5, bResultadosJornada);
+            animacion.jLabelXLeft(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()-300, 3, 5, bClasificacionGeneral);
+            animacion.jLabelXLeft(bLogout.getX(), bLogout.getX()-300, 3, 5, bLogout);
+        }
+        else{
+            bAlta.setLocation(-300, 110);
+            bBaja.setLocation(-300, 150);
+            bModificacion.setLocation(-300, 190);
+            bConsulta.setLocation(-300, 230);
+            bRealizarEmparejamientos.setLocation(-300, 270);
+            bResultadosJornada.setLocation(-300, 310);
+            bClasificacionGeneral.setLocation(-300, 350);
+            menuAbierto=true;
+            animacion.jLabelXRight(menu.getX(), menu.getX()+300, 3, 5, menu);
+            animacion.jLabelXRight(bAlta.getX(),bAlta.getX()+300, 3, 5, bAlta);
+            animacion.jLabelXRight(bBaja.getX(),bBaja.getX()+300, 3, 5, bBaja);
+            animacion.jLabelXRight(bModificacion.getX(),bModificacion.getX()+300, 3, 5, bModificacion);
+            animacion.jLabelXRight(bConsulta.getX(),bConsulta.getX()+300, 3, 5, bConsulta);
+            animacion.jLabelXRight(bRealizarEmparejamientos.getX(),bRealizarEmparejamientos.getX()+300, 3, 5, bRealizarEmparejamientos);
+            animacion.jLabelXRight(bResultadosJornada.getX(),bResultadosJornada.getX()+300, 3, 5, bResultadosJornada);
+            animacion.jLabelXRight(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()+300, 3, 5, bClasificacionGeneral);
+            animacion.jLabelXRight(bLogout.getX(), bLogout.getX()+300, 3, 5, bLogout);
+        }
+    }//GEN-LAST:event_bMenuMouseClicked
+
+    private void bLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLogoutMouseClicked
+        Controlador.VentanaLogin(this);
+    }//GEN-LAST:event_bLogoutMouseClicked
+
+    private void bAltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaMouseClicked
+        if(listaDesplegableAlta){
+            listaDesplegableAlta=false;
+            animacion.jLabelYUp(bBaja.getY(), bBaja.getY()-200, 3, 5, bBaja);
+            animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
+            animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
+            animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
+            animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
+            animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
+
+            ocultarSubmenu(1);
+        }
+        else{
+            listaDesplegableAlta=true;
+            if(listaDesplegableBaja)
+            {
+                listaDesplegableBaja=false;
+                ocultarSubmenu(2);
+
+                animacion.jLabelYDown(bBaja.getY(), bBaja.getY()+200, 3, 5, bBaja);
+            }else if(listaDesplegableModificaciones)
+            {
+                listaDesplegableModificaciones=false;
+                ocultarSubmenu(3);
+
+                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
+                animacion.jLabelYDown(bBaja.getY(), bBaja.getY()+200, 3, 5, bBaja);
+            }else if(listaDesplegableConsulta)
+            {
+                listaDesplegableConsulta=false;
+                ocultarSubmenu(4);
+
+                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
+                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
+                animacion.jLabelYDown(bBaja.getY(), bBaja.getY()+200, 3, 5, bBaja);
+            }
+            else
+            {
+                animacion.jLabelYDown(bBaja.getY(), bBaja.getY()+200, 3, 5, bBaja);
+                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
+                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
+                animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
+                animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
+                animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
+            }
+            animacion.jLabelXRight(bAltaEquipos.getX(), bAltaEquipos.getX()+300, 3, 5, bAltaEquipos);
+            animacion.jLabelXRight(bAltaJugadores.getX(), bAltaJugadores.getX()+300, 3, 5, bAltaJugadores);
+            animacion.jLabelXRight(bAltaTecnicos.getX(), bAltaTecnicos.getX()+300, 3, 5, bAltaTecnicos);
+            animacion.jLabelXRight(bAltaJefes.getX(), bAltaJefes.getX()+300, 3, 5, bAltaJefes);
+            animacion.jLabelXRight(bAltaUsuarios.getX(), bAltaUsuarios.getX()+300, 3, 5, bAltaUsuarios);
+        }
+    }//GEN-LAST:event_bAltaMouseClicked
 
     private void bAltaEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaEquiposMouseClicked
         Controlador.VentanaAltaEquipo(this);
@@ -781,6 +728,67 @@ AnimationClass animacion = new AnimationClass();
         Controlador.VentanaAltaJugador(this);
     }//GEN-LAST:event_bAltaJugadoresMouseClicked
 
+    private void bAltaTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaTecnicosMouseClicked
+        Controlador.VentanaAltaTecnico(this);
+    }//GEN-LAST:event_bAltaTecnicosMouseClicked
+
+    private void bAltaJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaJefesMouseClicked
+        Controlador.VentanaAltaJefe(this);
+    }//GEN-LAST:event_bAltaJefesMouseClicked
+
+    private void bAltaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAltaUsuariosMouseClicked
+        Controlador.VentanaAltaPerfil(this);
+    }//GEN-LAST:event_bAltaUsuariosMouseClicked
+
+    private void bBajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaMouseClicked
+        if(listaDesplegableBaja){
+            listaDesplegableBaja=false;
+            animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
+            animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
+            animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
+            animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
+            animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
+
+            ocultarSubmenu(2);
+        }
+        else{
+            listaDesplegableBaja=true;
+            if(listaDesplegableAlta)
+            {
+                listaDesplegableAlta=false;
+                ocultarSubmenu(1);
+
+                animacion.jLabelYUp(bBaja.getY(), bBaja.getY()-200, 3, 5, bBaja);
+            }else if(listaDesplegableModificaciones)
+            {
+                listaDesplegableModificaciones=false;
+                ocultarSubmenu(3);
+
+                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
+            }else if(listaDesplegableConsulta)
+            {
+                listaDesplegableConsulta=false;
+                ocultarSubmenu(4);
+
+                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
+                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
+            }
+            else
+            {
+                animacion.jLabelYDown(bModificacion.getY(), bModificacion.getY()+200, 3, 5, bModificacion);
+                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
+                animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
+                animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
+                animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
+            }
+            animacion.jLabelXRight(bBajaEquipos.getX(), bBajaEquipos.getX()+300, 3, 5, bBajaEquipos);
+            animacion.jLabelXRight(bBajaJugadores.getX(), bBajaJugadores.getX()+300, 3, 5, bBajaJugadores);
+            animacion.jLabelXRight(bBajaTecnicos.getX(), bBajaTecnicos.getX()+300, 3, 5, bBajaTecnicos);
+            animacion.jLabelXRight(bBajaJefes.getX(), bBajaJefes.getX()+300, 3, 5, bBajaJefes);
+            animacion.jLabelXRight(bBajaUsuarios.getX(), bBajaUsuarios.getX()+300, 3, 5, bBajaUsuarios);
+        }
+    }//GEN-LAST:event_bBajaMouseClicked
+
     private void bBajaEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaEquiposMouseClicked
         Controlador.VentanaBajaEquipo(this);
     }//GEN-LAST:event_bBajaEquiposMouseClicked
@@ -788,6 +796,64 @@ AnimationClass animacion = new AnimationClass();
     private void bBajaJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaJugadoresMouseClicked
         Controlador.VentanaBajaJugador(this);
     }//GEN-LAST:event_bBajaJugadoresMouseClicked
+
+    private void bBajaTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaTecnicosMouseClicked
+        Controlador.VentanaBajaTecnico(this);
+    }//GEN-LAST:event_bBajaTecnicosMouseClicked
+
+    private void bBajaJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaJefesMouseClicked
+        Controlador.VentanaBajaJefe(this);
+    }//GEN-LAST:event_bBajaJefesMouseClicked
+
+    private void bBajaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaUsuariosMouseClicked
+        Controlador.VentanaBajaPerfil(this);
+    }//GEN-LAST:event_bBajaUsuariosMouseClicked
+
+    private void bModificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionMouseClicked
+        if(listaDesplegableModificaciones){
+            listaDesplegableModificaciones=false;
+            animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
+            animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
+            animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
+            animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
+
+            ocultarSubmenu(3);
+        }
+        else{
+            listaDesplegableModificaciones=true;
+            if(listaDesplegableAlta)
+            {
+                listaDesplegableAlta=false;
+                ocultarSubmenu(1);
+
+                animacion.jLabelYUp(bBaja.getY(), bBaja.getY()-200, 3, 5, bBaja);
+                animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
+            }else if(listaDesplegableBaja)
+            {
+                listaDesplegableBaja=false;
+                ocultarSubmenu(2);
+
+                animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
+            }else if(listaDesplegableConsulta)
+            {
+                listaDesplegableConsulta=false;
+                ocultarSubmenu(4);
+                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
+            }
+            else
+            {
+                animacion.jLabelYDown(bConsulta.getY(), bConsulta.getY()+200, 3, 5, bConsulta);
+                animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
+                animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
+                animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
+            }
+            animacion.jLabelXRight(bModificacionEquipos.getX(), bModificacionEquipos.getX()+300, 3, 5, bModificacionEquipos);
+            animacion.jLabelXRight(bModificacionJugadores.getX(), bModificacionJugadores.getX()+300, 3, 5, bModificacionJugadores);
+            animacion.jLabelXRight(bModificacionTecnicos.getX(), bModificacionTecnicos.getX()+300, 3, 5, bModificacionTecnicos);
+            animacion.jLabelXRight(bModificacionJefes.getX(), bModificacionJefes.getX()+300, 3, 5, bModificacionJefes);
+            animacion.jLabelXRight(bModificacionUsuarios.getX(), bModificacionUsuarios.getX()+300, 3, 5, bModificacionUsuarios);
+        }
+    }//GEN-LAST:event_bModificacionMouseClicked
 
     private void bModificacionEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionEquiposMouseClicked
         Controlador.VentanaModificacionEquipo(this);
@@ -797,23 +863,26 @@ AnimationClass animacion = new AnimationClass();
         Controlador.VentanaModificarJugador(this);
     }//GEN-LAST:event_bModificacionJugadoresMouseClicked
 
-    private void bBajaTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBajaTecnicosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bBajaTecnicosMouseClicked
-
     private void bModificacionTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionTecnicosMouseClicked
-        // TODO add your handling code here:
+        Controlador.VentanaModificarTecnico(this);
     }//GEN-LAST:event_bModificacionTecnicosMouseClicked
+
+    private void bModificacionJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionJefesMouseClicked
+        Controlador.VentanaModificarJefes(this);
+    }//GEN-LAST:event_bModificacionJefesMouseClicked
+
+    private void bModificacionUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModificacionUsuariosMouseClicked
+        Controlador.VentanaModificarPerfil(this);
+    }//GEN-LAST:event_bModificacionUsuariosMouseClicked
 
     private void bConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaMouseClicked
         if(listaDesplegableConsulta){
-           listaDesplegableConsulta=false;
-           animacion.jLabelYUp(bCalendario.getY(), bCalendario.getY()-200, 3, 5, bCalendario);
-           animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
-           animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
-           animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
-           
-           ocultarSubmenu(4);
+            listaDesplegableConsulta=false;
+            animacion.jLabelYUp(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()-200, 3, 5, bRealizarEmparejamientos);
+            animacion.jLabelYUp(bResultadosJornada.getY(), bResultadosJornada.getY()-200, 3, 5, bResultadosJornada);
+            animacion.jLabelYUp(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()-200, 3, 5, bClasificacionGeneral);
+
+            ocultarSubmenu(4);
         }
         else{
             listaDesplegableConsulta=true;
@@ -821,7 +890,7 @@ AnimationClass animacion = new AnimationClass();
             {
                 listaDesplegableAlta=false;
                 ocultarSubmenu(1);
-                
+
                 animacion.jLabelYUp(bBaja.getY(), bBaja.getY()-200, 3, 5, bBaja);
                 animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
                 animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
@@ -829,19 +898,18 @@ AnimationClass animacion = new AnimationClass();
             {
                 listaDesplegableBaja=false;
                 ocultarSubmenu(2);
-                
+
                 animacion.jLabelYUp(bModificacion.getY(), bModificacion.getY()-200, 3, 5, bModificacion);
                 animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
             }else if(listaDesplegableModificaciones)
             {
                 listaDesplegableModificaciones=false;
                 ocultarSubmenu(3);
-                
+
                 animacion.jLabelYUp(bConsulta.getY(), bConsulta.getY()-200, 3, 5, bConsulta);
             }
             else
             {
-                animacion.jLabelYDown(bCalendario.getY(), bCalendario.getY()+200, 3, 5, bCalendario);
                 animacion.jLabelYDown(bRealizarEmparejamientos.getY(), bRealizarEmparejamientos.getY()+200, 3, 5, bRealizarEmparejamientos);
                 animacion.jLabelYDown(bResultadosJornada.getY(), bResultadosJornada.getY()+200, 3, 5, bResultadosJornada);
                 animacion.jLabelYDown(bClasificacionGeneral.getY(), bClasificacionGeneral.getY()+200, 3, 5, bClasificacionGeneral);
@@ -855,20 +923,36 @@ AnimationClass animacion = new AnimationClass();
     }//GEN-LAST:event_bConsultaMouseClicked
 
     private void bConsultaEquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaEquiposMouseClicked
-        // TODO add your handling code here:
+        Controlador.VentanaConsulta(this,1);
     }//GEN-LAST:event_bConsultaEquiposMouseClicked
 
     private void bConsultaJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaJugadoresMouseClicked
-        // TODO add your handling code here:
+        Controlador.VentanaConsulta(this,2);
     }//GEN-LAST:event_bConsultaJugadoresMouseClicked
 
     private void bConsultaTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaTecnicosMouseClicked
-        // TODO add your handling code here:
+        Controlador.VentanaConsulta(this,4);
     }//GEN-LAST:event_bConsultaTecnicosMouseClicked
+
+    private void bConsultaJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaJefesMouseClicked
+        Controlador.VentanaConsulta(this,3);
+    }//GEN-LAST:event_bConsultaJefesMouseClicked
+
+    private void bConsultaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bConsultaUsuariosMouseClicked
+        Controlador.VentanaConsulta(this,5);
+    }//GEN-LAST:event_bConsultaUsuariosMouseClicked
 
     private void bRealizarEmparejamientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bRealizarEmparejamientosMouseClicked
         Controlador.generarLiga();
     }//GEN-LAST:event_bRealizarEmparejamientosMouseClicked
+
+    private void bResultadosJornadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bResultadosJornadaMouseClicked
+        Controlador.VentanaPartidos(this);
+    }//GEN-LAST:event_bResultadosJornadaMouseClicked
+
+    private void bClasificacionGeneralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bClasificacionGeneralMouseClicked
+        Controlador.VentanaClasificacion(this);
+    }//GEN-LAST:event_bClasificacionGeneralMouseClicked
   
     /**
      * @param args the command line arguments
@@ -922,7 +1006,6 @@ AnimationClass animacion = new AnimationClass();
     private javax.swing.JLabel bBajaJugadores;
     private javax.swing.JLabel bBajaTecnicos;
     private javax.swing.JLabel bBajaUsuarios;
-    private javax.swing.JLabel bCalendario;
     private javax.swing.JLabel bCerrar;
     private javax.swing.JLabel bClasificacionGeneral;
     private javax.swing.JLabel bConsulta;

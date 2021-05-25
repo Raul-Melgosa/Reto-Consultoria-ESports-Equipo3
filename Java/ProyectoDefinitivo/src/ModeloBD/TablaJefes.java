@@ -79,6 +79,18 @@ public class TablaJefes {
         }
         return nombreEquipo;
     }
+       public Jefe SelectNombreById(Connection c,int id) throws Exception{
+        con=c;
+        String plantilla="SELECT NOMBRE FROM jefes WHERE ID_JEFE=?";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        ps.setInt(1, id);
+        ResultSet resultado=ps.executeQuery();
+         Jefe jefe =new Jefe();
+        if(resultado.next()){
+                      jefe.setNombre(resultado.getString("NOMBRE"));
+        }
+        return jefe;
+    }
     public ArrayList <Jefe> SelectJefe(Connection c,Jefe j) throws Exception{
         con=c;
         String plantilla="Select * FROM jefes WHERE upper(nombre)=upper(?)";
@@ -137,10 +149,10 @@ public class TablaJefes {
          ResultSet resultado=ps.executeQuery();
          
          ArrayList <Jefe> datos=new ArrayList();
-         if(resultado.next()){
+         while(resultado.next()){
              Jefe j=new Jefe();
              j.setNombre(resultado.getString("NOMBRE"));
-             j.setApellido(resultado.getString("APELLIDO"));
+             j.setApellido(resultado.getString("APELLIDOS"));
              j.setDni(resultado.getString("DNI"));
              j.setId(resultado.getInt("ID_JEFE"));
              j.setEmail(resultado.getString("EMAIL"));

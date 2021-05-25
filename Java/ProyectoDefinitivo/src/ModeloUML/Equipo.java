@@ -94,7 +94,9 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "id=" + id + ", nombre=" + nombre + ", jugadoresEquipo=" + jugadoresEquipo + ", principal=" + principal + ", asistente=" + asistente + ", jefe=" + jefe ;
+        return  "ID: " +id+"\n"+
+                "Nombre: " +nombre+"\n"+
+                "Nombre del jefe: " +jefe.getNombre();
     }
     
     

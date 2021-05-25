@@ -148,16 +148,18 @@ public class TablaTecnicos {
          ResultSet resultado=ps.executeQuery();
          
          ArrayList <Tecnico> datos=new ArrayList();
-         if(resultado.next()){
+         TablaEquipos te = new TablaEquipos();
+         while(resultado.next()){
              Tecnico t=new Tecnico();
              Equipo e=new Equipo();
+             e.setNombre(te.SelectNombre(con, resultado.getInt("ID_EQUIPO")));
              t.setId(resultado.getInt("ID_TECNICO"));
              t.setDni(resultado.getString("DNI"));
-             t.setApellido(resultado.getString("APELLIDO"));
+             t.setNombre(resultado.getString("NOMBRE"));
+             t.setApellido(resultado.getString("APELLIDOS"));
              t.setNickname(resultado.getString("NICKNAME"));
              t.setSueldo(resultado.getInt("SUELDO"));
              t.setTipo(TipoTecnico.valueOf(resultado.getString("TIPO")));
-             e.setId(resultado.getInt("ID_EQUIPO"));
              t.setEquipo(e);
              datos.add(t);
          }

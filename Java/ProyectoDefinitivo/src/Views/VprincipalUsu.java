@@ -14,17 +14,27 @@ import java.awt.Color;
  * @author Equipo 3(Raúl Melgosa, Oier Velar, Alaitz Candela)
  */
 public class VprincipalUsu extends javax.swing.JFrame {
-private int xMouse;
-private int yMouse;
+private int xMouse,yMouse;
 private boolean menuAbierto=false;
+private boolean listaDesplegableAlta;
+private boolean listaDesplegableBaja;
+private boolean listaDesplegableModificaciones;
+private boolean listaDesplegableConsulta;
+AnimationClass animacion = new AnimationClass();
     /**
      * Creates new form VprincipalUsu
      */
     public VprincipalUsu() {
         initComponents();
+        bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png")));
         setLocationRelativeTo(null);
+        barraDrag.setBackground(new java.awt.Color(0,0,0,0));
         menu.setBackground(new Color(45,45,45,200));
         this.menuAbierto=false;
+        this.listaDesplegableAlta=false;
+        this.listaDesplegableBaja=false;
+        this.listaDesplegableModificaciones=false;
+        this.listaDesplegableConsulta=false;
     }
 
     /**
@@ -36,18 +46,18 @@ private boolean menuAbierto=false;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Bcerrar = new javax.swing.JLabel();
-        Bminimizar = new javax.swing.JLabel();
+        bMinimizar = new javax.swing.JLabel();
+        bCerrar = new javax.swing.JLabel();
         barraDrag = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        Logo = new javax.swing.JLabel();
-        Bmodo = new javax.swing.JLabel();
-        Bmenu = new javax.swing.JLabel();
-        LresultadosJornada = new javax.swing.JLabel();
-        Lclasificacion = new javax.swing.JLabel();
+        bMenu = new javax.swing.JLabel();
+        bLogout = new javax.swing.JLabel();
+        bResultadosJornada = new javax.swing.JLabel();
+        bClasificacionGeneral = new javax.swing.JLabel();
         menu = new javax.swing.JLabel();
-        GifArriba = new javax.swing.JLabel();
-        GifAbajo = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
+        gifAbajo = new javax.swing.JLabel();
+        GIFarriba = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Lbienvenido = new javax.swing.JLabel();
 
@@ -56,25 +66,42 @@ private boolean menuAbierto=false;
         setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1500, 750));
         setSize(new java.awt.Dimension(1500, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Bcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
-        Bcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
+        bMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
+        bMinimizar.setOpaque(true);
+        bMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BcerrarMouseClicked(evt);
+                bMinimizarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                bMinimizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bMinimizarMouseExited(evt);
             }
         });
-        getContentPane().add(Bcerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, -1, -1));
+        getContentPane().add(bMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1420, 0, 40, -1));
 
-        Bminimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minimizar-white.png"))); // NOI18N
-        Bminimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+        bCerrar.setBackground(new java.awt.Color(45, 45, 45));
+        bCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-white.png"))); // NOI18N
+        bCerrar.setOpaque(true);
+        bCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BminimizarMouseClicked(evt);
+                bCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                bCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bCerrarMouseExited(evt);
             }
         });
-        getContentPane().add(Bminimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1420, 0, -1, -1));
+        getContentPane().add(bCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 0, 40, 30));
 
         barraDrag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -86,47 +113,51 @@ private boolean menuAbierto=false;
                 barraDragMousePressed(evt);
             }
         });
-        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(-330, 0, 2000, 50));
+        getContentPane().add(barraDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO.png"))); // NOI18N
-        jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        Bmodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/luna.png"))); // NOI18N
-        jPanel1.add(Bmodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 60, -1, -1));
-
-        Bmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
-        Bmenu.addMouseListener(new java.awt.event.MouseAdapter() {
+        bMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
+        bMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BmenuMouseClicked(evt);
+                bMenuMouseClicked(evt);
             }
         });
-        jPanel1.add(Bmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+        jPanel1.add(bMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 50));
 
-        LresultadosJornada.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        LresultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
-        LresultadosJornada.setText("Ver resultados de la última jornada");
-        LresultadosJornada.addMouseListener(new java.awt.event.MouseAdapter() {
+        bLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        bLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LresultadosJornadaMouseClicked(evt);
+                bLogoutMouseClicked(evt);
             }
         });
-        jPanel1.add(LresultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-280, 140, -1, -1));
+        jPanel1.add(bLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 60, 40, 40));
 
-        Lclasificacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Lclasificacion.setForeground(new java.awt.Color(255, 255, 255));
-        Lclasificacion.setText("Clasificación");
-        jPanel1.add(Lclasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 310, -1, -1));
+        bResultadosJornada.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bResultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
+        bResultadosJornada.setText("     Resultados Jornada");
+        bResultadosJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bResultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 120, 300, 30));
 
+        bClasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bClasificacionGeneral.setForeground(new java.awt.Color(255, 255, 255));
+        bClasificacionGeneral.setText("     Clasificación general");
+        bClasificacionGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(bClasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 160, 300, 30));
+
+        menu.setBackground(new java.awt.Color(120, 120, 120));
         menu.setOpaque(true);
         jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 50, 300, 700));
 
-        GifArriba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte1.gif"))); // NOI18N
-        jPanel1.add(GifArriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -110, -1, -1));
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGO-small.png"))); // NOI18N
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
 
-        GifAbajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte2.gif"))); // NOI18N
-        jPanel1.add(GifAbajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, -1, -1));
+        gifAbajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte2.gif"))); // NOI18N
+        jPanel1.add(gifAbajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 500, 500));
+
+        GIFarriba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GIF3Parte1.gif"))); // NOI18N
+        jPanel1.add(GIFarriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -120, 500, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 750));
 
@@ -143,50 +174,64 @@ private boolean menuAbierto=false;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BcerrarMouseClicked
-       Controlador.salir();
-    }//GEN-LAST:event_BcerrarMouseClicked
+    private void bMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMenuMouseClicked
+        if(menuAbierto){
+            menuAbierto=false;
+            animacion.jLabelXLeft(menu.getX(), menu.getX()-300, 3, 5, menu);animacion.jLabelXLeft(bResultadosJornada.getX(),bResultadosJornada.getX()-300, 3, 5, bResultadosJornada);
+            animacion.jLabelXLeft(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()-300, 3, 5, bClasificacionGeneral);
+            animacion.jLabelXLeft(bLogout.getX(), bLogout.getX()-300, 3, 5, bLogout);
+        }
+        else{
+            
+            bResultadosJornada.setLocation(-300, 110);
+            bClasificacionGeneral.setLocation(-300, 150);
+            menuAbierto=true;
+            animacion.jLabelXRight(menu.getX(), menu.getX()+300, 3, 5, menu);
+            
+            animacion.jLabelXRight(bResultadosJornada.getX(),bResultadosJornada.getX()+300, 3, 5, bResultadosJornada);
+            animacion.jLabelXRight(bClasificacionGeneral.getX(),bClasificacionGeneral.getX()+300, 3, 5, bClasificacionGeneral);
+            animacion.jLabelXRight(bLogout.getX(), bLogout.getX()+300, 3, 5, bLogout);
+        }
+    }//GEN-LAST:event_bMenuMouseClicked
 
-    private void BminimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BminimizarMouseClicked
-        this.setState(ICONIFIED);
-    }//GEN-LAST:event_BminimizarMouseClicked
-
+    private void bLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLogoutMouseClicked
+        Controlador.VentanaLogin(this);
+    }//GEN-LAST:event_bLogoutMouseClicked
+ 
     private void barraDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMouseDragged
-           int x = evt.getXOnScreen();
-       int y = evt.getYOnScreen();
-       this.setLocation(x - xMouse, y - yMouse);
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_barraDragMouseDragged
 
     private void barraDragMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraDragMousePressed
-         xMouse=evt.getX();
-       yMouse=evt.getY();
+        xMouse=evt.getX();
+        yMouse=evt.getY();
     }//GEN-LAST:event_barraDragMousePressed
 
-    private void BmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BmenuMouseClicked
-        AnimationClass animacion=new AnimationClass();
-        if(menuAbierto){
-            menuAbierto=false;
-            animacion.jLabelXLeft(0, -300, 3, 5, menu);
-            animacion.jLabelXLeft(70, -70, 3, 5, Bmodo);
-            animacion.jLabelXLeft(20, -280, 3, 5, LresultadosJornada);
-            animacion.jLabelXLeft(20, -100, 3, 5, Lclasificacion);
-           
-            
-        }
-        else{
-            menuAbierto=true;
-            animacion.jLabelXRight(-300,0, 3, 5, menu);
-            animacion.jLabelXLeft(-280, 70, 3, 5, Bmodo);
-            animacion.jLabelXLeft(-280,20, 3, 5, LresultadosJornada);
-             animacion.jLabelXLeft(-100, 20, 3, 5, Lclasificacion);
-            
-      
-        }
-    }//GEN-LAST:event_BmenuMouseClicked
+    private void bMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseClicked
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_bMinimizarMouseClicked
 
-    private void LresultadosJornadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LresultadosJornadaMouseClicked
-        
-    }//GEN-LAST:event_LresultadosJornadaMouseClicked
+    private void bMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseEntered
+        bMinimizar.setBackground(new Color(100,100,100));
+    }//GEN-LAST:event_bMinimizarMouseEntered
+
+    private void bMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseExited
+        bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
+    }//GEN-LAST:event_bMinimizarMouseExited
+
+    private void bCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseClicked
+        Controlador.salir();
+    }//GEN-LAST:event_bCerrarMouseClicked
+
+    private void bCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseEntered
+        bCerrar.setBackground(new java.awt.Color(255,0,0));
+    }//GEN-LAST:event_bCerrarMouseEntered
+
+    private void bCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseExited
+        bCerrar.setBackground(new java.awt.Color(45, 45, 45));
+    }//GEN-LAST:event_bCerrarMouseExited
 
     /**
      * @param args the command line arguments
@@ -224,19 +269,19 @@ private boolean menuAbierto=false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Bcerrar;
-    private javax.swing.JLabel Bmenu;
-    private javax.swing.JLabel Bminimizar;
-    private javax.swing.JLabel Bmodo;
-    private javax.swing.JLabel GifAbajo;
-    private javax.swing.JLabel GifArriba;
+    private javax.swing.JLabel GIFarriba;
     private javax.swing.JLabel Lbienvenido;
-    private javax.swing.JLabel Lclasificacion;
-    private javax.swing.JLabel Logo;
-    private javax.swing.JLabel LresultadosJornada;
+    private javax.swing.JLabel bCerrar;
+    private javax.swing.JLabel bClasificacionGeneral;
+    private javax.swing.JLabel bLogout;
+    private javax.swing.JLabel bMenu;
+    private javax.swing.JLabel bMinimizar;
+    private javax.swing.JLabel bResultadosJornada;
     private javax.swing.JLabel barraDrag;
+    private javax.swing.JLabel gifAbajo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel logo;
     private javax.swing.JLabel menu;
     // End of variables declaration//GEN-END:variables
 }

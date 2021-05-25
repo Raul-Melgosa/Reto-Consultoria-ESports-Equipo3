@@ -89,7 +89,11 @@ public class Jefe {
 
     @Override
     public String toString() {
-        return "id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ",nickname=" + nickname;
+        return  "ID: " +id+"\n"+
+                "DNI: " +dni+"\n"+
+                "Nombre: " +nombre+"\n"+
+                "Apellidos: " +apellido+"\n"+
+                "Correo electrónico: " +email;
     }
     
     

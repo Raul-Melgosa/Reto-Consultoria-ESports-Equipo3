@@ -108,7 +108,12 @@ public class Tecnico {
 
     @Override
     public String toString() {
-        return  "id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", sueldo=" + sueldo + ", nickname=" + nickname + ", tipo=" + tipo + ", equipo=" + equipo ;
+        return  "ID: " +id+"\n"+
+                "DNI: " +dni+"\n"+
+                "Nombre: " +nombre+"\n"+
+                "Apellidos: " +apellido+"\n"+
+                "Tipo: " +tipo+"\n"+
+                "Nombre del equipo: " +equipo.getNombre();
     }
 
     

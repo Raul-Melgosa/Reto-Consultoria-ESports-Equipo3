@@ -8,10 +8,12 @@ package ModeloBD;
 import ModeloUML.Equipo;
 import ModeloUML.Jefe;
 import java.sql.Array;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import oracle.jdbc.internal.OracleTypes;
 
 /**
  *
@@ -144,17 +146,29 @@ public class TablaEquipos {
          PreparedStatement ps=con.prepareStatement(plantilla);
          
          ResultSet resultado=ps.executeQuery();
-         
+         TablaJefes tj=new TablaJefes();
          ArrayList <Equipo> datos=new ArrayList();
-         if(resultado.next()){
-             Equipo e= new Equipo();
-             Jefe j=new Jefe();
-             e.setNombre(resultado.getString("NOMBRE"));
-             e.setId(resultado.getInt("ID_EQUIPO"));
-             j.setId(resultado.getInt("ID_JEFE"));
-             e.setJefe(j);
-             datos.add(e);
-         }
-         return datos;
-     }
+        while(resultado.next()){
+            Equipo e= new Equipo();
+            Jefe j=tj.SelectNombreById(con, resultado.getInt("ID_JEFE"));
+            e.setNombre(resultado.getString("NOMBRE"));
+            e.setId(resultado.getInt("ID_EQUIPO"));
+            e.setJefe(j);
+            datos.add(e);
+        }
+        return datos;
+    }
+    
+    public int comprobarSueldo(Connection c, int id) throws Exception {
+        con=c;
+        int sueldo;
+        CallableStatement cs=con.prepareCall("{call GET_SALARIO_EQUIPO(?,?)}");
+        cs.setInt(1, id);
+        cs.registerOutParameter(2, OracleTypes.NUMBER);
+         
+        cs.execute();
+        
+        sueldo=cs.getInt(2);
+        return sueldo;
+    }
 }

@@ -131,16 +131,17 @@ public class TablaJugadores {
          PreparedStatement ps=con.prepareStatement(plantilla);
          
          ResultSet resultado=ps.executeQuery();
-         
+         TablaEquipos te = new TablaEquipos();
          ArrayList <Jugador> datos=new ArrayList();
-         if(resultado.next()){
-             Equipo e= new Equipo();
+         while(resultado.next()){
+             Equipo e=new Equipo();
+             e.setNombre(te.SelectNombre(con, resultado.getInt("ID_EQUIPO")));
              Jugador j=new Jugador();
-             e.setId(resultado.getInt("ID_EQUIPO"));
              j.setEquipo(e);
              j.setId(resultado.getInt("ID_JUGADORES"));
              j.setDni(resultado.getString("DNI"));
-             j.setApellido(resultado.getString("APELLIDO"));
+             j.setNombre(resultado.getString("NOMBRE"));
+             j.setApellido(resultado.getString("APELLIDOS"));
              j.setNickname(resultado.getString("NICKNAME"));
              j.setRol(TipoRol.valueOf(resultado.getString("ROL")));
              j.setSueldo(resultado.getInt("SUELDO"));
