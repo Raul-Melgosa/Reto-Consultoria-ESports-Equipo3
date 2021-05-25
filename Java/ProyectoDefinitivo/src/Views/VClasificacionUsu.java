@@ -136,6 +136,11 @@ AnimationClass animacion = new AnimationClass();
         bResultadosJornada.setForeground(new java.awt.Color(255, 255, 255));
         bResultadosJornada.setText("     Resultados Jornada");
         bResultadosJornada.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bResultadosJornada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bResultadosJornadaMouseClicked(evt);
+            }
+        });
         jPanel1.add(bResultadosJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 120, 300, 30));
 
         bClasificacionGeneral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -279,6 +284,10 @@ AnimationClass animacion = new AnimationClass();
     private void bMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseExited
         bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
     }//GEN-LAST:event_bMinimizarMouseExited
+
+    private void bResultadosJornadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bResultadosJornadaMouseClicked
+        Controlador.VentanaPartidos(this);
+    }//GEN-LAST:event_bResultadosJornadaMouseClicked
 
     /**
      * @param args the command line arguments

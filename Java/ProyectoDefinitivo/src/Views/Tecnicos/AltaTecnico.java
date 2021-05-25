@@ -893,9 +893,8 @@ private String tipo="";
     }//GEN-LAST:event_tfSueldoFocusLost
 
     private void tfSueldoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfSueldoKeyReleased
-              if(validarSueldo(tfSueldo.getText()))
+        if(validarSueldo(tfSueldo.getText()))
         {
-            
             tfSueldo.setForeground(new Color(0,204,0));
             barraSueldo.setForeground(new Color(0,204,0));
         }
@@ -937,17 +936,28 @@ private String tipo="";
 
     private void BaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BaceptarMouseClicked
         boolean mediaSueldo=false,alta=false;
-       
-        mediaSueldo=Controlador.ValidarSueldo(tfNombreEquipo.getText(),Integer.parseInt(tfSueldo.getText()));
-        if(mediaSueldo=true)
-            JOptionPane.showMessageDialog(this,"El equipo "+tfNombreEquipo.getText()+"ya supera la media de sueldo de 200.000€");
+        if(!validarSueldo(tfSueldo.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "El sueldo debe ser de al menos 950€ y no exceder los 200000€");
+        }
         else
-            alta=Controlador.AltaTecnico(tfDni.getText(),tfNombre.getText(),tfApellidos.getText(),tfNickname.getText(),Integer.parseInt(tfSueldo.getText()),tipo,tfNombreEquipo.getText());
-            if(alta==true)
-                  JOptionPane.showMessageDialog(this,"El tecnico ha sido dado de alta correctamente");
+        {
+            mediaSueldo=Controlador.ValidarSueldo(tfNombreEquipo.getText(),Integer.parseInt(tfSueldo.getText()));
+            if(mediaSueldo)
+                JOptionPane.showMessageDialog(this,"El equipo "+tfNombreEquipo.getText()+" superaría la media de sueldo de 200.000€");
             else
-                 JOptionPane.showMessageDialog(this,"El tecnico no ha sido dado de alta correctamente");
-          
+            {
+                alta=Controlador.AltaTecnico(tfDni.getText(),tfNombre.getText(),tfApellidos.getText(),tfNickname.getText(),Integer.parseInt(tfSueldo.getText()),tipo,tfNombreEquipo.getText());
+                if(alta==true)
+                {
+                    JOptionPane.showMessageDialog(this,"El tecnico ha sido dado de alta correctamente");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this,"El tecnico no ha sido dado de alta correctamente");
+                }
+            }
+        }
     }//GEN-LAST:event_BaceptarMouseClicked
 
     private void bCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseClicked
@@ -1341,14 +1351,23 @@ private String tipo="";
         Matcher m = patron.matcher(nickname);
         return m.matches();
     }
+    
      public boolean validarSueldo(String sueldo){
-        Pattern patron = Pattern.compile("^([0-9]|| . || ,)+");
-        if(Integer.parseInt(sueldo)>200000 || Integer.parseInt(sueldo)<950){
-            tfSueldo.setForeground(new Color(204,0,0));
-            barraSueldo.setForeground(new Color(204,0,0));
+        try
+        {
+            Pattern patron = Pattern.compile("^([0-9]|| . || ,)+");
+            if(!(Integer.parseInt(sueldo)<200000 && Integer.parseInt(sueldo)>950)){
+                tfSueldo.setForeground(new Color(204,0,0));
+                barraSueldo.setForeground(new Color(204,0,0));
+                return false;
+            }
+            Matcher m = patron.matcher(sueldo);
+            return m.matches();
         }
-        Matcher m = patron.matcher(sueldo);
-        return m.matches();
+        catch(java.lang.NumberFormatException e)
+        {
+            return false;
+        }
     }
     /**
      * @param args the command line arguments

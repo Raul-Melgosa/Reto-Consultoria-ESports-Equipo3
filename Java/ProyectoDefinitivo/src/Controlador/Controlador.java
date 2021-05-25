@@ -13,7 +13,9 @@ import java.sql.Array;
 import java.sql.Connection;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -126,7 +128,7 @@ public class Controlador {
         Jefe jefe=new Jefe();
         jefe.setId(idJefe);
         Equipo equipo=new Equipo();
-        equipo.setNombre(nombreJefe);
+        equipo.setNombre(nombreEquipo);
         equipo.setJefe(jefe);
         
         boolean insertadoCorrectamente=false;
@@ -498,6 +500,7 @@ public class Controlador {
         jefe.setDni(dni);
         jefe.setNombre(nombre);
         jefe.setApellido(apellido);
+        jefe.setNickname(nickname);
         jefe.setEmail(email);
         
         boolean insertar=false;
@@ -983,21 +986,18 @@ public class Controlador {
     public static boolean ValidarSueldo(String nombre, int sueldoExtra){
         boolean mediaSueldo=false;
         Connection c=bd.conectar();
-        System.out.println("");
+        int sueldo=0;
         try{
             int id=tEquipo.SelectID(c, nombre);
-            int sueldo=(tEquipo.comprobarSueldo(c,id)+sueldoExtra);
-            if(sueldo>200000)
-            {
-                mediaSueldo=true;
-                bd.desconectar();
-            }
+            sueldo=(tEquipo.comprobarSueldo(c,id)+(sueldoExtra*14));
+            bd.desconectar();
         }
          catch(Exception ex)
         {
             System.out.println(ex.getClass());
+            
         }
-        return mediaSueldo;
+        return sueldo>200000;
     }
     
     /**
@@ -1258,33 +1258,39 @@ public class Controlador {
      * Método que obtiene la lista de todas las jornadas y sus correspondientes partidos y los guarda en una variable global
      * @return devuelve una lista con datos de las jornadas
      */
-    public static ArrayList<String> PedirJornada(){
-       listaJornadas= new ArrayList();
+    public static void PedirJornada(){
+        listaJornadas= new ArrayList();
         ArrayList <String> jornadas= new ArrayList();
         
-       try{
-           listaJornadas=tJornada.ListaJornada(bd.conectar());
-           bd.desconectar();
-           for(int x=0;x<listaJornadas.size();x++){
-               jornadas.add(listaJornadas.get(x).toString());
-           }
-       }
-       catch(Exception e){
+        try{
+            listaJornadas=tJornada.ListaJornada(bd.conectar());
+            bd.desconectar();
+        }
+        catch(Exception e){
             System.out.println(e.getClass()+e.getMessage());
-        }  
-       return jornadas;
+        }
     }
     /**
      * Método para llenar de datos la combobox de la ventana Partidos
      * @param cbPartido es la propia combobox
-     */
-    public static void LlenarComboPartido(javax.swing.JComboBox cbPartido){
-        for(int x=0;x<listaJornadas.size();x++){
+     */    
+    public static boolean LlenarComboPartido(javax.swing.JComboBox cbPartido, int x) 
+    {
+        if(listaJornadas.isEmpty())
+        {
+            return false;
+        }
+        else
+        {
+            cbPartido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecciona Partido--" }));
             for(int y=0;y<listaJornadas.get(x).getListaPartidos().size();y++)
             {
                 cbPartido.addItem(listaJornadas.get(x).getListaPartidos().get(y).getId());
+
             }
+            return true;
         }
+        
     }
     
     public static ArrayList<String> getDatosPartido(int idPartido) throws Exception
@@ -1302,14 +1308,73 @@ public class Controlador {
                     p=listaJornadas.get(x).getListaPartidos().get(y);
                     encontrado=true;
                     datos.add(tEquipo.SelectNombre(c,p.getIdLocal()));
-                    datos.add(tPartidos.SelectPartidasLocal(c,p.getIdLocal()));
+                    datos.add(tPartidos.SelectPartidasLocal(c,p.getId()));
                     datos.add(p.getHora().getHour()+":"+p.getHora().getMinute()+":"+p.getHora().getSecond());
                     datos.add(tEquipo.SelectNombre(c,p.getIdVisitante()));
-                    datos.add(tPartidos.SelectPartidasVisitante(c,p.getIdVisitante()));
+                    datos.add(tPartidos.SelectPartidasVisitante(c,p.getId()));
                 }
             }
         }
         return datos;
+    }
+    
+    public static boolean existeJornada(int posicion) throws Exception
+    {
+        try
+        {
+            ArrayList<Partido> a=listaJornadas.get(posicion).getListaPartidos();
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getClass());
+            return false;
+        }
+    }
+    
+    public static String getFechaJornada(int posicion) throws Exception
+    {
+        String devolver=null;
+        try
+        {
+            devolver=tJornada.selectFecha(bd.conectar(),listaJornadas.get(posicion).getId());
+            bd.desconectar();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getClass());
+        }
+        return devolver;
+    }
+    
+    public static void actualizarPartido(int idPartido,int partidasLocal,int partidasVisitante) throws Exception
+    {
+        try
+        {
+            boolean encontrado=false;
+            int idGanador;
+            for(int x=0;x<listaJornadas.size() && !encontrado;x++)
+            {
+                for(int y=0;y<listaJornadas.get(x).getListaPartidos().size() && !encontrado;y++)
+                {
+                    if((listaJornadas.get(x).getListaPartidos().get(y).getId()==idPartido) && (partidasLocal>partidasVisitante))
+                    {
+                        idGanador=listaJornadas.get(x).getListaPartidos().get(y).getIdLocal();
+                        tPartidos.actualizarPartido(bd.conectar(),idPartido,partidasLocal,partidasVisitante,idGanador);
+                    }
+                    else if((listaJornadas.get(x).getListaPartidos().get(y).getId()==idPartido) && (partidasLocal<partidasVisitante))
+                    {
+                        idGanador=listaJornadas.get(x).getListaPartidos().get(y).getIdVisitante();
+                        tPartidos.actualizarPartido(bd.conectar(),idPartido,partidasLocal,partidasVisitante,idGanador);
+                    }
+                }
+            }
+            
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getClass());
+        }
     }
     /**
      * Método para cambiar de ventana a la ventana para ver y modificar los resultados de los partidos
@@ -1342,6 +1407,21 @@ public class Controlador {
         {
             VClasificacionUsu vp=new VClasificacionUsu();
             vp.setVisible(true);
+        }
+    }
+    
+    public static void PedirUltimaJornada(javax.swing.JComboBox cb){
+        try{
+            listaJornadas=new ArrayList();
+            listaJornadas.add(tJornada.UltimaJornada(bd.conectar()));
+            bd.desconectar();
+            for(int x=0;x<listaJornadas.get(0).getListaPartidos().size();x++)
+            {
+                cb.addItem(listaJornadas.get(0).getListaPartidos().get(x).getId());
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getClass()+e.getMessage());
         }
     }
     

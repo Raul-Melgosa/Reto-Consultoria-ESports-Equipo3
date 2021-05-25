@@ -9,6 +9,10 @@ import AppPackage.AnimationClass;
 import Controlador.Controlador;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,8 +27,7 @@ private boolean listaDesplegableBaja;
 private boolean listaDesplegableModificaciones;
 private boolean listaDesplegableConsulta;
 AnimationClass animacion = new AnimationClass();
-private ArrayList<String> listaPartidos = new ArrayList();
-private String jornada;
+private int posicion;
 
     /**
      * Creates new form VprincipalUsu
@@ -40,12 +43,8 @@ private String jornada;
         this.listaDesplegableBaja=false;
         this.listaDesplegableModificaciones=false;
         this.listaDesplegableConsulta=false; 
-        listaPartidos=Controlador.PedirJornada();
-        Controlador.LlenarComboPartido(cbPartido);
-        for(int x=0;x<listaPartidos.size();x++){
-            
-        }
-        
+        posicion=0;
+        Controlador.PedirJornada();
     }
 
     /**
@@ -107,12 +106,18 @@ private String jornada;
         cbPartido = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        labelFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(60, 63, 65));
         setMinimumSize(new java.awt.Dimension(1500, 750));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1500, 750));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bCerrar.setBackground(new java.awt.Color(45, 45, 45));
@@ -498,14 +503,12 @@ private String jornada;
         labelLocal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelLocal.setForeground(new java.awt.Color(255, 255, 255));
         labelLocal.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelLocal.setText("G2 Esports");
         labelLocal.setPreferredSize(new java.awt.Dimension(85, 25));
         jPanel2.add(labelLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 250, 40));
 
         tfLocal.setBackground(new java.awt.Color(45, 45, 45));
         tfLocal.setForeground(new java.awt.Color(255, 255, 255));
         tfLocal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfLocal.setText("Partidas ganadas");
         tfLocal.setBorder(null);
         tfLocal.setCaretColor(new java.awt.Color(255, 255, 255));
         jPanel2.add(tfLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 120, 40));
@@ -513,37 +516,57 @@ private String jornada;
         labelHora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelHora.setForeground(new java.awt.Color(255, 255, 255));
         labelHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelHora.setText("17:00:00");
         jPanel2.add(labelHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 80, 40));
 
         tfVisitante.setBackground(new java.awt.Color(45, 45, 45));
         tfVisitante.setForeground(new java.awt.Color(255, 255, 255));
         tfVisitante.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfVisitante.setText("Partidas ganadas");
         tfVisitante.setBorder(null);
         tfVisitante.setCaretColor(new java.awt.Color(255, 255, 255));
         jPanel2.add(tfVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, 110, 40));
 
         labelVisitante.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelVisitante.setForeground(new java.awt.Color(255, 255, 255));
-        labelVisitante.setText("Fnatic");
         labelVisitante.setPreferredSize(new java.awt.Dimension(85, 25));
         jPanel2.add(labelVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 250, 40));
 
-        bAtras.setText("jButton1");
-        jPanel2.add(bAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, -1));
+        bAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha-anterior.png"))); // NOI18N
+        bAtras.setBorder(null);
+        bAtras.setBorderPainted(false);
+        bAtras.setContentAreaFilled(false);
+        bAtras.setFocusPainted(false);
+        bAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAtrasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(bAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 60, 60));
 
-        bAdelante.setText("jButton2");
-        jPanel2.add(bAdelante, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
+        bAdelante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha-siguiente.png"))); // NOI18N
+        bAdelante.setBorder(null);
+        bAdelante.setBorderPainted(false);
+        bAdelante.setContentAreaFilled(false);
+        bAdelante.setFocusPainted(false);
+        bAdelante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAdelanteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(bAdelante, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 60, 60));
 
         labelJornada.setBackground(new java.awt.Color(255, 255, 255));
         labelJornada.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         labelJornada.setForeground(new java.awt.Color(255, 255, 255));
         labelJornada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelJornada.setText("JORNADA 1");
+        labelJornada.setText("Jornada 1");
         jPanel2.add(labelJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1000, 60));
 
         bAceptar.setText("Guardar Resultados");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
         jPanel2.add(bAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 650, 160, 50));
 
         cbPartido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -560,6 +583,12 @@ private String jornada;
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 280, 80, 1));
+
+        labelFecha.setBackground(new java.awt.Color(255, 255, 255));
+        labelFecha.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
+        labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1000, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 1000, 750));
 
@@ -606,10 +635,9 @@ private String jornada;
     }
     
     private void cbPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartidoActionPerformed
-        
         try
         {
-            if(cbPartido.getSelectedItem().toString().equals("--Selecciona Partido--"))
+            if(!cbPartido.getSelectedItem().toString().equals("--Selecciona Partido--"))
             {
                 int idPartido;
                 idPartido=Integer.parseInt(cbPartido.getSelectedItem().toString());
@@ -619,6 +647,10 @@ private String jornada;
                 labelHora.setText(datos.get(2));
                 tfVisitante.setText(datos.get(4));
                 labelVisitante.setText(datos.get(3));
+            }
+            else
+            {
+                vaciarTextos();
             }
         }
         catch(Exception e)
@@ -1006,6 +1038,121 @@ private String jornada;
         Controlador.VentanaClasificacion(this);
     }//GEN-LAST:event_bClasificacionGeneralMouseClicked
 
+    private void bAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAdelanteActionPerformed
+        try {
+            if(Controlador.existeJornada(posicion+1))
+            {
+                posicion++;
+                vaciarTextos();
+                labelJornada.setText("Jornada "+(posicion+1));
+                labelFecha.setText(Controlador.getFechaJornada(posicion));
+                if(!Controlador.LlenarComboPartido(cbPartido,posicion))
+                {
+                    JOptionPane.showMessageDialog(this, "No se puede acceder a esta ventana porque el calendario no está generado");
+                    try {
+                        Controlador.irVPrincipal(this);
+                    } catch (Exception e) {
+                        System.out.println(e.getClass());;
+                    }
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "No hay más jornadas antes de la mostrada");
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getClass());
+        }
+    }//GEN-LAST:event_bAdelanteActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(!Controlador.LlenarComboPartido(cbPartido,0))
+        {
+            JOptionPane.showMessageDialog(this, "No se puede acceder a esta ventana porque el calendario no está generado");
+            try {
+                Controlador.irVPrincipal(this);
+            } catch (Exception e) {
+                System.out.println(e.getClass());;
+            }
+        }
+    try {
+        labelFecha.setText(Controlador.getFechaJornada(posicion));
+    } catch (Exception ex) {
+        Logger.getLogger(VpartidosAdmin.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        try
+        {
+           Pattern p1 =Pattern.compile("^[0-3]$");
+            Pattern p2 =Pattern.compile("^[0-3]$");
+            Matcher m1=p1.matcher(tfLocal.getText());
+            Matcher m2=p2.matcher(tfVisitante.getText());
+            if(m1.matches() && m2.matches())
+            {
+                int partidasLocal=Integer.parseInt(tfLocal.getText());
+                int partidasVisitante=Integer.parseInt(tfVisitante.getText());
+                if(partidasLocal!=partidasVisitante)
+                {
+                    if(!cbPartido.getSelectedItem().toString().equals("--Selecciona Partido--"))
+                    {
+                        Controlador.actualizarPartido(Integer.parseInt(cbPartido.getSelectedItem().toString()),partidasLocal,partidasVisitante);
+                    }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "No es coherente que ambos equipos hayan ganado el mismo número de partidas, uno de ellos debe haber ganado más que el otro");
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Introduce un número válido de partidas ganadas por cada equipo (entre 0 y 3)");
+            } 
+        }
+        catch(Exception e)
+        {
+            
+        }
+        
+    }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void bAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAtrasActionPerformed
+        try {
+            if(Controlador.existeJornada(posicion-1))
+            {
+                posicion--;
+                vaciarTextos();
+                labelJornada.setText("Jornada "+(posicion+1));
+                labelFecha.setText(Controlador.getFechaJornada(posicion));
+                if(!Controlador.LlenarComboPartido(cbPartido,posicion))
+                {
+                    JOptionPane.showMessageDialog(this, "No se puede acceder a esta ventana porque el calendario no está generado");
+                    try {
+                        Controlador.irVPrincipal(this);
+                    } catch (Exception e) {
+                        System.out.println(e.getClass());;
+                    }
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "No hay más jornadas antes de la mostrada");
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getClass());
+        }
+    }//GEN-LAST:event_bAtrasActionPerformed
+
+    private void vaciarTextos()
+    {
+        labelLocal.setText("");
+        tfLocal.setText("");
+        labelHora.setText("");
+        tfVisitante.setText("");
+        labelVisitante.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1085,6 +1232,7 @@ private String jornada;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelHora;
     private javax.swing.JLabel labelJornada;
     private javax.swing.JLabel labelLocal;

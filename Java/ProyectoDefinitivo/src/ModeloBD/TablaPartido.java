@@ -65,4 +65,16 @@ public class TablaPartido {
         }
         return devolver;
     }
+    
+    public void actualizarPartido(Connection c,int idPartido, int partidasLocal, int partidasVisitante, int idGanador) throws Exception{
+        con=c;
+        String plantilla="UPDATE partidos SET PARTIDAS_GANADAS_LOCAL=?,PARTIDAS_GANADAS_VISITANTE=?,id_equipo_ganador=? WHERE ID_PARTIDO=?";
+        PreparedStatement ps=con.prepareStatement(plantilla);
+        ps.setInt(1, partidasLocal);
+        ps.setInt(2, partidasVisitante);
+        ps.setInt(3, idGanador);
+        ps.setInt(4, idPartido);
+        
+        ps.executeUpdate();
+    }
 }

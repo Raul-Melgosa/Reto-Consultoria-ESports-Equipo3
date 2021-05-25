@@ -29,6 +29,12 @@ public class BaseDeDatos {
             String password= "eqdaw03"; // contrasena˜
             String url = "jdbc:oracle:thin:@SrvOracle:1521:orcl";
             con = DriverManager . getConnection (url ,login ,password);
+
+//            Class.forName("oracle.jdbc.driver.OracleDriver");
+//            String user = "hr";
+//            String pass = "hr";
+//            
+//            con=java.sql.DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xepdb1",user,pass);
         }
         catch( ClassNotFoundException e)
         {

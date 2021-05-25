@@ -39,9 +39,8 @@ private String jornada;
         this.listaDesplegableAlta=false;
         this.listaDesplegableBaja=false;
         this.listaDesplegableModificaciones=false;
-        this.listaDesplegableConsulta=false; 
-        listaPartidos=Controlador.PedirJornada();
-        Controlador.LlenarComboPartido(cbPartido);
+        this.listaDesplegableConsulta=false;
+        Controlador.PedirUltimaJornada(cbPartido);
         for(int x=0;x<listaPartidos.size();x++){
             
         }
@@ -161,6 +160,11 @@ private String jornada;
         bClasificacionGeneral.setForeground(new java.awt.Color(255, 255, 255));
         bClasificacionGeneral.setText("     Clasificación general");
         bClasificacionGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bClasificacionGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bClasificacionGeneralMouseClicked(evt);
+            }
+        });
         jPanel1.add(bClasificacionGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 160, 300, 30));
 
         menu.setBackground(new java.awt.Color(120, 120, 120));
@@ -245,7 +249,7 @@ private String jornada;
         
         try
         {
-            if(cbPartido.getSelectedItem().toString().equals("--Selecciona Partido--"))
+            if(!cbPartido.getSelectedItem().toString().equals("--Selecciona Partido--"))
             {
                 int idPartido;
                 idPartido=Integer.parseInt(cbPartido.getSelectedItem().toString());
@@ -324,6 +328,10 @@ private String jornada;
     private void bMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMinimizarMouseExited
         bMinimizar.setBackground(new java.awt.Color(45, 45, 45));
     }//GEN-LAST:event_bMinimizarMouseExited
+
+    private void bClasificacionGeneralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bClasificacionGeneralMouseClicked
+        Controlador.VentanaClasificacion(this);
+    }//GEN-LAST:event_bClasificacionGeneralMouseClicked
 
     /**
      * @param args the command line arguments

@@ -845,16 +845,24 @@ private String tipo="";
 
     private void BaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BaceptarMouseClicked
         boolean modificado=false,mediaSueldo=false;
-        if(Integer.parseInt(tfSueldo.getText())!= Integer.parseInt(d[5])){
-                mediaSueldo=Controlador.ValidarSueldo(tfNombreEquipo.getText(),Integer.parseInt(tfSueldo.getText()));
-                if(mediaSueldo=true)
-                     JOptionPane.showMessageDialog(this,"El equipo "+tfNombreEquipo.getText()+"ya supera la media de sueldo de 200.000€");
-                else
-                     modificado=Controlador.ModificarTecnico(d[0], d[1], tfApellidos.getText(), tfNickname.getSelectedText(), Integer.parseInt(tfSueldo.getText()), tipo, tfNombreEquipo.getText());
+        if(validarSueldo(tfSueldo.getText()))
+        {
+            if(Integer.parseInt(tfSueldo.getText())!= Integer.parseInt(d[5])){
+                    mediaSueldo=Controlador.ValidarSueldo(tfNombreEquipo.getText(),Integer.parseInt(tfSueldo.getText()));
+                    if(mediaSueldo=true)
+                         JOptionPane.showMessageDialog(this,"El equipo "+tfNombreEquipo.getText()+"ya supera la media de sueldo de 200.000€");
+                    else
+                         modificado=Controlador.ModificarTecnico(d[0], d[1], tfApellidos.getText(), tfNickname.getSelectedText(), Integer.parseInt(tfSueldo.getText()), tipo, tfNombreEquipo.getText());
+            }
+            else  
+            {
+                modificado=Controlador.ModificarTecnico(d[0], d[1], tfApellidos.getText(), tfNickname.getSelectedText(), Integer.parseInt(tfSueldo.getText()), tipo, tfNombreEquipo.getText());
+            }
         }
-        else  
-             modificado=Controlador.ModificarTecnico(d[0], d[1], tfApellidos.getText(), tfNickname.getSelectedText(), Integer.parseInt(tfSueldo.getText()), tipo, tfNombreEquipo.getText());
-            
+        else
+        {
+            JOptionPane.showMessageDialog(this, "El sueldo debe ser de al menos 950€ y no exceder los 200000€");
+        }
     }//GEN-LAST:event_BaceptarMouseClicked
 
     private void bCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCerrarMouseClicked
@@ -1244,13 +1252,21 @@ private String tipo="";
         return m.matches();
     }
      public boolean validarSueldo(String sueldo){
-        Pattern patron = Pattern.compile("^([0-9]|| . || ,)+");
-        if(Integer.parseInt(sueldo)>200000 || Integer.parseInt(sueldo)<950){
-            tfSueldo.setForeground(new Color(204,0,0));
-            barraSueldo.setForeground(new Color(204,0,0));
+        try
+        {
+            Pattern patron = Pattern.compile("^([0-9]|| . || ,)+");
+            if(!(Integer.parseInt(sueldo)<200000 && Integer.parseInt(sueldo)>950)){
+                tfSueldo.setForeground(new Color(204,0,0));
+                barraSueldo.setForeground(new Color(204,0,0));
+                return false;
+            }
+            Matcher m = patron.matcher(sueldo);
+            return m.matches();
         }
-        Matcher m = patron.matcher(sueldo);
-        return m.matches();
+        catch(java.lang.NumberFormatException e)
+        {
+            return false;
+        }
     }
     /**
      * @param args the command line arguments

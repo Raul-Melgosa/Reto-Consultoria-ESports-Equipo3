@@ -8,6 +8,8 @@ package Views.Jefes;
 import AppPackage.AnimationClass;
 import Controlador.Controlador;
 import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -85,17 +87,17 @@ AnimationClass animacion = new AnimationClass();
         jLabel4 = new javax.swing.JLabel();
         tfDni = new javax.swing.JTextField();
         tfNombre = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
+        separadorDni = new javax.swing.JSeparator();
+        separadorApellidos = new javax.swing.JSeparator();
         Baceptar = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
-        jSeparator6 = new javax.swing.JSeparator();
+        separadorNombre = new javax.swing.JSeparator();
+        separadorNickname = new javax.swing.JSeparator();
         tfApellidos = new javax.swing.JTextField();
         tfNickname = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
+        separadorEmail = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1500, 750));
@@ -518,6 +520,11 @@ AnimationClass animacion = new AnimationClass();
                 tfDniFocusLost(evt);
             }
         });
+        tfDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfDniKeyReleased(evt);
+            }
+        });
         jPanel2.add(tfDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 270, 30));
 
         tfNombre.setBackground(new java.awt.Color(45, 45, 45));
@@ -535,11 +542,18 @@ AnimationClass animacion = new AnimationClass();
                 tfNombreFocusLost(evt);
             }
         });
+        tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfNombreKeyReleased(evt);
+            }
+        });
         jPanel2.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 250, 30));
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 290, 10));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 290, 10));
+        separadorDni.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(separadorDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 290, 1));
+
+        separadorApellidos.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(separadorApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 290, 1));
 
         Baceptar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Baceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aceptar-white.png"))); // NOI18N
@@ -560,11 +574,11 @@ AnimationClass animacion = new AnimationClass();
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/emai-white.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
 
-        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 290, 10));
+        separadorNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(separadorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 290, 1));
 
-        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 290, 10));
+        separadorNickname.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(separadorNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 290, 1));
 
         tfApellidos.setBackground(new java.awt.Color(45, 45, 45));
         tfApellidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -579,6 +593,11 @@ AnimationClass animacion = new AnimationClass();
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tfApellidosFocusLost(evt);
+            }
+        });
+        tfApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfApellidosKeyReleased(evt);
             }
         });
         jPanel2.add(tfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 260, 30));
@@ -598,6 +617,11 @@ AnimationClass animacion = new AnimationClass();
                 tfNicknameFocusLost(evt);
             }
         });
+        tfNickname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfNicknameKeyReleased(evt);
+            }
+        });
         jPanel2.add(tfNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 250, 30));
 
         tfEmail.setBackground(new java.awt.Color(45, 45, 45));
@@ -615,10 +639,15 @@ AnimationClass animacion = new AnimationClass();
                 tfEmailFocusLost(evt);
             }
         });
+        tfEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfEmailKeyReleased(evt);
+            }
+        });
         jPanel2.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 260, 30));
 
-        jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 290, 10));
+        separadorEmail.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(separadorEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 290, 1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 1000, 750));
 
@@ -661,11 +690,11 @@ AnimationClass animacion = new AnimationClass();
     }//GEN-LAST:event_tfEmailFocusGained
 
     private void tfDniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDniFocusLost
-         if(tfNombre.getText().equals(""))
+         if(tfDni.getText().equals(""))
         {
-            tfNombre.setText("Dni");
-            tfNombre.setForeground(new Color(255,255,255));
-            
+            tfDni.setText("Dni");
+            tfDni.setForeground(new Color(255,255,255));
+            separadorDni.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_tfDniFocusLost
 
@@ -674,7 +703,7 @@ AnimationClass animacion = new AnimationClass();
         {
             tfNombre.setText("Nombre");
             tfNombre.setForeground(new Color(255,255,255));
-            
+            separadorNombre.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_tfNombreFocusLost
 
@@ -683,7 +712,7 @@ AnimationClass animacion = new AnimationClass();
         {
             tfApellidos.setText("Apellidos");
             tfApellidos.setForeground(new Color(255,255,255));
-            
+            separadorApellidos.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_tfApellidosFocusLost
 
@@ -692,16 +721,16 @@ AnimationClass animacion = new AnimationClass();
         {
             tfNickname.setText("Nickname");
             tfNickname.setForeground(new Color(255,255,255));
-            
+            separadorNickname.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_tfNicknameFocusLost
 
     private void tfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusLost
           if(tfEmail.getText().equals(""))
         {
-            tfEmail.setText("Nombre Equipo");
+            tfEmail.setText("Email");
             tfEmail.setForeground(new Color(255,255,255));
-            
+            separadorEmail.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_tfEmailFocusLost
 
@@ -1091,6 +1120,99 @@ AnimationClass animacion = new AnimationClass();
         Controlador.VentanaClasificacion(this);
     }//GEN-LAST:event_bClasificacionGeneralMouseClicked
 
+    private void tfDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDniKeyReleased
+        if(validarFormatoDni(tfDni.getText()))
+        {
+            tfDni.setForeground(new Color(0,204,0));
+            separadorDni.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfDni.setForeground(new Color(204,0,0));
+            separadorDni.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfDniKeyReleased
+
+    private void tfNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNombreKeyReleased
+        if(validarFormatoNombreApellidos(tfNombre.getText()))
+        {
+            tfNombre.setForeground(new Color(0,204,0));
+            separadorNombre.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfNombre.setForeground(new Color(204,0,0));
+            separadorNombre.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfNombreKeyReleased
+
+    private void tfApellidosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfApellidosKeyReleased
+        if(validarFormatoNombreApellidos(tfApellidos.getText()))
+        {
+            tfApellidos.setForeground(new Color(0,204,0));
+            separadorApellidos.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfApellidos.setForeground(new Color(204,0,0));
+            separadorApellidos.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfApellidosKeyReleased
+
+    private void tfNicknameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNicknameKeyReleased
+        if(validarFormatoNickname(tfNickname.getText()))
+        {
+            tfNickname.setForeground(new Color(0,204,0));
+            separadorNickname.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfNickname.setForeground(new Color(204,0,0));
+            separadorNickname.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfNicknameKeyReleased
+
+    private void tfEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfEmailKeyReleased
+        if(validarFormatoEmail(tfEmail.getText()))
+        {
+            tfEmail.setForeground(new Color(0,204,0));
+            separadorEmail.setForeground(new Color(0,204,0));
+        }
+        else
+        {
+            tfEmail.setForeground(new Color(204,0,0));
+            separadorEmail.setForeground(new Color(204,0,0));
+        }
+    }//GEN-LAST:event_tfEmailKeyReleased
+
+    private static boolean validarFormatoDni(String cadena)
+    {
+        Pattern p = Pattern.compile("^[0-9]{8}[A-Z]{1}$");
+        Matcher m=p.matcher(cadena);
+        return m.matches();
+    }
+
+    private static boolean validarFormatoNombreApellidos(String cadena)
+    {
+        Pattern p = Pattern.compile("^([A-Z]||Ñ){1}([a-z]||ñ)*$");
+        Matcher m=p.matcher(cadena);
+        return m.matches();
+    }
+
+    private static boolean validarFormatoNickname(String cadena)
+    {
+        Pattern p = Pattern.compile("^([A-Z]||Ñ){1}([a-z]||ñ||_||[0-9])*$");
+        Matcher m=p.matcher(cadena);
+        return m.matches();
+    }
+
+    private static boolean validarFormatoEmail(String cadena)
+    {
+        Pattern p = Pattern.compile("^([A-Z]||Ñ||[a-z]||ñ||_||[0-9]||.)*@([a-z]||.)*.[a-z]*$");
+        Matcher m=p.matcher(cadena);
+        return m.matches();
+    }
+    
     /**
      * Este método utiliza metodos de la clase Animation para ocultar los submenus de las diferentes opciones del menu
      * @param eleccion es un parámetro para saber que conjunto de opciones ocultar
@@ -1224,13 +1346,13 @@ AnimationClass animacion = new AnimationClass();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel menu;
+    private javax.swing.JSeparator separadorApellidos;
+    private javax.swing.JSeparator separadorDni;
+    private javax.swing.JSeparator separadorEmail;
+    private javax.swing.JSeparator separadorNickname;
+    private javax.swing.JSeparator separadorNombre;
     private javax.swing.JTextField tfApellidos;
     private javax.swing.JTextField tfDni;
     private javax.swing.JTextField tfEmail;
